@@ -13,8 +13,17 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // TODO Auto-generated method stub
+        DashboardController dashboardController = new DashboardController();
         stage = new Stage();
+        
         stage.setTitle("Sample");
+        stage.setScene(dashboardController.getScene());
+
+        // windows settings
+        stage.setMinWidth(1366);
+        stage.setMinHeight(768);
+        stage.setMaximized(true);
+
         stage.show();
     }
     
