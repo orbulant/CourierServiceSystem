@@ -5,11 +5,23 @@ By Chen Wey Kiat And Tan Ka-Shing
 
 
 Users
+-   Customers
 -	Managing staff
 -	Delivery staff
 
 
 Functional Requirements
+
+Customers
+
+Account
+-	Create account
+-	View account
+-	Deactivate *optional*
+-	Edit account
+
+Orders
+-	Give feedback
 
 
 Managing Staff
