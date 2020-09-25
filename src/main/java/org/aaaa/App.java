@@ -1,5 +1,7 @@
 package org.aaaa;
 
+import org.aaaa.Controller.DashboardController;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
