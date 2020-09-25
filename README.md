@@ -1,18 +1,19 @@
 # CourierServiceSystem
-OODJ Assignment System
+##OODJ Assignment System
 
-By Chen Wey Kiat And Tan Ka-Shing
+*By Chen Wey Kiat And Tan Ka-Shing*
 
 
-Users
+### Users
 -   Customers
 -	Managing staff
 -	Delivery staff
 
 
-Functional Requirements
+### Functional Requirements
 
-Customers
+#### Customers
+
 
 Account
 -	Create account
@@ -20,11 +21,12 @@ Account
 -	Deactivate *optional*
 -	Edit account
 
+
 Orders
 -	Give feedback
 
 
-Managing Staff
+#### Managing Staff
 
 
 Login/Logout
@@ -63,7 +65,7 @@ Report
 -	Generate report (User report, Sales report, Inventory report)
 
 
-Delivery Staff
+#### Delivery Staff
 
 
 Login/Logout
