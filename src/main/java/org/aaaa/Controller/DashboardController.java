@@ -18,6 +18,7 @@ public class DashboardController implements Initializable {
         // TODO Auto-generated method stub
         try{
             mainPane.getChildren().add((Node)FXMLLoader.load(getClass().getResource("/fxml/Sidebar.fxml")));
+            mainPane.getChildren().add((Node)FXMLLoader.load(getClass().getResource("/fxml/Topbar.fxml")));
         } catch (Exception e) {
             e.printStackTrace();
         }
