@@ -3,6 +3,9 @@ package org.aaaa;
 import org.aaaa.Controller.DashboardController;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -15,12 +18,13 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // TODO Auto-generated method stub
-        DashboardController dashboardController = new DashboardController();
         stage = new Stage();
         
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Dashboard.fxml"));
+        Scene scene = new Scene(root);
+        
         stage.setTitle("Sample");
-        stage.setScene(dashboardController.getScene());
-
+        stage.setScene(scene);
         // windows settings
         stage.setMinWidth(1366);
         stage.setMinHeight(768);
