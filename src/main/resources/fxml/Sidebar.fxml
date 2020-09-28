@@ -10,51 +10,48 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="766.0" minWidth="276.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="237.0" layoutY="-14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefWidth="276.0" style="-fx-background-color: lightblue;">
+            <VBox alignment="CENTER" prefHeight="311.0" prefWidth="276.0" style="-fx-background-color: lightblue;">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="88.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="20.0">
+                  <HBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../assets/cour_icon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="100.0" text="4-AEx">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <font>
-                              <Font name="SansSerif Bold" size="21.0" />
-                           </font>
-                        </Label>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/cour_icon.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </VBox>
+                  </HBox>
+                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="100.0" text="4-AEx">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="SansSerif Bold" size="21.0" />
+                     </font>
+                  </Label>
                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" VBox.vgrow="ALWAYS">
+            </VBox>
+            <AnchorPane>
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="98.0" layoutY="106.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                  <VBox alignment="CENTER" prefHeight="455.0" prefWidth="276.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Home">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Accounts" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Orders" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Feedbacks" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Report" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Accounts" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Orders" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Feedbacks" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="Report" />
                      </children>
                   </VBox>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </children>
