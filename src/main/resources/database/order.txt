@@ -1,1 +1,3 @@
-*orderID,createdBy,createdOn,changedBy,changedOn*
+*orderID,orderName,orderDesc,orderDate,deliveryDate,isFragile
+,recipientName,recipientContact,address,city,postcode,state,country
+,createdBy,createdOn,changedBy,changedOn*
