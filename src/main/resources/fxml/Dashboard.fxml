@@ -76,7 +76,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="contentPane" layoutX="379.0" layoutY="226.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: turquoise;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <AnchorPane fx:id="contentPane" layoutX="379.0" layoutY="226.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
             <GridPane fx:id="dashboardPane" hgap="15.0" layoutX="196.0" layoutY="206.0" vgap="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
@@ -99,6 +99,21 @@
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
+      </AnchorPane>
+      <AnchorPane layoutX="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="1090.0" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: grey;" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="mainTitle" alignment="CENTER" layoutX="461.0" layoutY="22.0" text="ui_label" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="460.0" AnchorPane.topAnchor="11.0">
+               <font>
+                  <Font name="Arial" size="45.0" />
+               </font>
+            </Label>
+            <HBox layoutX="855.0" layoutY="21.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Profile" />
+               </children>
+            </HBox>
+         </children>
       </AnchorPane>
    </children>
 </AnchorPane>
