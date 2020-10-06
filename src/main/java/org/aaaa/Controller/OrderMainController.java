@@ -24,9 +24,8 @@ public class OrderMainController implements Initializable {
         try{
             // searchbar
             FXMLLoader searchbar = new FXMLLoader(getClass().getResource(GUIPath.Searchbar.getName()));
-            // set custom controller to order
-            // OrderListViewerController orderListController = new OrderListViewerController();
-            // searchbar.setController(orderListController);
+            // set custom controller to searchbar
+            
             ui_top_pane.getChildren().add((Node) searchbar.load());
 
             // order list
