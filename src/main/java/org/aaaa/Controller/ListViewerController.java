@@ -24,7 +24,7 @@ public class ListViewerController {
         ui_title_label.setText(this.title);
     }
 
-    public void setButtonVisibility(boolean value) {
+    public void setTitleButtonVisibility(boolean value) {
         ui_title_button.setVisible(value);
     }
 

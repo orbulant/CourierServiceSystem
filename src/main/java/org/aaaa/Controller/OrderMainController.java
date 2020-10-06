@@ -3,6 +3,8 @@ package org.aaaa.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.aaaa.GUIPath;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,17 +21,16 @@ public class OrderMainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
         try{
             // searchbar
-            FXMLLoader searchbar = new FXMLLoader(getClass().getResource("/fxml/Searchbar.fxml"));
+            FXMLLoader searchbar = new FXMLLoader(getClass().getResource(GUIPath.Searchbar.getName()));
             // set custom controller to order
             // OrderListViewerController orderListController = new OrderListViewerController();
             // searchbar.setController(orderListController);
             ui_top_pane.getChildren().add((Node) searchbar.load());
 
             // order list
-            FXMLLoader orderList = new FXMLLoader(getClass().getResource("/fxml/ListViewer.fxml"));
+            FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
             orderListController = new OrderListViewerController();
             orderList.setController(orderListController);
