@@ -1,6 +1,0 @@
-1,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
-2,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
-3,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
-4,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
-5,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
-6,Tan's Gift,HB,something,something,yes,Tan,012-3456789,13 street,bikini bottom,123456,mariana trench,ocean,admin,something,,,
