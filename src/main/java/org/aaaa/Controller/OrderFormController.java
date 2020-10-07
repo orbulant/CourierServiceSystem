@@ -3,7 +3,10 @@ package org.aaaa.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.aaaa.Person;
+import org.aaaa.Address;
 import org.aaaa.ErrorMessage;
+import org.aaaa.Order;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,6 +63,18 @@ public class OrderFormController implements Initializable {
         // check form validity
         if(this.isValid()) {
             // add to database
+            Person person = new Person(txt_name.getText(), txt_contact.getText());
+            Address address = new Address(new String[]{txt_address.getText(), txt_city.getText(), txt_postcode.getText(), txt_state.getText(), txt_country.getText()});
+            Order order = new Order();
+            order.setOrderName(txt_order_name.getText());
+            order.setOrderDesc(txt_order_desc.getText());
+            order.setOrderDate(dp_order_date.getValue());
+            order.setDeliDate(dp_order_date.getValue());
+            // order.setAssignTo();
+            order.setIsFragile(cb_is_fragile.isSelected());
+            order.setAutoAssign(cb_auto_assign.isSelected());
+            order.setAccount(person);
+            order.setAddress(address);
         } else {
             // prompt error message
             lbl_err_msg.setVisible(true);
@@ -78,8 +93,7 @@ public class OrderFormController implements Initializable {
             txt_postcode.getText().isBlank() ||
             txt_state.getText().isBlank() || 
             txt_country.getText().isBlank() ||
-            txt_country.getText().isBlank() ||
-            txt_country.getText().isBlank() || 
+            dp_order_date.getValue() != null ||
             (cb_auto_assign.isSelected() && txt_assign_to.getValue() != null)) {
                 return true;
             }

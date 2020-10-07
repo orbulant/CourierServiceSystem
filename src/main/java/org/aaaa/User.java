@@ -4,8 +4,9 @@ public class User {
     private static String username;
     private static String password;
     private static String role;
-    private static ManagingStaff staff;
+    private static StaffManaging staff;
  
+    // Use this first
     public User(String username, String password, String role) {
         User.username = username;
         User.password = password;
@@ -13,7 +14,7 @@ public class User {
     }
 
     // WIP
-    public User(String username, String password, String role, ManagingStaff staff) {
+    public User(String username, String password, String role, StaffManaging staff) {
         User.username = username;
         User.password = password;
         User.role = role;
@@ -44,11 +45,11 @@ public class User {
         User.role = role;
     }
 
-    public static ManagingStaff getStaff() {
+    public static StaffManaging getStaff() {
         return staff;
     }
 
-    public static void setStaff(ManagingStaff staff) {
+    public static void setStaff(StaffManaging staff) {
         User.staff = staff;
     }
 }
