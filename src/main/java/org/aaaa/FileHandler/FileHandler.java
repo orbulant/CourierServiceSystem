@@ -42,7 +42,8 @@ public class FileHandler {
             e.printStackTrace();
         }
         //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning
-        return chopped(arrList, 5);
+        List<List<String>> mdarrlist = chopped(arrList, 5);
+        return mdarrlist;
     }
     //getContentsinglearr() stores content into an arraylist
     public List<String> getContentsinglearr(){
