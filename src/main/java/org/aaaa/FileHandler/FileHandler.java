@@ -1,6 +1,7 @@
 package org.aaaa.FileHandler;
 
 //Imports
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class FileHandler {
     private String pathname;
 
-//Constructor
+    //Constructor
     public FileHandler(String pathname){
         this.pathname = pathname;
     }
@@ -26,7 +27,7 @@ public class FileHandler {
     }
 
     //getContent() stores content into multidimensional arraylist
-    public List<List<String>> getContent() {
+    public List<List<String>> getContent(int chopLength) {
         ArrayList<String> arrList = new ArrayList<>();
         try {
             FileReader fr = new FileReader(pathname);
@@ -42,7 +43,7 @@ public class FileHandler {
             e.printStackTrace();
         }
         //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning
-        List<List<String>> mdarrlist = chopped(arrList, 5);
+        List<List<String>> mdarrlist = chopped(arrList, chopLength); //L type in how many lines then it will chop and form a new array
         return mdarrlist;
     }
     //getContentsinglearr() stores content into an arraylist
@@ -99,5 +100,18 @@ public class FileHandler {
         writer.close();
     }
 
+
+    //LOGIN VERIFICATION
+    public boolean loginSuccess(User user){
+
+        for(int i = 0; i < this.getContent(2).size(); i++){
+            if(this.getContent(2).get(i).get(0).equals(user.getUsername()) && this.getContent(2).get(i).get(1).equals(user.getPassword())){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
 }
 
