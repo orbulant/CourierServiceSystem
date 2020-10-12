@@ -1,0 +1,4 @@
+****** Order ******
+*orderID,orderName,orderDesc,orderDate,deliveryDate,isFragile,assignedTo(Staff id)
+,recipientName,recipientContact,address,city,postcode,state,country
+,createdBy,createdOn,changedBy,changedOn*

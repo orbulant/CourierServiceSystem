@@ -1,7 +1,5 @@
 package org.aaaa;
 
-import org.aaaa.Controller.DashboardController;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +15,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // TODO Auto-generated method stub
         stage = new Stage();
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Dashboard.fxml"));
