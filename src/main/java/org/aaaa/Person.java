@@ -2,7 +2,7 @@ package org.aaaa;
 
 import java.time.LocalDate;
 
-public class Person {
+public class Person extends Data {
     protected String name;
     protected String contact;
     protected String nric;
@@ -41,5 +41,29 @@ public class Person {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getNric() {
+        return nric;
+    }
+
+    public void setNric(String nric) {
+        this.nric = nric;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 }
