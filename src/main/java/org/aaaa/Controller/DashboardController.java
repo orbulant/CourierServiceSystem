@@ -3,7 +3,7 @@ package org.aaaa.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.aaaa.GUIPath;
+import org.aaaa.Enums.GUIPath;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,7 +98,8 @@ public class DashboardController implements Initializable {
             // set custom controller to order
             OrderListViewerController orderListController = new OrderListViewerController();
             orderList.setController(orderListController);
-    
+            orderListController.populateOrders();
+
             // recent login
             FXMLLoader recentLogin = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to recent login

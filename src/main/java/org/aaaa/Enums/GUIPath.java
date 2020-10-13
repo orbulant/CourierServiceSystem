@@ -1,4 +1,4 @@
-package org.aaaa;
+package org.aaaa.Enums;
 
 public enum GUIPath {
     Dashboard("/fxml/Dashboard.fxml"),

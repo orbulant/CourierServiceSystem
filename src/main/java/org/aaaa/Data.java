@@ -1,12 +1,12 @@
 package org.aaaa;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 public class Data {
     protected String createdBy; // get name using User.username
-    protected Calendar createdOn;
+    protected LocalDateTime createdOn;
     protected String changedBy;
-    protected Calendar changedOn;
+    protected LocalDateTime changedOn;
 
     public void create() {
         // do something
@@ -28,11 +28,11 @@ public class Data {
         this.createdBy = createdBy;
     }
 
-    public Calendar getCreatedOn() {
+    public LocalDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Calendar createdOn) {
+    public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -44,11 +44,11 @@ public class Data {
         this.changedBy = changedBy;
     }
 
-    public Calendar getChangedOn() {
+    public LocalDateTime getChangedOn() {
         return changedOn;
     }
 
-    public void setChangedOn(Calendar changedOn) {
+    public void setChangedOn(LocalDateTime changedOn) {
         this.changedOn = changedOn;
     }    
 } 

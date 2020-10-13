@@ -3,7 +3,7 @@ package org.aaaa.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.aaaa.GUIPath;
+import org.aaaa.Enums.GUIPath;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

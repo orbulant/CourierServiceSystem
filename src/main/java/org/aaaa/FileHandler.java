@@ -100,16 +100,15 @@ public class FileHandler {
     }
 
     //LOGIN VERIFICATION
-    public boolean loginSuccess(Staff staff){
-        for(int i = 0; i < this.getContent(2).size(); i++){
-            if(this.getContent(2).get(i).get(0).equals(staff.getUsername()) && this.getContent(2).get(i).get(1).equals(staff.getPassword())){
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
+    // public boolean loginSuccess(Staff staff){
+    //     for(int i = 0; i < this.getContent(2).size(); i++){
+    //         if(this.getContent(2).get(i).get(0).equals(staff.getUsername()) && this.getContent(2).get(i).get(1).equals(staff.getPassword())){
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    //     return false;
+    // }
 }
 
