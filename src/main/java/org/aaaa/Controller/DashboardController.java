@@ -28,13 +28,20 @@ public class DashboardController implements Initializable {
     @FXML
     Label mainTitle;
     @FXML
-    Button sidebarOrderButton;
+    Button sidebarButtonOne;
     @FXML
-    Button sidebarHomeButton;
+    Button sidebarButtonTwo;
+    @FXML
+    Button sidebarButtonThree;
+    @FXML
+    Button sidebarButtonFour;
+    @FXML
+    Button sidebarButtonFive;
 
     private String title;
     private Node order;
     private Node orderMain;
+    private Node reportMain;
     private Node previousPage;
     private FXMLLoader orderMainLoader;
 
@@ -53,25 +60,34 @@ public class DashboardController implements Initializable {
                 orderMainLoader = new FXMLLoader();
                 orderMain = orderMainLoader.load(getClass().getResource(GUIPath.OrderMain.getName()).openStream());
             } 
+
+            if(reportMain == null) {
+                reportMain = (Node)FXMLLoader.load(getClass().getResource(GUIPath.ReportMain.getName()));
+            }
         } catch (Exception eButton) {
             eButton.printStackTrace();
         }
 
         // Sidebar Buttons
-        sidebarHomeButton.setOnMouseClicked(e -> {
+        sidebarButtonOne.setOnMouseClicked(e -> {
             this.setTitle(GUIPath.Dashboard.toString());
 
             this.overridePage(dashboardPane);
         });
 
-        sidebarOrderButton.setOnMouseClicked(e -> {
-            this.setTitle(this.sidebarOrderButton.getText());
+        sidebarButtonThree.setOnMouseClicked(e -> {
+            this.setTitle(this.sidebarButtonThree.getText());
 
             OrderMainController orderMainController = orderMainLoader.getController();
             orderMainController.getOrderListController().getTitleButton().setOnMouseClicked(e1 -> {
                 this.overridePage(order);
             });
             this.overridePage(orderMain);
+        });
+
+        sidebarButtonFive.setOnMouseClicked(e -> {
+            this.setTitle(this.sidebarButtonFive.getText());
+            this.overridePage(reportMain);
         });
     }
 

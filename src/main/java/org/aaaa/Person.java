@@ -1,13 +1,20 @@
 package org.aaaa;
 
 import java.time.LocalDate;
-
+//*accountID,name,contact,nric,dob,houseNum,streetName,city,postcode,state,country,createdBy,createdOn,changedBy,changedOn*
 public class Person extends Data {
     protected String name;
     protected String contact;
     protected String nric;
     protected String email;
     protected LocalDate dob;
+    protected String num;
+    // protected String houseNum;
+    // protected String streetName;
+    // protected String city;
+    // protected String postcode;
+    // protected String country;
+    protected Address fulladdress;
 
     public Person() {
         this.name = "";
@@ -66,4 +73,60 @@ public class Person extends Data {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public Address getFulladdress() {
+        return fulladdress;
+    }
+
+    public void setFulladdress(Address fulladdress) {
+        this.fulladdress = fulladdress;
+    }
+    
+    // public String getHouseNum() {
+    //     return houseNum;
+    // }
+
+    // public void setHouseNum(String houseNum) {
+    //     this.houseNum = houseNum;
+    // }
+
+    // public String getStreetName() {
+    //     return streetName;
+    // }
+
+    // public void setStreetName(String streetName) {
+    //     this.streetName = streetName;
+    // }
+
+    // public String getCity() {
+    //     return city;
+    // }
+
+    // public void setCity(String city) {
+    //     this.city = city;
+    // }
+
+    // public String getPostcode() {
+    //     return postcode;
+    // }
+
+    // public void setPostcode(String postcode) {
+    //     this.postcode = postcode;
+    // }
+
+    // public String getCountry() {
+    //     return country;
+    // }
+
+    // public void setCountry(String country) {
+    //     this.country = country;
+    // }
 }

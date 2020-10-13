@@ -26,7 +26,7 @@ public class FileHandler {
     }
 
     //getContent() stores content into multidimensional arraylist
-    public List<List<String>> getContent() {
+    public List<List<String>> getContent(int chopLength) {
         ArrayList<String> arrList = new ArrayList<>();
         try {
             FileReader fr = new FileReader(pathname);
@@ -41,8 +41,9 @@ public class FileHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning
-        return chopped(arrList, 5);
+        //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning]
+        List<List<String>> mdarrlist = chopped(arrList, chopLength); //L type in how many lines then it will chop and form a new array
+        return mdarrlist;
     }
     //getContentsinglearr() stores content into an arraylist
     public List<String> getContentsinglearr(){
@@ -75,14 +76,14 @@ public class FileHandler {
         Object[] objects = input.toArray();
         //Writing array of objects separated by comma
         for(Object obj : objects){
-                writer.write(obj + ",");
+                writer.write(obj + "\n");
         }
         writer.flush();
         writer.close();
     }
 
     //Gets a single arraylist and writes content into file separated by comma.
-    public void writeContenttosinglearr(List<String> input) throws IOException{
+    public void writeContentfromsinglearrray(List<String> input) throws IOException{
         //Create a file object
         File file = new File(pathname);
         //Creates a fileWriter object
@@ -92,10 +93,22 @@ public class FileHandler {
         Object[] objects = input.toArray();
         //Writing array of objects sepearted by comma and new line
             for(Object obj : objects){
-                writer.write(obj + ", \n");
+                writer.write(obj + "\n");
                 }
         writer.flush();
         writer.close();
+    }
+
+    //LOGIN VERIFICATION
+    public boolean loginSuccess(Staff staff){
+        for(int i = 0; i < this.getContent(2).size(); i++){
+            if(this.getContent(2).get(i).get(0).equals(staff.getUsername()) && this.getContent(2).get(i).get(1).equals(staff.getPassword())){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
 }

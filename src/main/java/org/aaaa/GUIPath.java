@@ -5,7 +5,8 @@ public enum GUIPath {
     ListViewer("/fxml/ListViewer.fxml"),
     OrderMain("/fxml/OrderMain.fxml"),
     OrderForm("/fxml/OrderForm.fxml"),
-    Searchbar("/fxml/Searchbar.fxml");
+    Searchbar("/fxml/Searchbar.fxml"),
+    ReportMain("/fxml/ReportMain.fxml");
 
     private final String name;
 
