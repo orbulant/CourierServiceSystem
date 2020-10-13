@@ -1,17 +1,11 @@
 package org.aaaa;
 
-import java.time.LocalDate;
 //*accountID,email,password,role,createdBy,createdOn,changedBy,changedOn*
 public class Staff extends Person {
     protected String username;
     protected String password;
     protected String role;
     protected String accountID;
-    protected String createdBy;
-    protected LocalDate createdOn;
-    protected String changedBy;
-    protected LocalDate changedOn;
-
 
     public Staff() {
         this.username = "";
@@ -55,37 +49,5 @@ public class Staff extends Person {
 
     public void setAccountID(String accountID) {
         this.accountID = accountID;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDate getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDate createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public String getChangedBy() {
-        return changedBy;
-    }
-
-    public void setChangedBy(String changedBy) {
-        this.changedBy = changedBy;
-    }
-
-    public LocalDate getChangedOn() {
-        return changedOn;
-    }
-
-    public void setChangedOn(LocalDate changedOn) {
-        this.changedOn = changedOn;
     }
 }

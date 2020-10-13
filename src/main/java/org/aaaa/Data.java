@@ -19,4 +19,36 @@ public class Data {
     public void delete() {
         // do something
     }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Calendar getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Calendar createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getChangedBy() {
+        return changedBy;
+    }
+
+    public void setChangedBy(String changedBy) {
+        this.changedBy = changedBy;
+    }
+
+    public Calendar getChangedOn() {
+        return changedOn;
+    }
+
+    public void setChangedOn(Calendar changedOn) {
+        this.changedOn = changedOn;
+    }
 } 
