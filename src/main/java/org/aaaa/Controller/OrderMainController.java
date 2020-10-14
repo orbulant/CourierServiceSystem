@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import org.aaaa.Enums.GUIPath;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ public class OrderMainController implements Initializable {
     @FXML
     AnchorPane ui_bottom_pane;
 
+    private DashboardController dashboardController;
     private OrderListViewerController orderListController;
 
     @Override
@@ -32,10 +34,16 @@ public class OrderMainController implements Initializable {
             FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
             orderListController = new OrderListViewerController();
+            orderListController.setDashboardController(this.dashboardController);
+            orderListController.setOrderMainController(this);
             orderList.setController(orderListController);
     
             ui_bottom_pane.getChildren().add((Node) orderList.load());
             orderListController.setTitle("Recent Orders");
+
+            Platform.runLater(() -> {
+                orderListController.populateOrders("long");
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,5 +51,13 @@ public class OrderMainController implements Initializable {
 
     public OrderListViewerController getOrderListController() {
         return orderListController;
+    }
+
+    public DashboardController getDashboardController(DashboardController dashboardController) {
+        return this.dashboardController;
+    }
+
+    public void setDashboardController(DashboardController dashboardController) {
+        this.dashboardController = dashboardController;
     }
 }

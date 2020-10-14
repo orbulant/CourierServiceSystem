@@ -6,53 +6,52 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+<HBox fx:id="long_content_container" focusTraversable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label text="order_id/name">
+            <Label fx:id="order_id_name" text="order_id/name">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label text="order_date">
+            <Label fx:id="order_date" text="order_date">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label text="delivery_date">
+            <Label fx:id="delivery_date" text="delivery_date">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label text="status">
+            <Label fx:id="status" text="status">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Button mnemonicParsing="false" text="auto_assign">
+            <Button fx:id="auto_assign" mnemonicParsing="false" text="auto_assign">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="edit/view">
+            <Button fx:id="edit_view" mnemonicParsing="false" text="edit/view">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>

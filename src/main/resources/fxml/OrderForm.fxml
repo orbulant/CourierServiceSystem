@@ -22,13 +22,13 @@
    </children>
 </AnchorPane> -->
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1090.0" style="-fx-background-color: #F4F4F4;" stylesheets="@../assets/stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aaaa.Controller.OrderFormController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1090.0" style="-fx-background-color: #F4F4F4;" stylesheets="@../assets/stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: lightgrey;">
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="334.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Label prefHeight="33.0" prefWidth="166.0" text="Create An Order">
+                  <Label fx:id="title_label" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="310.0">
                      <font>
                         <Font name="Arial" size="22.0" />
                      </font>

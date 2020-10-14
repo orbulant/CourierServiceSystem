@@ -1,6 +1,8 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.aaaa.Person;
@@ -19,6 +21,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class OrderFormController implements Initializable {
+    @FXML
+    Label title_label;
     @FXML
     TextField txt_order_name;
     @FXML
@@ -52,8 +56,40 @@ public class OrderFormController implements Initializable {
     @FXML
     Button btn_submit;
 
+    private String title;
+    private List<String> data;
+
+    public OrderFormController() {
+        this.title = "Create an Order";
+    }
+
+    public OrderFormController(List<String> data) {
+        System.out.println(data);
+        this.data = data;
+        this.title = "Edit/View an Order";
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.title_label.setText(this.title);
+        
+        if (data != null) {
+            this.txt_order_name.setText(data.get(1));
+            this.txt_order_desc.setText(data.get(2));
+            this.dp_order_date.setValue(LocalDate.parse(data.get(3)));
+            if(data.get(4).length() > 0) {
+                this.dp_deli_date.setValue(LocalDate.parse(data.get(4)));
+            }
+            this.cb_is_fragile.setSelected(Boolean.parseBoolean(data.get(5)));
+            this.txt_name.setText(data.get(8));
+            this.txt_contact.setText(data.get(9));
+            this.txt_address.setText(data.get(10));
+            this.txt_city.setText(data.get(11));
+            this.txt_postcode.setText(data.get(12));
+            this.txt_state.setText(data.get(13));
+            this.txt_country.setText(data.get(14));
+        }
+
         btn_submit.setOnMouseClicked(e -> {
             this.processData();
         });

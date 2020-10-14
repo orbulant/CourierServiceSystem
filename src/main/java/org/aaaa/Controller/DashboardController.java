@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import org.aaaa.Enums.GUIPath;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -39,11 +40,9 @@ public class DashboardController implements Initializable {
     Button sidebarButtonFive;
 
     private String title;
-    private Node order;
-    private Node orderMain;
+    private FXMLLoader orderMain;
     private Node reportMain;
     private Node previousPage;
-    private FXMLLoader orderMainLoader;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -52,15 +51,6 @@ public class DashboardController implements Initializable {
         this.loadDashboardContent();
 
         try{
-            if(order == null) {
-                order = (Node)FXMLLoader.load(getClass().getResource(GUIPath.OrderForm.getName()));
-            } 
-
-            if(orderMain == null) {
-                orderMainLoader = new FXMLLoader();
-                orderMain = orderMainLoader.load(getClass().getResource(GUIPath.OrderMain.getName()).openStream());
-            } 
-
             if(reportMain == null) {
                 reportMain = (Node)FXMLLoader.load(getClass().getResource(GUIPath.ReportMain.getName()));
             }
@@ -71,18 +61,21 @@ public class DashboardController implements Initializable {
         // Sidebar Buttons
         sidebarButtonOne.setOnMouseClicked(e -> {
             this.setTitle(GUIPath.Dashboard.toString());
-
             this.overridePage(dashboardPane);
         });
 
         sidebarButtonThree.setOnMouseClicked(e -> {
             this.setTitle(this.sidebarButtonThree.getText());
-
-            OrderMainController orderMainController = orderMainLoader.getController();
-            orderMainController.getOrderListController().getTitleButton().setOnMouseClicked(e1 -> {
-                this.overridePage(order);
-            });
-            this.overridePage(orderMain);
+            try{
+                orderMain = new FXMLLoader(getClass().getResource(GUIPath.OrderMain.getName()));
+                // set custom controller to order
+                OrderMainController orderMainController = new OrderMainController();
+                orderMainController.setDashboardController(this);
+                orderMain.setController(orderMainController);
+                this.overridePage((Node) orderMain.load());
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
         });
 
         sidebarButtonFive.setOnMouseClicked(e -> {
@@ -97,25 +90,26 @@ public class DashboardController implements Initializable {
             FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
             OrderListViewerController orderListController = new OrderListViewerController();
+            orderListController.setDashboardController(this);
             orderList.setController(orderListController);
-            orderListController.populateOrders();
+            // add to dashboard pane
+            ui_pane_large_tall.getChildren().add((Node) orderList.load());
+            orderListController.setTitle("Recent Orders");
 
             // recent login
             FXMLLoader recentLogin = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to recent login
             RecentLoginListViewerController recentLoginController= new RecentLoginListViewerController();
             recentLogin.setController(recentLoginController);
-
-            // adding to pane
-            ui_pane_large_tall.getChildren().add((Node) orderList.load());
-            orderListController.setTitle("Recent Orders");
-            orderListController.getTitleButton().setOnMouseClicked(e -> {
-                this.overridePage(order);
-            });
-
+            // add to dashboard pane
             ui_pane_small_two.getChildren().add((Node) recentLogin.load());
             recentLoginController.setTitle("Recent Login(s)");
             recentLoginController.setTitleButtonVisibility(false);
+
+            // set delay to loadables using scroll pane to avoid error
+            Platform.runLater(() -> {
+                orderListController.populateOrders("short");
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
