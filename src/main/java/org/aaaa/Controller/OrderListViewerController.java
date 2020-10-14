@@ -23,7 +23,6 @@ public class OrderListViewerController extends ListViewerController implements I
 
     private FileHandler fileHandler;
     private DashboardController dashboardController;
-    private OrderMainController orderMainController;
 
     public OrderListViewerController() {
         try {
@@ -79,14 +78,6 @@ public class OrderListViewerController extends ListViewerController implements I
 
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
-    }
-
-    public OrderMainController getOrderMainController() {
-        return orderMainController;
-    }
-
-    public void setOrderMainController(OrderMainController orderMainController) {
-        this.orderMainController = orderMainController;
     }
 }
 

@@ -6,6 +6,7 @@ public class Order extends Data {
     private String order_name;
     private String order_desc;
     private String assign_to;
+    private String status;
     private LocalDate order_date;
     private LocalDate deli_date;
     private boolean is_fragile;
@@ -87,5 +88,13 @@ public class Order extends Data {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

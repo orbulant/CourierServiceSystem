@@ -35,7 +35,6 @@ public class OrderMainController implements Initializable {
             // set custom controller to order
             orderListController = new OrderListViewerController();
             orderListController.setDashboardController(this.dashboardController);
-            orderListController.setOrderMainController(this);
             orderList.setController(orderListController);
     
             ui_bottom_pane.getChildren().add((Node) orderList.load());
