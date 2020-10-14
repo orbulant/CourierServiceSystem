@@ -13,7 +13,17 @@ public class Staff extends Person {
         this.role = "";
     }
 
+    public Staff(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
     public Staff(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+    public Staff(String accountID, String username, String password, String role) {
+        this.accountID = accountID;
         this.username = username;
         this.password = password;
         this.role = role;
