@@ -89,7 +89,7 @@ public class DashboardController implements Initializable {
             // order list
             FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
-            OrderListViewerController orderListController = new OrderListViewerController();
+            OrderListViewerController orderListController = new OrderListViewerController("short");
             orderListController.setDashboardController(this);
             orderList.setController(orderListController);
             // add to dashboard pane
@@ -108,7 +108,7 @@ public class DashboardController implements Initializable {
 
             // set delay to loadables using scroll pane to avoid error
             Platform.runLater(() -> {
-                orderListController.populateOrders("short");
+                orderListController.populateOrders("");
             });
         } catch (Exception e) {
             e.printStackTrace();

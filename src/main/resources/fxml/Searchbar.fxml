@@ -15,7 +15,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ImageView>
-            <TextField prefWidth="610.0" text="ui_search_label">
+            <TextField fx:id="search_text_field" prefWidth="610.0" promptText="ui_search_label">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>

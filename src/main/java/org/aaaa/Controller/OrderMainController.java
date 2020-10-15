@@ -24,24 +24,26 @@ public class OrderMainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try{
-            // searchbar
-            FXMLLoader searchbar = new FXMLLoader(getClass().getResource(GUIPath.Searchbar.getName()));
-            // set custom controller to searchbar
-            
-            ui_top_pane.getChildren().add((Node) searchbar.load());
-
             // order list
             FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
-            orderListController = new OrderListViewerController();
+            orderListController = new OrderListViewerController("long");
             orderListController.setDashboardController(this.dashboardController);
             orderList.setController(orderListController);
     
+            // searchbar
+            FXMLLoader searchbar = new FXMLLoader(getClass().getResource(GUIPath.Searchbar.getName()));
+            // set custom controller to searchbar
+            OrderSearchbarController orderSearchbarController = new OrderSearchbarController();
+            orderSearchbarController.setOrderListViewerController(this.orderListController);
+            searchbar.setController(orderSearchbarController);
+
+            ui_top_pane.getChildren().add((Node) searchbar.load());
             ui_bottom_pane.getChildren().add((Node) orderList.load());
             orderListController.setTitle("Recent Orders");
 
             Platform.runLater(() -> {
-                orderListController.populateOrders("long");
+                orderListController.populateOrders("");
             });
         } catch (Exception e) {
             e.printStackTrace();

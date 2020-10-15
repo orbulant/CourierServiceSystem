@@ -18,6 +18,12 @@ public class Order extends Data {
 
     }
 
+    @Override
+    public void create() {
+        this.setCreatedInfo();
+        //create arraylist and write to file
+    }
+
     public String getOrderName() {
         return order_name;
     }

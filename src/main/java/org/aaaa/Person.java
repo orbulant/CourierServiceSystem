@@ -18,6 +18,11 @@ public class Person extends Data {
         this.contactnum = "";
     }
 
+    public Person(String name, String contactnum) {
+        this.name = name;
+        this.contactnum = contactnum;
+    }
+
     public Person(String accountID, String name, String contactnum) {
         this.accountID = accountID;
         this.name = name;
@@ -30,13 +35,6 @@ public class Person extends Data {
         this.contactnum = contactnum;
         this.nric = nric;
         this.dob = dob;
-    }
-    public Person(String name, String contactnum, String nric, LocalDate dob, String housenum) {
-        this.name = name;
-        this.contactnum = contactnum;
-        this.nric = nric;
-        this.dob = dob;
-        this.housenum = housenum;
     }
 
     public String getAccountID() {
@@ -93,5 +91,11 @@ public class Person extends Data {
 
     public void setFulladdress(Address fulladdress) {
         this.fulladdress = fulladdress;
+    }
+
+    @Override
+    public void create() {
+        // TODO Auto-generated method stub
+
     }
 }

@@ -21,11 +21,13 @@ public class OrderListViewerController extends ListViewerController implements I
     @FXML
     VBox content;
 
+    private String type;
     private FileHandler fileHandler;
     private DashboardController dashboardController;
 
-    public OrderListViewerController() {
+    public OrderListViewerController(String type) {
         try {
+            this.type = type;
             fileHandler = new FileHandler(DatabasePath.Order.getName());
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,8 +49,9 @@ public class OrderListViewerController extends ListViewerController implements I
         });
     }
 
-    public void populateOrders(String type) {
+    public void populateOrders(String filter) {
         try{
+            content.getChildren().clear();
             List<List<String>> temp = fileHandler.getContent(19);
             FXMLLoader loader = new FXMLLoader();
             // System.out.println(temp.get(0));
@@ -61,11 +64,13 @@ public class OrderListViewerController extends ListViewerController implements I
                         loader = new FXMLLoader(getClass().getResource(GUIPath.OrderItemHolderLong.getName()));
                         break;
                 }
-                OrderItemHolderController orderItemHolderController = new OrderItemHolderController(temp.get(i), type);
-                orderItemHolderController.setDashboardController(this.dashboardController);
-                loader.setController(orderItemHolderController);
-                
-                content.getChildren().add((Node)loader.load());
+
+                if(temp.get(i).toString().contains(filter)) {
+                    OrderItemHolderController orderItemHolderController = new OrderItemHolderController(temp.get(i), type);
+                    orderItemHolderController.setDashboardController(this.dashboardController);
+                    loader.setController(orderItemHolderController);
+                    content.getChildren().add((Node)loader.load());
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

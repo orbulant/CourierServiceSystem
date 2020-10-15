@@ -2,22 +2,21 @@ package org.aaaa;
 
 import java.time.LocalDateTime;
 
-public class Data {
+abstract public class Data {
     protected String createdBy; // get name using User.username
     protected LocalDateTime createdOn;
     protected String changedBy;
     protected LocalDateTime changedOn;
 
-    public void create() {
-        // do something
+    abstract public void create();
+    public void setCreatedInfo() {
+        this.createdBy = CurrentUser.getStaff().username;
+        this.createdOn = LocalDateTime.now();
     }
 
-    public void edit() {
-        // do something
-    }
-
-    public void delete() {
-        // do something
+    public void setChangedInfo() {
+        this.changedBy = CurrentUser.getStaff().username;
+        this.changedOn = LocalDateTime.now();
     }
 
     public String getCreatedBy() {

@@ -1,6 +1,7 @@
 package org.aaaa.Enums;
 
 public enum GUIPath {
+    Login("/fxml/Login.fxml"),
     Dashboard("/fxml/Dashboard.fxml"),
     ListViewer("/fxml/ListViewer.fxml"),
     OrderMain("/fxml/OrderMain.fxml"),

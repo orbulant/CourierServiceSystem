@@ -28,8 +28,6 @@ public class OrderFormController implements Initializable {
     @FXML
     TextArea txt_order_desc;
     @FXML
-    TextField txt_ID;
-    @FXML
     TextField txt_name;
     @FXML
     TextField txt_contact;
@@ -100,8 +98,10 @@ public class OrderFormController implements Initializable {
     public void processData() {
         // check form validity
         if(this.isValid()) {
+            // unprompt error message
+            lbl_err_msg.setVisible(false);
             // add to database
-            Person person = new Person(txt_ID.getText(), txt_name.getText(), txt_contact.getText());
+            Person person = new Person(txt_name.getText(), txt_contact.getText());
             Address address = new Address(new String[]{txt_address.getText(), txt_city.getText(), txt_postcode.getText(), txt_state.getText(), txt_country.getText()});
             Order order = new Order();
             order.setOrderName(txt_order_name.getText());
@@ -113,6 +113,8 @@ public class OrderFormController implements Initializable {
             order.setAutoAssign(cb_auto_assign.isSelected());
             order.setAccount(person);
             order.setAddress(address);
+
+            order.create();
         } else {
             // prompt error message
             lbl_err_msg.setVisible(true);
@@ -122,7 +124,7 @@ public class OrderFormController implements Initializable {
 
     public boolean isValid() {
         // check all required fields
-        /*if (txt_order_name.getText().isBlank() ||
+        if (txt_order_name.getText().isBlank() ||
             txt_order_desc.getText().isBlank() ||
             txt_name.getText().isBlank() ||
             txt_contact.getText().isBlank() ||
@@ -135,7 +137,6 @@ public class OrderFormController implements Initializable {
             (cb_auto_assign.isSelected() && txt_assign_to.getValue() != null)) {
                 return true;
             }
-         */
         return false;        
     }
 }
