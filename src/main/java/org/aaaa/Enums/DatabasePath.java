@@ -1,7 +1,8 @@
 package org.aaaa.Enums;
 
 public enum DatabasePath {
-    Order("src/main/resources/database/order.txt");
+    Order("src/main/resources/database/order.txt"),
+    Staff("src/main/resources/database/user.txt");
 
     private final String name;
 
@@ -12,4 +13,6 @@ public enum DatabasePath {
     public String getName() {
         return this.name;
     }
+
+
 }

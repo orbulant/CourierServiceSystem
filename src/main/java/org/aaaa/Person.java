@@ -1,53 +1,50 @@
 package org.aaaa;
 
 import java.time.LocalDate;
-//*accountID,name,contact,nric,dob,houseNum,streetName,city,postcode,state,country,createdBy,createdOn,changedBy,changedOn*
+
 public class Person extends Data {
-    protected String name;
-    protected String contact;
+    protected String accountID;
     protected String nric;
-    protected String email;
+    protected String name;
+    protected String housenum;
+    protected String contactnum;
     protected LocalDate dob;
-    protected String num;
-    // protected String houseNum;
-    // protected String streetName;
-    // protected String city;
-    // protected String postcode;
-    // protected String country;
+
     protected Address fulladdress;
 
     public Person() {
+        this.accountID = "";
         this.name = "";
-        this.contact = "";
+        this.contactnum = "";
     }
 
-    public Person(String name, String contact) {
+    public Person(String accountID, String name, String contactnum) {
+        this.accountID = accountID;
         this.name = name;
-        this.contact = contact;
+        this.contactnum = contactnum;
     }
 
-    public Person(String name, String contact, String nric, String email, LocalDate dob) {
+    public Person(String accountID, String name, String contactnum, String nric, LocalDate dob) {
+        this.accountID = accountID;
         this.name = name;
-        this.contact = contact;
+        this.contactnum = contactnum;
         this.nric = nric;
-        this.email = email;
         this.dob = dob;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Person(String name, String contactnum, String nric, LocalDate dob, String housenum) {
         this.name = name;
+        this.contactnum = contactnum;
+        this.nric = nric;
+        this.dob = dob;
+        this.housenum = housenum;
     }
 
-    public String getContact() {
-        return contact;
+    public String getAccountID() {
+        return accountID;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
     public String getNric() {
@@ -58,12 +55,28 @@ public class Person extends Data {
         this.nric = nric;
     }
 
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHousenum() {
+        return housenum;
+    }
+
+    public void setHousenum(String housenum) {
+        this.housenum = housenum;
+    }
+
+    public String getContactnum() {
+        return contactnum;
+    }
+
+    public void setContactnum(String contactnum) {
+        this.contactnum = contactnum;
     }
 
     public LocalDate getDob() {
@@ -74,14 +87,6 @@ public class Person extends Data {
         this.dob = dob;
     }
 
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
-
     public Address getFulladdress() {
         return fulladdress;
     }
@@ -89,44 +94,4 @@ public class Person extends Data {
     public void setFulladdress(Address fulladdress) {
         this.fulladdress = fulladdress;
     }
-    
-    // public String getHouseNum() {
-    //     return houseNum;
-    // }
-
-    // public void setHouseNum(String houseNum) {
-    //     this.houseNum = houseNum;
-    // }
-
-    // public String getStreetName() {
-    //     return streetName;
-    // }
-
-    // public void setStreetName(String streetName) {
-    //     this.streetName = streetName;
-    // }
-
-    // public String getCity() {
-    //     return city;
-    // }
-
-    // public void setCity(String city) {
-    //     this.city = city;
-    // }
-
-    // public String getPostcode() {
-    //     return postcode;
-    // }
-
-    // public void setPostcode(String postcode) {
-    //     this.postcode = postcode;
-    // }
-
-    // public String getCountry() {
-    //     return country;
-    // }
-
-    // public void setCountry(String country) {
-    //     this.country = country;
-    // }
 }

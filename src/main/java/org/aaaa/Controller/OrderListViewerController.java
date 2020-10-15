@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.aaaa.FileHandler;
+import org.aaaa.FileHandlers.FileHandler;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.GUIPath;
 
