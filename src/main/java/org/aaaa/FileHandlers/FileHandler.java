@@ -1,21 +1,14 @@
 package org.aaaa.FileHandlers;
 
 //Imports
-import org.aaaa.Data;
-import org.aaaa.Person;
-import org.aaaa.CurrentUser;
-import org.aaaa.Staff;
+import org.aaaa.*;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileHandler {
     protected String pathname;
-    private boolean loginStatus;
-    private Staff staff;
 
     //Constructor
     public FileHandler(String pathname){
@@ -25,7 +18,7 @@ public class FileHandler {
 //Body
     //Multidimensional List with chopping
     //Chops a list into non-view smaller sub-lists of length L
-    static <T> List<List<T>> chopped(List<T> list, final int L) {
+    private static <T> List<List<T>> chopped(List<T> list, final int L) {
         List<List<T>> parts = new ArrayList<>();
         final int N = list.size();
         for (int i = 0; i < N; i += L) {
@@ -34,7 +27,7 @@ public class FileHandler {
         return parts;
     }
 
-    //getContent() stores content into multidimensional arraylist
+    //Stores content into multidimensional arraylist
     public List<List<String>> getContent(int chopLength) {
         ArrayList<String> arrList = new ArrayList<>();
         try {
@@ -53,8 +46,9 @@ public class FileHandler {
         //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning]
         return chopped(arrList, chopLength);
     }
-    //getContentsinglearr() stores content into an arraylist
-    public List<String> getContentsinglearr(){
+
+    //Stores content into an arraylist
+    public List<String> getContentToSingleArray(){
         ArrayList<String> arrList = new ArrayList<>();
         try{
             FileReader fr = new FileReader(pathname);
@@ -72,6 +66,26 @@ public class FileHandler {
         //Returns a List<String> type of chopped array that is called "arrList"
         return arrList;
     }
+
+    //SEARCH
+    //Returns an ArrayList of String search results
+    public ArrayList<String> search(String searchable){
+        int L = 0;
+        ArrayList<String> result = new ArrayList<>();
+        try{
+            for (int i = 0; i < this.getContent(L).size(); i++) {
+                if (this.getContent(L).get(i).get(0).equals(searchable)) {
+                    for(int x = 0; x < 8; x++) {
+                        result.add(getContent(L).get(i).get(x));
+                    }
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     //Gets a multidimensional arraylist and writes content into file array by array separated by comma.
     public void writeContent(List<List<String>> input) throws IOException {
@@ -91,7 +105,7 @@ public class FileHandler {
     }
 
     //Gets a single arraylist and writes content into file separated by comma.
-    public void writeContentfromsinglearrray(List<String> input) throws IOException{
+    public void writeContentFromSingleArray(List<String> input) throws IOException{
         //Create a file object
         File file = new File(pathname);
         //Creates a fileWriter object
@@ -99,7 +113,7 @@ public class FileHandler {
         //Write content to file
         //Convert multi dimensional arraylist to static array.
         Object[] objects = input.toArray();
-        //Writing array of objects sepearted by comma and new line
+        //Writing array of objects separated by comma and new line
             for(Object obj : objects){
                 writer.write(obj + "\n");
                 }
@@ -108,7 +122,9 @@ public class FileHandler {
     }
 
     //LOGIN VERIFICATION
-     public boolean loginSuccess(Staff staff){
+    // PUT THIS IN THE LOGIN CONTROLLER FORM LATER
+    /*
+    public boolean loginSuccess(Staff staff){
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
          int i = 0;
          while (i < this.getContent(8).size()) {
@@ -126,6 +142,7 @@ public class FileHandler {
          return false;
      }
 
+     //SETTING THE CURRENT USER OBSOLETE
      public CurrentUser currUser (boolean loginStatus, Staff staff){
          if(loginStatus){
             return new CurrentUser(staff);
@@ -133,25 +150,7 @@ public class FileHandler {
             return null;
         }
      }
-
-     //SEARCH
-    public ArrayList<String> searchUser(Staff staff){
-        ArrayList<String> searchresult = new ArrayList<>();
-            try{
-                for (int i = 0; i < this.getContent(8).size(); i++) {
-                    if (this.getContent(8).get(i).get(0).equals(staff.getAccountID())) {
-                        for(int x = 0; x < 8; x++) {
-                            searchresult.add(getContent(8).get(i).get(x));
-                        }
-                    }
-                }
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        return searchresult;
-    }
-
-
+     */
 
 }
 

@@ -1,6 +1,5 @@
 package org.aaaa;
 
-//*accountID,email,password,role,createdBy,createdOn,changedBy,changedOn*
 public class Staff extends Person {
     protected String username;
     protected String password;
@@ -8,15 +7,21 @@ public class Staff extends Person {
     protected String accountID;
 
     public Staff() {
+        this.accountID = "";
         this.username = "";
         this.password = "";
         this.role = "";
+    }
+
+    public Staff(String accountID){
+        this.accountID = accountID;
     }
 
     public Staff(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
     public Staff(String username, String password, String role) {
         this.username = username;
         this.password = password;

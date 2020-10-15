@@ -1,14 +1,11 @@
-TP049565
+ID123
+000429206237
 Tan Ka-Shing
 016-2200226
 29/04/2000
 03-80827600
-Travis Road, Len Sen
-Cheras
-56000
-Kuala Lumpur
-Malaysia
-Chen Wey Kiat
-13/10/2020
-Gankesh Ramesh
-14/10/2020
+Travis Road, Scottage Garden, Pukimak City, 56000 KL.
+CherasCITY
+56000POSTCODE
+Kuala LumpurSTATE
+MalaysiaCOUNTRY
