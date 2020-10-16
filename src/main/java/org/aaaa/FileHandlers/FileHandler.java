@@ -1,6 +1,8 @@
 package org.aaaa.FileHandlers;
 
 //Imports
+import org.aaaa.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class FileHandler {
         this.pathname = pathname;
     }
 
-//Body
+    //Body
     //Multidimensional List with chopping
     //Chops a list into non-view smaller sub-lists of length L
     private static <T> List<List<T>> chopped(List<T> list, final int L) {
@@ -35,7 +37,7 @@ public class FileHandler {
             String str;
             while((str = br.readLine()) != null){
                 arrList.add(str);
-                }
+            }
             br.close();
             fr.close();
         } catch (Exception e) {
@@ -67,7 +69,7 @@ public class FileHandler {
 
     //SEARCH
     //Returns an ArrayList of String search results
-    public ArrayList<String> search(String searchable){
+    public List<String> search (String searchable){
         int L = 0;
         ArrayList<String> result = new ArrayList<>();
         try{
@@ -84,7 +86,6 @@ public class FileHandler {
         return result;
     }
 
-
     //Gets a multidimensional arraylist and writes content into file array by array separated by comma.
     public void writeContent(List<List<String>> input) throws IOException {
         //Create a file object
@@ -92,18 +93,18 @@ public class FileHandler {
         //Creates a fileWriter object
         FileWriter writer = new FileWriter(file);
         //Write content to file
-        //Convert multi dimensional arraylist to static array.
-        Object[] objects = input.toArray();
         //Writing array of objects separated by comma
-        for(Object obj : objects){
-                writer.write(obj + "\n");
+        for(List<String> innerstuff : input){
+            for(String s : innerstuff){
+                writer.write(s + "\n");
+            }
         }
         writer.flush();
         writer.close();
     }
 
     //Gets a single arraylist and writes content into file separated by comma.
-    public void writeContentFromSingleArray(List<String> input) throws IOException{
+    public void writeContentFromSingleArray(List<String> input, CurrentUser currentUser) throws IOException{
         //Create a file object
         File file = new File(pathname);
         //Creates a fileWriter object
@@ -112,12 +113,13 @@ public class FileHandler {
         //Convert multi dimensional arraylist to static array.
         Object[] objects = input.toArray();
         //Writing array of objects separated by comma and new line
-            for(Object obj : objects){
-                writer.write(obj + "\n");
-                }
+        for(Object obj : objects){
+            writer.write(obj + "\n");
+        }
         writer.flush();
         writer.close();
     }
+
 
     //LOGIN VERIFICATION
     // PUT THIS IN THE LOGIN CONTROLLER FORM LATER
