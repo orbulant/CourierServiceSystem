@@ -69,11 +69,11 @@ public class Person extends Data {
         this.housenum = housenum;
     }
 
-    public String getContactnum() {
+    public String getContactNum() {
         return contactnum;
     }
 
-    public void setContactnum(String contactnum) {
+    public void setContactNum(String contactnum) {
         this.contactnum = contactnum;
     }
 

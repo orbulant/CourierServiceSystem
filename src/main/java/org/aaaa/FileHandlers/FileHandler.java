@@ -132,6 +132,7 @@ public class FileHandler {
         writer.flush();
         writer.close();
     }
+
     //One Dimensional Array write content.
     public void writeContentFromOneDimensionalArray(List<String> input) throws IOException{
         //Create a file object
@@ -154,6 +155,5 @@ public class FileHandler {
         buffer.add(input);
         writeContent(buffer);
     }
-
 }
 

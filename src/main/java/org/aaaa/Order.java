@@ -1,11 +1,16 @@
 package org.aaaa;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.Enums.Status;
+import org.aaaa.FileHandlers.FileHandlerOrder;
 
 public class Order extends Data {
     private String order_name;
     private String order_desc;
-    private String assign_to;
     private String status;
     private LocalDate order_date;
     private LocalDate deli_date;
@@ -13,15 +18,50 @@ public class Order extends Data {
     private boolean auto_assign;
     private Address address;
     private Person person;
+    private Person assigned_to;
+
+    private FileHandlerOrder fileHandler = new FileHandlerOrder(DatabasePath.Order.getName());
 
     public Order() {
-
+        super();
     }
 
     @Override
     public void create() {
         this.setCreatedInfo();
+        System.out.println(this.getOrderAsArray());
         //create arraylist and write to file
+        try{
+            fileHandler.addContent(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.getOrderAsArray());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> getOrderAsArray() {
+        ArrayList<String> result = new ArrayList<>();
+
+        result.add(String.valueOf(Integer.parseInt(fileHandler.getLatestID()) + 1));
+        result.add(order_name);
+        result.add(order_desc);
+        result.add(order_date.toString());
+        result.add(deli_date.toString());
+        result.add(Boolean.toString(is_fragile));
+        // result.add(assigned_to.getAccountID()); assignto
+        result.add(Status.Processing.getStatus());
+        result.add(person.getName());
+        result.add(person.getContactNum());
+        result.add(address.getAddress());
+        result.add(address.getCity());
+        result.add(address.getPostcode());
+        result.add(address.getState());
+        result.add(address.getCountry());
+        result.add(this.createdBy);
+        result.add(this.createdOn == null ? "" : this.createdOn.toString());
+        result.add(this.changedBy);
+        result.add(this.changedOn == null ? "" : this.changedOn.toString());
+
+        return result;
     }
 
     public String getOrderName() {
@@ -64,13 +104,13 @@ public class Order extends Data {
         this.person = person;
     }
 
-    public String getAssignTo() {
-        return assign_to;
-    }
+    // public String getAssignTo() {
+    //     return assign_to;
+    // }
 
-    public void setAssignTo(String assign_to) {
-        this.assign_to = assign_to;
-    }
+    // public void setAssignTo(String assign_to) {
+    //     this.assign_to = assign_to;
+    // }
 
     public boolean isIsFragile() {
         return is_fragile;

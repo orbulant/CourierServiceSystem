@@ -1,6 +1,7 @@
 package org.aaaa.FileHandlers;
 
 import org.aaaa.Staff;
+import org.aaaa.Enums.DatabasePath;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,7 +11,29 @@ import java.util.List;
 
 public class FileHandlerUser extends FileHandler{
     //CONSTRUCTOR
-    public FileHandlerUser(String pathname) { super(pathname); }
+    public FileHandlerUser(String pathname) { 
+        super(pathname); 
+    }
+
+    public Staff getUserByAccountID(String accountID) {
+        Staff staff = new Staff();
+        List<List<String>> tempList = this.getContent(DatabasePath.Staff.getDataLength());
+        for(List<String> temp: tempList) {
+            if(temp.get(3) == accountID) {
+                staff = assignUser(temp);
+            }
+        }
+        return staff;
+    }
+
+    public Staff assignUser(List<String> user) {
+        Staff staff = new Staff();
+        staff.setUsername(user.get(0));
+        staff.setPassword(user.get(1));
+        staff.setRole(user.get(2));
+        staff.setAccountID(user.get(3));
+        return staff;
+    }   
 
     //BODY
     ////////////////////////////////OVERRIDES SEARCH

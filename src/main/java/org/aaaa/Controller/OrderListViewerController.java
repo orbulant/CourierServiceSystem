@@ -52,7 +52,7 @@ public class OrderListViewerController extends ListViewerController implements I
     public void populateOrders(String filter) {
         try{
             content.getChildren().clear();
-            List<List<String>> temp = fileHandler.getContent(19);
+            List<List<String>> temp = fileHandler.getContent(DatabasePath.Order.getDataLength());
             FXMLLoader loader = new FXMLLoader();
             // System.out.println(temp.get(0));
             for (int i = 0; i < temp.size(); i++) {

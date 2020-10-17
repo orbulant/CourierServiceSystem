@@ -2,10 +2,15 @@ package org.aaaa.Controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.aaaa.Person;
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.Enums.Roles;
+import org.aaaa.FileHandlers.FileHandlerAccount;
+import org.aaaa.FileHandlers.FileHandlerUser;
 import org.aaaa.Address;
 import org.aaaa.ErrorMessage;
 import org.aaaa.Order;
@@ -42,7 +47,7 @@ public class OrderFormController implements Initializable {
     @FXML
     TextField txt_country;
     @FXML
-    ComboBox<String> txt_assign_to;
+    ComboBox<Person> txt_assign_to;
     @FXML
     DatePicker dp_order_date;
     @FXML
@@ -72,6 +77,7 @@ public class OrderFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.title_label.setText(this.title);
+        this.getDeliStaffList();
         
         if (data != null) {
             this.txt_order_name.setText(data.get(1));
@@ -138,5 +144,30 @@ public class OrderFormController implements Initializable {
                 return true;
             }
         return false;        
+    }
+
+    public void getDeliStaffList() {
+        FileHandlerUser fileHandlerUser = new FileHandlerUser(DatabasePath.Staff.getName());
+        FileHandlerAccount fileHandlerAccount = new FileHandlerAccount(DatabasePath.Account.getName());
+        ArrayList<String> tempIDList = new ArrayList<>();
+        ArrayList<Person> deliStaffList = new ArrayList<>();
+
+        List<List<String>> tempUserList = fileHandlerUser.getContent(DatabasePath.Staff.getDataLength());
+        for(List<String> tempUser: tempUserList) {
+            if(tempUser.get(2).equals(Roles.DeliveryStaff.getRole())) {
+                tempIDList.add(tempUser.get(3));
+            }
+        }
+
+        List<List<String>> tempAccountList = fileHandlerAccount.getContent(DatabasePath.Account.getDataLength());
+        for(List<String> tempAccount: tempAccountList) {
+            for(String id: tempIDList) {
+                if(tempAccount.get(0).equals(id)) {
+                    deliStaffList.add(fileHandlerAccount.assignAccount(tempAccount));
+                }
+            }
+        }
+
+        System.out.println(deliStaffList);
     }
 }

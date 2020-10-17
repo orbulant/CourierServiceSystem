@@ -8,6 +8,11 @@ abstract public class Data {
     protected String changedBy;
     protected LocalDateTime changedOn;
 
+    public Data() {
+        this.createdBy = "";
+        this.changedBy = "";
+    }
+
     abstract public void create();
     public void setCreatedInfo() {
         this.createdBy = CurrentUser.getStaff().username;
