@@ -7,9 +7,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.FileHandlers.FileHandler;
 
 public class LoginController implements Initializable {
     @FXML
@@ -28,14 +28,29 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btn_submit.setOnMouseClicked(e -> {
+            //START OF LAMBDA EXPRESSION
             // run some authentication code here
             // use txt.getText() to get input in text field
             // use txt.setText() to set text in label/text field
+            String loginfield = txt_username.getText();
+            String passwordfield = txt_password.getText();
+            FileHandler fh = new FileHandler(DatabasePath.Staff.getName());
 
-            // run this if authentication success
-            this.authenticated.setValue(true);;
-        });
-    }
+            int i = 0;
+            while (i < fh.getContent(8).size()) {
+                if (loginfield.equals(fh.getContent(8).get(i).get(1)) && passwordfield.equals(fh.getContent(8).get(i).get(2))) {
+                        // run this if authentication success
+                        this.authenticated.setValue(true);
+                }
+                i++;
+            }
+            this.authenticated.setValue(false);
+            lbl_err_message.setText("Invalid input!");
+            lbl_err_message.setVisible(true);
+
+            //END OF LAMBDA EXPRESSION
+        })
+    ;}
 
     public BooleanProperty getAuthenticated() {
         return authenticated;
