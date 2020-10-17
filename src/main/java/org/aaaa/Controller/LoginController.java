@@ -37,15 +37,14 @@ public class LoginController implements Initializable {
             FileHandler fh = new FileHandler(DatabasePath.Staff.getName());
 
             int i = 0;
-            while (i < fh.getContent(8).size()) {
-                if (loginfield.equals(fh.getContent(8).get(i).get(1)) && passwordfield.equals(fh.getContent(8).get(i).get(2))) {
+            while (i < fh.getContent(DatabasePath.Staff.getDataLength()).size()) {
+                if (loginfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(0)) && passwordfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(1))) {
                         // run this if authentication success
                         this.authenticated.setValue(true);
                 }
                 i++;
             }
-            this.authenticated.setValue(false);
-            lbl_err_message.setText("Invalid input!");
+            lbl_err_message.setText("Invalid credentials!");
             lbl_err_message.setVisible(true);
 
             //END OF LAMBDA EXPRESSION
