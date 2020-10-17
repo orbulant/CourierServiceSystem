@@ -1,6 +1,6 @@
 package org.aaaa.FileHandlers;
 
-import org.aaaa.CurrentUser;
+import org.aaaa.Staff;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,6 +12,8 @@ public class FileHandlerUser extends FileHandler{
     //CONSTRUCTOR
     public FileHandlerUser(String pathname) { super(pathname); }
 
+    //BODY
+    ////////////////////////////////OVERRIDES SEARCH
     @Override
     public List<String> search(String searchable){
         int L = 8;
@@ -29,23 +31,24 @@ public class FileHandlerUser extends FileHandler{
         }
         return result;
     }
-
-    public void writeContent(List<List<String>> userfile ,CurrentUser currentUser) throws IOException{
+    ////////////////////////////////OVERLOADS UPDATE
+    public void update(Staff staff)  throws IOException{
+        List<List<String>> userfile = getContent(8);
         //Create a file object
         File file = new File(pathname);
         //Creates a fileWriter object
         FileWriter writer = new FileWriter(file);
 
         for (List<String> user : userfile) {
-            if (user.get(0).equals(CurrentUser.getStaff().getAccountID())) {
-                user.set(0, CurrentUser.getStaff().getAccountID());
-                user.set(1, CurrentUser.getStaff().getUsername());
-                user.set(2, CurrentUser.getStaff().getPassword());
-                user.set(3, CurrentUser.getStaff().getRole());
-                user.set(4, CurrentUser.getStaff().getCreatedBy());
-                user.set(5, CurrentUser.getStaff().getCreatedOn().toString());
-                user.set(6, CurrentUser.getStaff().getChangedBy());
-                user.set(7, CurrentUser.getStaff().getChangedOn().toString());
+            if (user.get(0).equals(staff.getAccountID())) {
+                user.set(0, staff.getAccountID());
+                user.set(1, staff.getUsername());
+                user.set(2, staff.getPassword());
+                user.set(3, staff.getRole());
+                user.set(4, staff.getCreatedBy());
+                user.set(5, staff.getCreatedOn().toString());
+                user.set(6, staff.getChangedBy());
+                user.set(7, staff.getChangedOn().toString());
             }
         }
 
@@ -58,6 +61,4 @@ public class FileHandlerUser extends FileHandler{
         writer.flush();
         writer.close();
     }
-
-
 }
