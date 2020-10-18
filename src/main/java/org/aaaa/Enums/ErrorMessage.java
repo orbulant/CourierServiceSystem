@@ -1,4 +1,4 @@
-package org.aaaa;
+package org.aaaa.Enums;
 
 public enum ErrorMessage {
     Mandatory("Please fill in all required fields!");

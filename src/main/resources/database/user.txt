@@ -10,3 +10,7 @@ testes@testmail.com
 testes1
 delivery
 3
+admin
+admin
+managing
+1

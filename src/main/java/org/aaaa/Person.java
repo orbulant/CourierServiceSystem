@@ -95,7 +95,11 @@ public class Person extends Data {
 
     @Override
     public void create() {
-        // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void update() {
+        
     }
 }

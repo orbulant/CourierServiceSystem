@@ -9,6 +9,7 @@ import org.aaaa.Enums.Status;
 import org.aaaa.FileHandlers.FileHandlerOrder;
 
 public class Order extends Data {
+    private String orderID;
     private String order_name;
     private String order_desc;
     private String status;
@@ -38,16 +39,27 @@ public class Order extends Data {
         }
     }
 
+    public void update() {
+        this.setChangedInfo();
+        System.out.println(this.getOrderAsArray());
+        //update arraylist and replace in file
+        try{
+            fileHandler.update(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.getOrderAsArray());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<String> getOrderAsArray() {
         ArrayList<String> result = new ArrayList<>();
 
-        result.add(String.valueOf(Integer.parseInt(fileHandler.getLatestID()) + 1));
+        result.add(orderID);
         result.add(order_name);
         result.add(order_desc);
         result.add(order_date.toString());
         result.add(deli_date.toString());
         result.add(Boolean.toString(is_fragile));
-        // result.add(assigned_to.getAccountID()); assignto
+        result.add(assigned_to.getAccountID());
         result.add(Status.Processing.getStatus());
         result.add(person.getName());
         result.add(person.getContactNum());
@@ -104,13 +116,13 @@ public class Order extends Data {
         this.person = person;
     }
 
-    // public String getAssignTo() {
-    //     return assign_to;
-    // }
+    public Person getAssignTo() {
+        return this.assigned_to;
+    }
 
-    // public void setAssignTo(String assign_to) {
-    //     this.assign_to = assign_to;
-    // }
+    public void setAssignTo(Person assigned_to) {
+        this.assigned_to = assigned_to;
+    }
 
     public boolean isIsFragile() {
         return is_fragile;
@@ -142,5 +154,13 @@ public class Order extends Data {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 }

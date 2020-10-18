@@ -13,7 +13,6 @@ public class FileHandler {
         this.pathname = pathname;
     }
 
-
     ////////////////////////////////MISCELLANEOUS.
     //Multidimensional List with chopping
     //Chops a list into non-view smaller sub-lists of length L

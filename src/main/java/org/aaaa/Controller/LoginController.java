@@ -8,8 +8,10 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
+import org.aaaa.CurrentUser;
 import org.aaaa.Enums.DatabasePath;
-import org.aaaa.FileHandlers.FileHandler;
+import org.aaaa.FileHandlers.FileHandlerUser;
 
 public class LoginController implements Initializable {
     @FXML
@@ -34,20 +36,21 @@ public class LoginController implements Initializable {
             // use txt.setText() to set text in label/text field
             String loginfield = txt_username.getText();
             String passwordfield = txt_password.getText();
-            FileHandler fh = new FileHandler(DatabasePath.Staff.getName());
+            FileHandlerUser fh = new FileHandlerUser(DatabasePath.Staff.getName());
 
             int i = 0;
             while (i < fh.getContent(DatabasePath.Staff.getDataLength()).size()) {
                 if (loginfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(0)) && passwordfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(1))) {
-                        // run this if authentication success
-                        this.authenticated.setValue(true);
+                    CurrentUser.setStaff(fh.assignUser(fh.getContent(DatabasePath.Staff.getDataLength()).get(i)));
+
+                    // run this if authentication success
+                    this.authenticated.setValue(true);
                 }
                 i++;
             }
             lbl_err_message.setText("Invalid credentials!");
             lbl_err_message.setVisible(true);
-
-            //END OF LAMBDA EXPRESSION
+            // //END OF LAMBDA EXPRESSION
         })
     ;}
 

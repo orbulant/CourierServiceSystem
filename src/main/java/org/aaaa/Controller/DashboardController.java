@@ -93,6 +93,7 @@ public class DashboardController implements Initializable {
             orderListController.setDashboardController(this);
             orderList.setController(orderListController);
             // add to dashboard pane
+            ui_pane_large_tall.getChildren().clear();
             ui_pane_large_tall.getChildren().add((Node) orderList.load());
             orderListController.setTitle("Recent Orders");
 
@@ -102,6 +103,7 @@ public class DashboardController implements Initializable {
             RecentLoginListViewerController recentLoginController= new RecentLoginListViewerController();
             recentLogin.setController(recentLoginController);
             // add to dashboard pane
+            ui_pane_small_two.getChildren().clear();
             ui_pane_small_two.getChildren().add((Node) recentLogin.load());
             recentLoginController.setTitle("Recent Login(s)");
             recentLoginController.setTitleButtonVisibility(false);
@@ -117,10 +119,11 @@ public class DashboardController implements Initializable {
 
     public void overridePage(Node value) {
         if(!contentPane.getChildren().contains(value)) {
+            this.previousPage = contentPane.getChildren().get(0);
+            this.loadDashboardContent();
+            
             contentPane.getChildren().remove(0);
             contentPane.getChildren().add(value);
-
-            this.previousPage = value;
         }
     }
 

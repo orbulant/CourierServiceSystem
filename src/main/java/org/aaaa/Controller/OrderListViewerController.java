@@ -41,6 +41,7 @@ public class OrderListViewerController extends ListViewerController implements I
             try {
                 FXMLLoader order = new FXMLLoader(getClass().getResource(GUIPath.OrderForm.getName()));
                 OrderFormController orderFormController = new OrderFormController();
+                orderFormController.setDashboardController(dashboardController);
                 order.setController(orderFormController);
                 this.dashboardController.overridePage((Node) order.load());
             } catch (Exception err) {

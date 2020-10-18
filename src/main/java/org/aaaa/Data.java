@@ -14,6 +14,8 @@ abstract public class Data {
     }
 
     abstract public void create();
+    abstract public void update();
+
     public void setCreatedInfo() {
         this.createdBy = CurrentUser.getStaff().username;
         this.createdOn = LocalDateTime.now();

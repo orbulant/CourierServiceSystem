@@ -67,6 +67,7 @@ public class OrderItemHolderController implements Initializable {
                 FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.OrderForm.getName()));
                 // set custom controller to order
                 OrderFormController orderFormController = new OrderFormController(data);
+                orderFormController.setDashboardController(dashboardController);
                 orderList.setController(orderFormController);
                 this.dashboardController.overridePage((Node) orderList.load());
             } catch (Exception err) {

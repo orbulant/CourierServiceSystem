@@ -95,7 +95,7 @@
                                           <Font name="Arial" size="16.0" />
                                        </font>
                                     </Label>
-                                    <DatePicker fx:id="dp_order_date" maxWidth="1.7976931348623157E308" minHeight="32.0" prefHeight="32.0" VBox.vgrow="SOMETIMES" />
+                                    <DatePicker fx:id="dp_order_date" editable="false" maxWidth="1.7976931348623157E308" minHeight="32.0" prefHeight="32.0" VBox.vgrow="SOMETIMES" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" top="10.0" />
@@ -108,7 +108,7 @@
                                           <Font name="Arial" size="16.0" />
                                        </font>
                                     </Label>
-                                    <DatePicker fx:id="dp_deli_date" maxWidth="1.7976931348623157E308" minHeight="32.0" prefHeight="32.0" VBox.vgrow="SOMETIMES" />
+                                    <DatePicker fx:id="dp_deli_date" editable="false" maxWidth="1.7976931348623157E308" minHeight="32.0" prefHeight="32.0" VBox.vgrow="SOMETIMES" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" top="10.0" />
@@ -324,7 +324,7 @@
                               <Font name="Arial" size="16.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="txt_assign_to" editable="true" maxWidth="1.7976931348623157E308" />
+                        <ComboBox fx:id="txt_assign_to" maxWidth="1.7976931348623157E308" />
                         <CheckBox fx:id="cb_auto_assign" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Auto-assign">
                            <font>
                               <Font name="Arial" size="16.0" />
