@@ -191,17 +191,17 @@ public class OrderFormController implements Initializable {
 
     public boolean isValid() {
         // check all required fields
-        if (txt_order_name.getText().isBlank() ||
-            txt_order_desc.getText().isBlank() ||
-            txt_name.getText().isBlank() ||
-            txt_contact.getText().isBlank() ||
-            txt_address.getText().isBlank() ||
-            txt_city.getText().isBlank() ||
-            txt_postcode.getText().isBlank() ||
-            txt_state.getText().isBlank() || 
-            txt_country.getText().isBlank() ||
-            dp_order_date.getValue() != null ||
-            (cb_auto_assign.isSelected() && txt_assign_to.getValue() != null)) {
+        if (!txt_order_name.getText().isBlank() &&
+            !txt_order_desc.getText().isBlank() &&
+            !txt_name.getText().isBlank() &&
+            !txt_contact.getText().isBlank() &&
+            !txt_address.getText().isBlank() &&
+            !txt_city.getText().isBlank() &&
+            !txt_postcode.getText().isBlank() &&
+            !txt_state.getText().isBlank() && 
+            !txt_country.getText().isBlank() &&
+            dp_order_date.getValue() != null &&
+            (cb_auto_assign.isSelected() || txt_assign_to.getValue() != null)) {
                 return true;
             }
         return false;        
