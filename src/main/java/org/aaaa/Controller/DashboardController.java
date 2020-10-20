@@ -147,13 +147,19 @@ public class DashboardController implements Initializable {
             // set custom controller to delivery
             DeliveryListViewerController deliveryListController = new DeliveryListViewerController();
             deliveryList.setController(deliveryListController);
-
+            
             // add to dashboard pane
             ui_pane_large_tall.getChildren().clear();
             ui_pane_large_tall.getChildren().add((Node) deliveryList.load());
 
             deliveryListController.setTitle("Deliveries");
             deliveryListController.setTitleButtonVisibility(false);
+            deliveryListController.setDashboard(true);
+
+            // set delay to loadables using scroll pane to avoid error
+            Platform.runLater(() -> {
+                deliveryListController.populateDeliveries("", null);
+            });
 
             this.sidebarButtonThree.setText("Delivery");
             sidebarButtonThree.setOnMouseClicked(e -> {

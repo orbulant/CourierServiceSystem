@@ -25,8 +25,6 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
     @FXML
     Label delivery_date;
     @FXML
-    Button auto_assign;
-    @FXML
     Button edit_view;
     @FXML
     VBox short_content_container;
@@ -57,7 +55,6 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
                 delivery_date.setText(data.get(3));
                 status.setText(data.get(6));
 
-                auto_assign.setVisible(true);
                 edit_view.setVisible(true);
                 break;
         }

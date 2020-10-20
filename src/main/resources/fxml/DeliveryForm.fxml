@@ -28,6 +28,21 @@
                               <Insets left="15.0" right="15.0" />
                            </padding>
                         </VBox>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="ui_button_clear" alignment="CENTER" mnemonicParsing="false" text="Clear">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                </children>
@@ -46,7 +61,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="ui_label_one" text="Label">
+                              <Label fx:id="ui_label_one" text="-">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -69,7 +84,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="ui_label_two" text="Label">
+                              <Label fx:id="ui_label_two" text="-">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -92,7 +107,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="ui_label_three" text="Label">
+                              <Label fx:id="ui_label_three" text="-">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -115,7 +130,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="ui_label_four" text="Label">
+                              <Label fx:id="ui_label_four" text="-">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -132,7 +147,7 @@
                            <children>
                               <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Button fx:id="ui_button_cancel" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cancel">
+                                    <Button fx:id="ui_button_cancel" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cancel">
                                        <font>
                                           <Font name="Arial" size="16.0" />
                                        </font>
@@ -147,7 +162,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="ui_button_delivered" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delivered">
+                                    <Button fx:id="ui_button_delivered" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delivered">
                                        <font>
                                           <Font name="Arial" size="16.0" />
                                        </font>

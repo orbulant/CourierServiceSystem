@@ -55,9 +55,14 @@ public class DeliveryMainController implements Initializable, BaseControllerInte
 
             deliveryListController.setTitle("Deliveries");
             deliveryListController.setTitleButtonVisibility(false);
+            deliveryListController.setDeliveryFormController(deliveryFormController);
 
             Platform.runLater(() -> {
-                deliveryListController.populateDeliveries();
+                deliveryListController.populateDeliveries("", date_filter.getValue());
+            });
+
+            date_filter.setOnAction(e -> {
+                deliveryListController.populateDeliveries("", date_filter.getValue());
             });
         } catch (Exception e) {
             e.printStackTrace();

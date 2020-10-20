@@ -3,7 +3,8 @@ package org.aaaa.Enums;
 public enum Status {
     Processing("Processing"),
     Canceled("Canceled"),
-    Delivering("Delivering");
+    Delivering("Delivering"),
+    Delivered("Delivered");
 
     private final String status;
 

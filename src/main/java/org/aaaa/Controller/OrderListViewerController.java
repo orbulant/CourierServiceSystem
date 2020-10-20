@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.aaaa.FileHandlers.FileHandler;
+import org.aaaa.FileHandlers.FileHandlerOrder;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.GUIPath;
 
@@ -22,13 +22,13 @@ public class OrderListViewerController extends ListViewerController implements I
     VBox content;
 
     private String type;
-    private FileHandler fileHandler;
+    private FileHandlerOrder fileHandler;
     private DashboardController dashboardController;
 
     public OrderListViewerController(String type) {
         try {
             this.type = type;
-            fileHandler = new FileHandler(DatabasePath.Order.getName());
+            fileHandler = new FileHandlerOrder(DatabasePath.Order.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }

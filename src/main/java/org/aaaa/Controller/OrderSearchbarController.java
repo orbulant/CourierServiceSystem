@@ -15,7 +15,6 @@ public class OrderSearchbarController extends SearchbarController implements Ini
         });
 
         search_text_field.setOnKeyPressed(e -> {
-            System.out.println(e);
             orderListViewerController.populateOrders(this.search_text_field.getText());
         });
     }
