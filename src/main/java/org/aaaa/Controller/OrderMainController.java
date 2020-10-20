@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
-public class OrderMainController implements Initializable {
+public class OrderMainController implements Initializable, BaseControllerInterface {
     @FXML
     AnchorPane ui_top_pane;
     @FXML
@@ -54,10 +54,12 @@ public class OrderMainController implements Initializable {
         return orderListController;
     }
 
-    public DashboardController getDashboardController(DashboardController dashboardController) {
+    @Override
+    public DashboardController getDashboardController() {
         return this.dashboardController;
     }
 
+    @Override
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
     }

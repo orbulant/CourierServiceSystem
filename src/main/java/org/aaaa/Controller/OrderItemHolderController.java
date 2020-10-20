@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class OrderItemHolderController implements Initializable {
+public class OrderItemHolderController implements Initializable, BaseControllerInterface {
     @FXML
     Label status;
     @FXML
@@ -100,6 +100,12 @@ public class OrderItemHolderController implements Initializable {
         this.data = data;
     }
 
+    @Override
+    public DashboardController getDashboardController() {
+        return this.dashboardController;
+    }
+
+    @Override
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
     }

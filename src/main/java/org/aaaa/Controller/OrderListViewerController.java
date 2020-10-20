@@ -15,7 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
-public class OrderListViewerController extends ListViewerController implements Initializable {
+public class OrderListViewerController extends ListViewerController implements Initializable, BaseControllerInterface {
     @FXML
     ScrollPane content_pane;
     @FXML
@@ -78,10 +78,12 @@ public class OrderListViewerController extends ListViewerController implements I
         }
     }
 
+    @Override
     public DashboardController getDashboardController() {
         return dashboardController;
     }
 
+    @Override
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
     }

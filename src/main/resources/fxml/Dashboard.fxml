@@ -102,7 +102,7 @@
       </AnchorPane>
       <AnchorPane layoutX="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="1090.0" prefHeight="70.0" prefWidth="0.0" style="-fx-background-color: grey;" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="mainTitle" alignment="CENTER" layoutX="461.0" layoutY="22.0" text="ui_label" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="460.0" AnchorPane.topAnchor="11.0">
+            <Label fx:id="mainTitle" alignment="CENTER" layoutX="308.0" layoutY="22.0" prefHeight="48.0" prefWidth="322.0" text="ui_label" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="11.0">
                <font>
                   <Font name="Arial" size="45.0" />
                </font>

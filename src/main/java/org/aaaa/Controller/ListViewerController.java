@@ -7,11 +7,11 @@ import javafx.scene.control.ScrollPane;
 
 public class ListViewerController {
     @FXML
-    Label ui_title_label;
+    protected Label ui_title_label;
     @FXML
-    Button ui_title_button;
+    protected Button ui_title_button;
     @FXML
-    ScrollPane content_pane;
+    protected ScrollPane content_pane;
 
     protected String title;
 

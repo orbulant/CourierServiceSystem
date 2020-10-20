@@ -32,7 +32,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 
-public class OrderFormController implements Initializable {
+public class OrderFormController implements Initializable, BaseControllerInterface {
     @FXML
     Label title_label;
     @FXML
@@ -242,10 +242,12 @@ public class OrderFormController implements Initializable {
         }
     }
 
+    @Override
     public DashboardController getDashboardController() {
         return dashboardController;
     }
 
+    @Override
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
     }

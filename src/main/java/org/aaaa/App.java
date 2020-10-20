@@ -30,6 +30,8 @@ public class App extends Application {
         root = loader.load();
         scene = new Scene(root);
         
+        this.stage.setMinWidth(900);
+        this.stage.setMinHeight(600);
         this.stage.setTitle("Courier Service System - Login");
         this.stage.setScene(scene);
 
