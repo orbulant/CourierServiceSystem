@@ -26,6 +26,8 @@ public class DashboardController implements Initializable {
     @FXML
     AnchorPane ui_pane_small_two;
     @FXML
+    AnchorPane ui_pane_large_thick;
+    @FXML
     GridPane dashboardPane;
     @FXML
     Label mainTitle;
@@ -104,14 +106,26 @@ public class DashboardController implements Initializable {
             OrderListViewerController orderListController = new OrderListViewerController("short");
             orderListController.setDashboardController(this);
             orderList.setController(orderListController);
+            // order list
+            FXMLLoader deliveryRequestList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
+            // set custom controller to order
+            DeliveryCancellationListViewerController deliveryCancellationListController = new DeliveryCancellationListViewerController();
+            deliveryRequestList.setController(deliveryCancellationListController);
+
             // add to dashboard pane
             ui_pane_large_tall.getChildren().clear();
             ui_pane_large_tall.getChildren().add((Node) orderList.load());
             orderListController.setTitle("Recent Orders");
 
+            ui_pane_large_thick.getChildren().clear();
+            ui_pane_large_thick.getChildren().add((Node) deliveryRequestList.load());
+            deliveryCancellationListController.setTitle("Pending Delivery Cancellations");
+            deliveryCancellationListController.setTitleButtonVisibility(false);
+
             // set delay to loadables using scroll pane to avoid error
             Platform.runLater(() -> {
                 orderListController.populateOrders("");
+                deliveryCancellationListController.populateCancellations();
             });
 
             this.sidebarButtonThree.setText("Order");
