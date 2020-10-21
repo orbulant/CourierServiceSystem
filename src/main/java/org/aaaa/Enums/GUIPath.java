@@ -16,6 +16,7 @@ public enum GUIPath {
     DeliveryCancellationItemHolder("/fxml/DeliveryCancellationItemHolder.fxml"),
     PopupBox("/fxml/PopupBox.fxml");
 
+
     private final String name;
 
     GUIPath(String name) {
