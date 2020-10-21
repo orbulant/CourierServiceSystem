@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.GUIPath;
-import org.aaaa.FileHandlers.FileHandlerDelivery;
+import org.aaaa.FileHandlers.FileHandlerOrder;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +24,12 @@ public class DeliveryListViewerController extends ListViewerController implement
 
     private boolean isDashboard = false;
     private DeliveryFormController deliveryFormController;
-    private FileHandlerDelivery fileHandler;
+    private FileHandlerOrder fileHandler;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            fileHandler = new FileHandlerDelivery(DatabasePath.Order.getName());
+            fileHandler = new FileHandlerOrder(DatabasePath.Order.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,7 +3,8 @@ package org.aaaa.Enums;
 public enum DatabasePath {
     Order("src/main/resources/database/order.txt", 19),
     Staff("src/main/resources/database/user.txt", 4),
-    Account("src/main/resources/database/account.txt", 15);
+    Account("src/main/resources/database/account.txt", 15),
+    DeliveryCancellation("src/main/resources/database/deliveryCancellation.txt", 6);
 
     private String name;
     private int dataLength;

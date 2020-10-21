@@ -46,6 +46,7 @@ public class DeliveryMainController implements Initializable, BaseControllerInte
             FXMLLoader deliveryForm = new FXMLLoader(getClass().getResource(GUIPath.DeliveryForm.getName()));
             // set custom controller to delivery
             DeliveryFormController deliveryFormController = new DeliveryFormController();
+            deliveryFormController.setDeliveryListViewerController(this.deliveryListController);
             deliveryForm.setController(deliveryFormController);
 
             // add to delivery main panes

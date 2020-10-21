@@ -12,7 +12,8 @@ public enum GUIPath {
     ReportMain("/fxml/ReportMain.fxml"),
     DeliveryMain("/fxml/DeliveryMain.fxml"),
     DeliveryForm("/fxml/DeliveryForm.fxml"),
-    DeliveryItemHolder("/fxml/DeliveryItemHolder.fxml");
+    DeliveryItemHolder("/fxml/DeliveryItemHolder.fxml"),
+    PopupBox("/fxml/PopupBox.fxml");
 
     private final String name;
 

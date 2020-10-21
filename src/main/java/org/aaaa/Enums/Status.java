@@ -4,7 +4,9 @@ public enum Status {
     Processing("Processing"),
     Canceled("Canceled"),
     Delivering("Delivering"),
-    Delivered("Delivered");
+    Delivered("Delivered"),
+    Approved("Approved"),
+    Rejected("Rejected");
 
     private final String status;
 

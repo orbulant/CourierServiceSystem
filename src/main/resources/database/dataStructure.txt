@@ -2,3 +2,6 @@
 *orderID,orderName,orderDesc,orderDate,deliveryDate,isFragile,assignedTo(Staff id),status
 ,recipientName,recipientContact,address,city,postcode,state,country
 ,createdBy,createdOn,changedBy,changedOn*
+
+****** Delivery ******
+*orderID, staffID, reason, status, requestDate, reviewedDate
