@@ -12,79 +12,79 @@
 
 ### Functional Requirements
 
-#### Customers
+~~ #### Customers ~~
 
 
-Account
--	Create account
--	View account
--	Deactivate *optional*
--	Edit account
+~~ Account ~~
+~~ - []	Create account ~~
+~~ - []	View account ~~
+~~ - []	Deactivate *optional* ~~
+~~ - []	Edit account ~~
 
 
-Orders
--	Give feedback
+~~ Orders ~~
+~~ - []	Give feedback ~~
 
 
 #### Managing Staff
 
 
 Login/Logout
--	Login
--	Logout
+- []	Login
+- []	Logout
 
 
 User account management
--	Create accounts (Managing/Delivery)
+- []	Create accounts (Managing/Delivery)
     - UNIQUE ID, Name, NRIC, Address, Phone Number, DOB, Location assigned, Role
--	Deactivate account
--	Edit accounts
--	View account
+- []	Deactivate account
+- []	Edit accounts
+- []	View account
 
 
 Search account
--	Search account
+- []	Search account
 
 
 Order Management
--	Enter new order
--	Edit order
--	View order
--	Assign order to delivery staff
-    - Based on their geolocation area, then time.
--	Manually assign order
--	Cancel order assignment
+- []	Enter new order
+- []	Edit order
+- []	View order
+- []	Assign order to delivery staff
+     - Based on their geolocation area, then time.
+- []	Manually assign order
+- []	Cancel order assignment
 
 
 Delivery cancelation
--	Approve delivery cancelation
--	Reject delivery cancelation
+- []	Approve delivery cancelation
+- []	Reject delivery cancelation
 
 
 Report
--	Generate report (User report, Sales report, Inventory report)
+- []	Generate report (User report, Sales report, Inventory report)
 
 
 #### Delivery Staff
 
 
 Login/Logout
--	Login
--	Logout
+- []	Login
+- []	Logout
 
 
 User account management (Individual profile management)
--	Edit own account
--	View own account
+- []	Edit own account
+- []	View own account
 
 
 Availability
--	Set availability status
+- []	Set availability status
     - Check-in/Check-out
     
     
 Delivery management
--	View assigned orders
--	Confirm order delivery
--	Cancel order delivery
+- []	View assigned orders
+- []	Confirm order delivery
+- []	Cancel order delivery
     - Provide reasoning details
