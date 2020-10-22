@@ -19,7 +19,7 @@ public class FileHandlerUser extends FileHandler{
         Staff staff = new Staff();
         List<List<String>> tempList = this.getContent(DatabasePath.Staff.getDataLength());
         for(List<String> temp: tempList) {
-            if(temp.get(3) == accountID) {
+            if(temp.get(3).equals(accountID)) {
                 staff = assignUser(temp);
             }
         }

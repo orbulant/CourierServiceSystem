@@ -13,6 +13,7 @@ public enum GUIPath {
     DeliveryMain("/fxml/DeliveryMain.fxml"),
     DeliveryForm("/fxml/DeliveryForm.fxml"),
     DeliveryItemHolder("/fxml/DeliveryItemHolder.fxml"),
+    DeliveryCancellationItemHolder("/fxml/DeliveryCancellationItemHolder.fxml"),
     PopupBox("/fxml/PopupBox.fxml");
 
     private final String name;

@@ -19,6 +19,17 @@ public class FileHandlerOrder extends FileHandler {
         return tempList.get(tempList.size() - 1).get(0);
     }
 
+    public List<String> getOrderByID(String id) {
+        List<String> result = new ArrayList<>();
+        for(List<String> temp: this.getContent(DatabasePath.Order.getDataLength())) {
+            if (temp.get(0).equals(id)) {
+                result = temp;
+            }
+        }
+
+        return result;
+    }
+
     public List<List<String>> getDelivererContent(int datalength, LocalDate date) {
         List<List<String>> originalList = this.getContent(datalength);
         List<List<String>> filteredList = new ArrayList<>();
