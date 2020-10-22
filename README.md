@@ -23,14 +23,14 @@
 
 
 ~~Orders ~~
-~~- []	Give feedback ~~
+~~- []	Give feedback 
 
 
 #### Managing Staff
 
 
 Login/Logout
-- [ ]	Login
+- [x]	Login
 - [ ]	Logout
 
 
@@ -47,12 +47,12 @@ Search account
 
 
 Order Management
-- [ ]	Enter new order
-- [ ]	Edit order
-- [ ]	View order
-- [ ]	Assign order to delivery staff
-     - Based on their geolocation area, then time.
-- [ ]	Manually assign order
+- [x]	Enter new order
+- [x]	Edit order
+- [x]	View order
+- [x]	Assign order to delivery staff
+     ~~- Based on their geolocation area, then time.~~
+- [x]	Manually assign order
 - [ ]	Cancel order assignment
 
 
@@ -69,7 +69,7 @@ Report
 
 
 Login/Logout
-- [ ]	Login
+- [x]	Login
 - [ ]	Logout
 
 
@@ -84,7 +84,7 @@ Availability
     
     
 Delivery management
-- [ ]	View assigned orders
-- [ ]	Confirm order delivery
-- [ ]	Cancel order delivery
+- [x]	View assigned orders
+- [x]	Confirm order delivery
+- [x]	Cancel order delivery
     - Provide reasoning details
