@@ -7,14 +7,14 @@ import java.util.List;
 import org.aaaa.Enums.Models.AccountModel;
 
 public class Person extends Data {
-    protected String accountID;
-    protected String nric;
-    protected String name;
-    protected String housenum;
-    protected String contactnum;
-    protected LocalDate dob;
+    private String accountID;
+    private String nric;
+    private String name;
+    private String housenum;
+    private String contactnum;
+    private LocalDate dob;
 
-    protected Address fulladdress;
+    private Address fulladdress;
 
     public Person() {
         this.accountID = "";

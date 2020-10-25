@@ -7,12 +7,11 @@ import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Models.UserModel;
 import org.aaaa.FileHandlers.FileHandlerAccount;
 
-public class Staff {
-    protected String username;
-    protected String password;
-    protected String role;
-    // protected String accountID;
-    protected Person person;
+public class Staff implements DataInterface {
+    private String username;
+    private String password;
+    private String role;
+    private Person person;
 
     public Staff() {
         this.username = "";

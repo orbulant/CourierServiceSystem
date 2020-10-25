@@ -19,7 +19,7 @@ abstract public class Data implements DataInterface {
     }
 
     public void setCreatedInfo() {
-        this.createdBy = CurrentUser.getStaff().username;
+        this.createdBy = CurrentUser.getStaff().getUsername();
         this.createdOn = LocalDateTime.now();
     }
 
@@ -33,7 +33,7 @@ abstract public class Data implements DataInterface {
     }
 
     public void setChangedInfo() {
-        this.changedBy = CurrentUser.getStaff().username;
+        this.changedBy = CurrentUser.getStaff().getUsername();
         this.changedOn = LocalDateTime.now();
     }
 
