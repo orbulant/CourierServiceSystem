@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeliveryCancellation {
+import org.aaaa.Enums.Models.DeliveryCancellationModel;
+
+public class DeliveryCancellation implements DataInterface {
     private String orderID;
     private String accountID;
     private String reason;
@@ -38,8 +40,9 @@ public class DeliveryCancellation {
         }
     }
 
-    public List<String> getDeliCancelAsArray() {
-        ArrayList<String> result = new ArrayList<>();
+    @Override
+    public List<String> get() {
+        List<String> result = new ArrayList<>();
 
         result.add(orderID);
         result.add(accountID);
@@ -59,6 +62,19 @@ public class DeliveryCancellation {
         }
 
         return result;
+    }
+
+    @Override
+    public void set(List<String> data) {
+        this.orderID      = data.get(DeliveryCancellationModel.OrderID.getIndex());
+        this.accountID    = data.get(DeliveryCancellationModel.AccountID.getIndex());
+        this.reason       = data.get(DeliveryCancellationModel.Reason.getIndex());
+        this.status       = data.get(DeliveryCancellationModel.Status.getIndex());
+        this.requestDate  = LocalDateTime.parse(data.get(DeliveryCancellationModel.RequestDate.getIndex()));
+
+        if(!data.get(DeliveryCancellationModel.ApprovalDate.getIndex()).equals("")) {
+            this.approvalDate = LocalDateTime.parse(data.get(DeliveryCancellationModel.ApprovalDate.getIndex()));
+        }
     }
 
     public String getOrderID() {

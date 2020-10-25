@@ -1,7 +1,7 @@
 package org.aaaa.Enums.Models;
 
 public enum AccountModel implements Models {
-    UserID(0),
+    AccountID(0),
     NRIC(1),
     Name(2),
     Contact(3),

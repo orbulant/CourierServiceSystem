@@ -1,29 +1,49 @@
 package org.aaaa;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-abstract public class Data {
+abstract public class Data implements DataInterface {
     protected String createdBy; // get name using User.username
     protected LocalDateTime createdOn;
     protected String changedBy;
     protected LocalDateTime changedOn;
+
+    abstract public void create();
+    abstract public void update();
 
     public Data() {
         this.createdBy = "";
         this.changedBy = "";
     }
 
-    abstract public void create();
-    abstract public void update();
-
     public void setCreatedInfo() {
         this.createdBy = CurrentUser.getStaff().username;
         this.createdOn = LocalDateTime.now();
     }
 
+    public List<String> getCreatedInfo()  {
+        ArrayList<String> result = new ArrayList<>();
+
+        result.add(this.createdBy);
+        result.add(this.createdOn == null ? "" : this.createdOn.toString());
+
+        return result;
+    }
+
     public void setChangedInfo() {
         this.changedBy = CurrentUser.getStaff().username;
         this.changedOn = LocalDateTime.now();
+    }
+
+    public List<String> getChangedInfo()  {
+        ArrayList<String> result = new ArrayList<>();
+
+        result.add(this.changedBy);
+        result.add(this.changedOn == null ? "" : this.createdOn.toString());
+        
+        return result;
     }
 
     public String getCreatedBy() {

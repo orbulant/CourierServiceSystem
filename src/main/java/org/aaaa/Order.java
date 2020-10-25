@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Status;
+import org.aaaa.Enums.Models.OrderModel;
+import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.FileHandlers.FileHandlerOrder;
 
 public class Order extends Data {
@@ -27,13 +29,17 @@ public class Order extends Data {
         super();
     }
 
+    public Order(List<String> data) {
+        this.set(data);
+    }
+
     @Override
     public void create() {
         this.setCreatedInfo();
-        System.out.println(this.getOrderAsArray());
+        System.out.println(this.get());
         //create arraylist and write to file
         try{
-            fileHandler.addContent(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.getOrderAsArray());
+            fileHandler.addContent(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.get());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,39 +47,59 @@ public class Order extends Data {
 
     public void update() {
         this.setChangedInfo();
-        System.out.println(this.getOrderAsArray());
+        System.out.println(this.get());
         //update arraylist and replace in file
         try{
-            fileHandler.update(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.getOrderAsArray());
+            fileHandler.update(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.get());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public List<String> getOrderAsArray() {
-        ArrayList<String> result = new ArrayList<>();
+    public List<String> get() {
+        List<String> result = new ArrayList<>();
 
-        result.add(orderID);
-        result.add(order_name);
-        result.add(order_desc);
-        result.add(order_date.toString());
-        result.add(deli_date.toString());
+        result.add(this.orderID);
+        result.add(this.order_name);
+        result.add(this.order_desc);
+        result.add(this.order_date.toString());
+        result.add(this.deli_date.toString());
         result.add(Boolean.toString(is_fragile));
-        result.add(assigned_to.getAccountID());
+        result.add(this.assigned_to.getAccountID());
         result.add(Status.Processing.getStatus());
-        result.add(person.getName());
-        result.add(person.getContactNum());
-        result.add(address.getAddress());
-        result.add(address.getCity());
-        result.add(address.getPostcode());
-        result.add(address.getState());
-        result.add(address.getCountry());
-        result.add(this.createdBy);
-        result.add(this.createdOn == null ? "" : this.createdOn.toString());
-        result.add(this.changedBy);
-        result.add(this.changedOn == null ? "" : this.changedOn.toString());
+
+        result.add(this.person.getName());
+        result.add(this.person.getContactNum());
+
+        result.addAll(this.address.get());
+        result.addAll(this.getCreatedInfo());
+        result.addAll(this.getChangedInfo());
 
         return result;
+    }
+
+    public void set(List<String> data) {
+        this.orderID    = data.get(OrderModel.OrderID.getIndex());
+        this.order_name = data.get(OrderModel.OrderName.getIndex());
+        this.order_desc = data.get(OrderModel.OrderDesc.getIndex());
+        this.status     = data.get(OrderModel.OrderID.getIndex());
+        this.order_date = LocalDate.parse(data.get(OrderModel.OrderDate.getIndex()));
+        this.is_fragile = Boolean.parseBoolean(data.get(OrderModel.IsFragile.getIndex()));
+        
+        if(!data.get(OrderModel.DeliveryDate.getIndex()).equals("")) {
+            this.deli_date = LocalDate.parse(data.get(OrderModel.DeliveryDate.getIndex()));
+        }
+
+        this.address = new Address(new String[] {
+            data.get(OrderModel.Address.getIndex()), 
+            data.get(OrderModel.City.getIndex()), 
+            data.get(OrderModel.Postcode.getIndex()), 
+            data.get(OrderModel.State.getIndex()), 
+            data.get(OrderModel.Country.getIndex())
+        });
+
+        this.person      = new Person(data.get(OrderModel.RecipientName.getIndex()), data.get(OrderModel.RecipientContact.getIndex()));
+        this.assigned_to = new FileHandlerAccount(DatabasePath.Account.getName()).getAccountByID(data.get(OrderModel.AssignedTo.getIndex()));
     }
 
     public String getOrderName() {

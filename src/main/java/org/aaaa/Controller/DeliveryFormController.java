@@ -70,7 +70,7 @@ public class DeliveryFormController implements Initializable {
                 DeliveryCancellation deliveryCancellation = new DeliveryCancellation(data.get(0), newValue, Status.Processing.getStatus());
                 try{
                     FileHandlerDelivery fileHandlerDelivery = new FileHandlerDelivery(DatabasePath.DeliveryCancellation.getName());
-                    fileHandlerDelivery.addContent(fileHandlerDelivery.getContent(DatabasePath.DeliveryCancellation.getDataLength()), deliveryCancellation.getDeliCancelAsArray());
+                    fileHandlerDelivery.addContent(fileHandlerDelivery.getContent(DatabasePath.DeliveryCancellation.getDataLength()), deliveryCancellation.get());
                     this.getDeliveryListViewerController().populateDeliveries("", null);
                     this.ui_button_clear.fire();
                 } catch (Exception err) {

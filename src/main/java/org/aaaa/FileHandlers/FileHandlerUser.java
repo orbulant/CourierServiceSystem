@@ -27,12 +27,7 @@ public class FileHandlerUser extends FileHandler{
     }
 
     public Staff assignUser(List<String> user) {
-        Staff staff = new Staff();
-        staff.setUsername(user.get(0));
-        staff.setPassword(user.get(1));
-        staff.setRole(user.get(2));
-        staff.setAccountID(user.get(3));
-        return staff;
+        return new Staff(user);
     }   
 
     //BODY
@@ -68,10 +63,6 @@ public class FileHandlerUser extends FileHandler{
                 user.set(1, staff.getUsername());
                 user.set(2, staff.getPassword());
                 user.set(3, staff.getRole());
-                user.set(4, staff.getCreatedBy());
-                user.set(5, staff.getCreatedOn().toString());
-                user.set(6, staff.getChangedBy());
-                user.set(7, staff.getChangedOn().toString());
             }
         }
 

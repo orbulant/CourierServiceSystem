@@ -35,6 +35,21 @@
                   </Label>
                </children>
             </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" text="Back">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </HBox>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -310,11 +325,29 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_submit" mnemonicParsing="false" prefHeight="78.0" prefWidth="231.0" text="Submit">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER_RIGHT">
+                           <VBox.margin>
+                              <Insets right="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Button fx:id="btn_submit1" mnemonicParsing="false" prefHeight="78.0" prefWidth="231.0" text="Delete" visible="false">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btn_submit" mnemonicParsing="false" prefHeight="78.0" prefWidth="231.0" text="Submit">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="139.0" prefWidth="373.0" GridPane.rowIndex="2">

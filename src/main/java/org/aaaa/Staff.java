@@ -1,37 +1,45 @@
 package org.aaaa;
 
-public class Staff extends Person {
+import java.util.ArrayList;
+import java.util.List;
+
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.Enums.Models.UserModel;
+import org.aaaa.FileHandlers.FileHandlerAccount;
+
+public class Staff {
     protected String username;
     protected String password;
     protected String role;
-    protected String accountID;
+    // protected String accountID;
+    protected Person person;
 
     public Staff() {
-        this.accountID = "";
         this.username = "";
         this.password = "";
         this.role = "";
     }
 
-    public Staff(String accountID){
-        this.accountID = accountID;
+    public Staff(List<String> data) {
+        this.set(data);
     }
 
-    public Staff(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public List<String> get() {
+        List<String> result = new ArrayList<>();
+
+        result.add(this.username);
+        result.add(this.password);
+        result.add(this.role);
+        result.add(this.person.getAccountID());
+
+        return result;        
     }
 
-    public Staff(String username, String password, String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-    public Staff(String accountID, String username, String password, String role) {
-        this.accountID = accountID;
-        this.username = username;
-        this.password = password;
-        this.role = role;
+    public void set(List<String> data) {
+        this.username = data.get(UserModel.Username.getIndex());
+        this.password = data.get(UserModel.Password.getIndex());
+        this.role = data.get(UserModel.Role.getIndex());
+        this.person = new FileHandlerAccount(DatabasePath.Account.getName()).getAccountByID(data.get(UserModel.AccountID.getIndex()));
     }
 
     public String getUsername() {
@@ -59,10 +67,6 @@ public class Staff extends Person {
     }
 
     public String getAccountID() {
-        return accountID;
-    }
-
-    public void setAccountID(String accountID) {
-        this.accountID = accountID;
+        return this.person.getAccountID();
     }
 }

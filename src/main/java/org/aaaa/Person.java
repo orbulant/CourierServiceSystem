@@ -1,6 +1,10 @@
 package org.aaaa;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.aaaa.Enums.Models.AccountModel;
 
 public class Person extends Data {
     protected String accountID;
@@ -35,6 +39,43 @@ public class Person extends Data {
         this.contactnum = contactnum;
         this.nric = nric;
         this.dob = dob;
+    }
+
+    public Person(List<String> data) {
+        this.set(data);
+    }
+
+    @Override
+    public void create() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public List<String> get() {
+        List<String> result = new ArrayList<>();
+
+        result.add(this.accountID);
+        result.add(this.name);
+        result.add(this.contactnum);
+        result.add(this.nric);
+        result.add(this.dob.toString());
+        result.addAll(this.fulladdress.get());
+
+        return result;
+    }
+
+    @Override
+    public void set(List<String> data) {
+        this.accountID  = data.get(AccountModel.AccountID.getIndex());
+        this.name       = data.get(AccountModel.Name.getIndex());
+        this.contactnum = data.get(AccountModel.Contact.getIndex());
+        this.nric       = data.get(AccountModel.NRIC.getIndex());
+        this.dob        = LocalDate.parse(data.get(AccountModel.DOB.getIndex()));
     }
 
     public String getAccountID() {
@@ -91,15 +132,5 @@ public class Person extends Data {
 
     public void setFulladdress(Address fulladdress) {
         this.fulladdress = fulladdress;
-    }
-
-    @Override
-    public void create() {
-
-    }
-
-    @Override
-    public void update() {
-        
     }
 }
