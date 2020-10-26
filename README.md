@@ -54,6 +54,10 @@ Feedback Management
 - [ ]	View Feedback
 
 
+Feedback Management
+- [ ]	View Feedback
+
+
 Delivery cancelation
 - [x]	Approve delivery cancelation
 - [x]	Reject delivery cancelation
