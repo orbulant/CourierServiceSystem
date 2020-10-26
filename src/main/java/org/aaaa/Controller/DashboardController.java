@@ -47,25 +47,15 @@ public class DashboardController implements Initializable {
     Button sidebarButtonSix;
 
     private String title;
-    private Node reportMain;
     private Node previousPage;
     private FXMLLoader orderMain;
+    private FXMLLoader reportMain;
     private FXMLLoader deliveryMain;
     private BooleanProperty logoutProperty = new SimpleBooleanProperty();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.setTitle(GUIPath.Dashboard.toString());
-
-        try{
-            if(reportMain == null) {
-                reportMain = (Node)FXMLLoader.load(getClass().getResource(GUIPath.ReportMain.getName()));
-            }
-        } catch (Exception eButton) {
-            eButton.printStackTrace();
-        }
-
-
         this.pageLoader();      
     }
 
@@ -161,7 +151,16 @@ public class DashboardController implements Initializable {
             this.sidebarButtonFive.setText("Report");
             sidebarButtonFive.setOnMouseClicked(e -> {
                 this.setTitle(this.sidebarButtonFive.getText());
-                this.overridePage(reportMain);
+                try{
+                    reportMain = new FXMLLoader(getClass().getResource(GUIPath.ReportMain.getName()));
+                    // set custom controller to order
+                    ReportMainController reportMainController = new ReportMainController();
+                    reportMainController.setDashboardController(this);
+                    reportMain.setController(reportMainController);
+                    this.overridePage((Node) reportMain.load());
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();

@@ -55,21 +55,40 @@ public class OrderListViewerController extends ListViewerController implements I
             content.getChildren().clear();
             List<List<String>> temp = fileHandler.getContent(DatabasePath.Order.getDataLength());
             FXMLLoader loader = new FXMLLoader();
-            for (int i = 0; i < temp.size(); i++) {
+            // reverse sort
+            for (int i = temp.size(); i >= 0 ; i--) {
                 switch (type) {
                     case "short":
                         loader = new FXMLLoader(getClass().getResource(GUIPath.OrderItemHolderShort.getName()));
                         break;
                     case "long": 
                         loader = new FXMLLoader(getClass().getResource(GUIPath.OrderItemHolderLong.getName()));
+                        
                         break;
                 }
 
-                if(temp.get(i).toString().contains(filter)) {
-                    OrderItemHolderController orderItemHolderController = new OrderItemHolderController(fileHandler.assignOrder(temp.get(i)), type);
-                    orderItemHolderController.setDashboardController(this.dashboardController);
-                    loader.setController(orderItemHolderController);
-                    content.getChildren().add((Node)loader.load());
+                if(i == temp.size()) {
+                    if(type.equals("long")) {
+                        OrderItemHolderController orderItemHolderController = new OrderItemHolderController(null, type);
+                        orderItemHolderController.setDashboardController(this.dashboardController);
+                        loader.setController(orderItemHolderController);
+                        content.getChildren().add((Node)loader.load());
+    
+                        // set list view header
+                        orderItemHolderController.getOrderIdName().setText("OrderID/OrderName");
+                        orderItemHolderController.getOrderDate().setText("Order Date");
+                        orderItemHolderController.getDeliveryDate().setText("Delivery Date");
+                        orderItemHolderController.getStatus().setText("Status");
+                        orderItemHolderController.getEditView().setVisible(false);
+
+                    }
+                } else {
+                    if(temp.get(i).toString().contains(filter)) {
+                        OrderItemHolderController orderItemHolderController = new OrderItemHolderController(fileHandler.assignOrder(temp.get(i)), type);
+                        orderItemHolderController.setDashboardController(this.dashboardController);
+                        loader.setController(orderItemHolderController);
+                        content.getChildren().add((Node)loader.load());
+                    }
                 }
             }
         } catch (Exception e) {

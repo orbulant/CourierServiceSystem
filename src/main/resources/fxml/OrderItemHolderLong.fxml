@@ -10,7 +10,7 @@
       <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="order_id_name" text="order_id/name">
+            <Label fx:id="order_id_name" text="OrderID/OrderName">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -19,7 +19,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="order_date" text="order_date">
+            <Label fx:id="order_date" text="Order Date">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -28,7 +28,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="delivery_date" text="delivery_date">
+            <Label fx:id="delivery_date" text="Delivery Date">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -37,7 +37,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="status" text="status">
+            <Label fx:id="status" text="Status">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>

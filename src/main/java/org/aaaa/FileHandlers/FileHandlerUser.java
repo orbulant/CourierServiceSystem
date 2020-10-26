@@ -2,6 +2,7 @@ package org.aaaa.FileHandlers;
 
 import org.aaaa.Staff;
 import org.aaaa.Enums.DatabasePath;
+import org.aaaa.Enums.Models.UserModel;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,11 +20,15 @@ public class FileHandlerUser extends FileHandler{
         Staff staff = new Staff();
         List<List<String>> tempList = this.getContent(DatabasePath.Staff.getDataLength());
         for(List<String> temp: tempList) {
-            if(temp.get(3).equals(accountID)) {
+            if(temp.get(UserModel.AccountID.getIndex()).equals(accountID)) {
                 staff = assignUser(temp);
             }
         }
         return staff;
+    }
+
+    public int getTotalUsers() {
+        return this.getContent(DatabasePath.Staff.getDataLength()).size();
     }
 
     public Staff assignUser(List<String> user) {

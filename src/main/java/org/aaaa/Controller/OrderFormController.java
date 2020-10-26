@@ -148,7 +148,7 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
             order.setOrderName(txt_order_name.getText());
             order.setOrderDesc(txt_order_desc.getText());
             order.setOrderDate(dp_order_date.getValue());
-            order.setDeliDate(dp_order_date.getValue());
+            order.setDeliDate(dp_deli_date.getValue() == null ? dp_order_date.getValue() : dp_deli_date.getValue());
             order.setIsFragile(cb_is_fragile.isSelected());
             order.setAutoAssign(cb_auto_assign.isSelected());
             order.setAccount(person);
@@ -172,7 +172,9 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
 
             // create alert box that prompts for 3 seconds
             Alert a = new Alert(AlertType.INFORMATION); 
-            a.setTitle("Success!");
+            a.setTitle("Success");
+            a.setHeaderText("Successful!");
+            a.setGraphic(null);
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(e -> a.hide());
             a.show();
@@ -199,7 +201,14 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
             !txt_country.getText().isBlank() &&
             dp_order_date.getValue() != null &&
             (cb_auto_assign.isSelected() || txt_assign_to.getValue() != null)) {
-                return true;
+                if(dp_deli_date.getValue() != null) {
+                    System.out.println(dp_deli_date.getValue().compareTo(dp_order_date.getValue()));
+                    if(dp_deli_date.getValue().compareTo(dp_order_date.getValue()) >= 0) {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
             }
         return false;        
     }

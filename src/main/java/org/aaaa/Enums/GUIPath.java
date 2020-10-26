@@ -10,6 +10,7 @@ public enum GUIPath {
     OrderItemHolderLong("/fxml/OrderItemHolderLong.fxml"),
     Searchbar("/fxml/Searchbar.fxml"),
     ReportMain("/fxml/ReportMain.fxml"),
+    ReportItemHolder("/fxml/ReportItemHolder.fxml"),
     DeliveryMain("/fxml/DeliveryMain.fxml"),
     DeliveryForm("/fxml/DeliveryForm.fxml"),
     DeliveryItemHolder("/fxml/DeliveryItemHolder.fxml"),
