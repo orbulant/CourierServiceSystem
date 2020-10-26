@@ -1,7 +1,6 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,6 +9,8 @@ import java.util.ResourceBundle;
 import org.aaaa.Person;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Roles;
+import org.aaaa.Enums.Models.AccountModel;
+import org.aaaa.Enums.Models.UserModel;
 import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.FileHandlers.FileHandlerOrder;
 import org.aaaa.FileHandlers.FileHandlerUser;
@@ -67,18 +68,19 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
     Label lbl_err_msg;
     @FXML
     Button btn_submit;
+    @FXML
+    Button btn_back;
 
     private String title;
-    private List<String> data;
+    private Order order;
     private DashboardController dashboardController;
 
     public OrderFormController() {
         this.title = "Create an Order";
     }
 
-    public OrderFormController(List<String> data) {
-        System.out.println(data);
-        this.data = data;
+    public OrderFormController(Order order) {
+        this.order = order;
         this.title = "Edit/View an Order";
     }
 
@@ -87,28 +89,20 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
         this.title_label.setText(this.title);
 
         // populate data if navigated from edit
-        if (data != null) {
-            this.txt_order_name.setText(data.get(1));
-            this.txt_order_desc.setText(data.get(2));
-            this.dp_order_date.setValue(LocalDate.parse(data.get(3)));
-            this.dp_deli_date.setValue(data.get(4).length() > 0 ? LocalDate.parse(data.get(4)) : null);
-            this.cb_is_fragile.setSelected(Boolean.parseBoolean(data.get(5)));
-            this.txt_name.setText(data.get(8));
-            this.txt_contact.setText(data.get(9));
-            this.txt_address.setText(data.get(10));
-            this.txt_city.setText(data.get(11));
-            this.txt_postcode.setText(data.get(12));
-            this.txt_state.setText(data.get(13));
-            this.txt_country.setText(data.get(14));
-            // populate combo box
-            List<Person> temp = this.getDeliStaffList();
-            Person result = new Person();
-            for(Person tempPerson : temp) {
-                if(tempPerson.getAccountID().equals(data.get(6))) {
-                    result = tempPerson;
-                }
-            }
-            this.txt_assign_to.getSelectionModel().select(result);
+        if (order != null) {
+            this.txt_order_name.setText(order.getOrderName());
+            this.txt_order_desc.setText(order.getOrderDesc());
+            this.dp_order_date.setValue(order.getOrderDate());
+            this.dp_deli_date.setValue(order.getDeliDate());
+            this.cb_is_fragile.setSelected(order.isIsFragile());
+            this.txt_name.setText(order.getAccount().getName());
+            this.txt_contact.setText(order.getAccount().getContactNum());
+            this.txt_address.setText(order.getAddress().getAddress());
+            this.txt_city.setText(order.getAddress().getCity());
+            this.txt_postcode.setText(order.getAddress().getPostcode());
+            this.txt_state.setText(order.getAddress().getState());
+            this.txt_country.setText(order.getAddress().getCountry());
+            this.txt_assign_to.getSelectionModel().select(order.getAssignTo());
             this.cb_auto_assign.setSelected(false);
         } else {
             this.cb_auto_assign.setSelected(true);
@@ -137,6 +131,10 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
         btn_submit.setOnMouseClicked(e -> {
             this.processData();
         });
+
+        btn_back.setOnMouseClicked(e -> {
+            dashboardController.loadPreviousPage();
+        });
     }
 
     public void processData() {
@@ -147,7 +145,6 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
             // add to database
             Person person = new Person(txt_name.getText(), txt_contact.getText());
             Address address = new Address(new String[]{txt_address.getText(), txt_city.getText(), txt_postcode.getText(), txt_state.getText(), txt_country.getText()});
-            Order order = new Order();
             order.setOrderName(txt_order_name.getText());
             order.setOrderDesc(txt_order_desc.getText());
             order.setOrderDate(dp_order_date.getValue());
@@ -169,7 +166,7 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
                 order.setOrderID(String.valueOf(Integer.parseInt(fileHandler.getLatestID()) + 1));
                 order.create();
             } else {
-                order.setOrderID(data.get(0));
+                order.setOrderID(order.getOrderID());
                 order.update();
             }
 
@@ -215,15 +212,17 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
 
         List<List<String>> tempUserList = fileHandlerUser.getContent(DatabasePath.Staff.getDataLength());
         for(List<String> tempUser: tempUserList) {
-            if(tempUser.get(2).equals(Roles.DeliveryStaff.getRole())) {
-                tempIDList.add(tempUser.get(3));
+            // if role is delivery
+            if(tempUser.get(UserModel.Role.getIndex()).equals(Roles.DeliveryStaff.getRole())) {
+                // add id to temp list for filter
+                tempIDList.add(tempUser.get(UserModel.AccountID.getIndex()));
             }
         }
 
         List<List<String>> tempAccountList = fileHandlerAccount.getContent(DatabasePath.Account.getDataLength());
         for(List<String> tempAccount: tempAccountList) {
             for(String id: tempIDList) {
-                if(tempAccount.get(0).equals(id)) {
+                if(tempAccount.get(AccountModel.AccountID.getIndex()).equals(id)) {
                     deliStaffList.add(fileHandlerAccount.assignAccount(tempAccount));
                 }
             }

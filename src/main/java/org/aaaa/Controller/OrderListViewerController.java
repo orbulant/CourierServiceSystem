@@ -55,7 +55,6 @@ public class OrderListViewerController extends ListViewerController implements I
             content.getChildren().clear();
             List<List<String>> temp = fileHandler.getContent(DatabasePath.Order.getDataLength());
             FXMLLoader loader = new FXMLLoader();
-            // System.out.println(temp.get(0));
             for (int i = 0; i < temp.size(); i++) {
                 switch (type) {
                     case "short":
@@ -67,7 +66,7 @@ public class OrderListViewerController extends ListViewerController implements I
                 }
 
                 if(temp.get(i).toString().contains(filter)) {
-                    OrderItemHolderController orderItemHolderController = new OrderItemHolderController(temp.get(i), type);
+                    OrderItemHolderController orderItemHolderController = new OrderItemHolderController(fileHandler.assignOrder(temp.get(i)), type);
                     orderItemHolderController.setDashboardController(this.dashboardController);
                     loader.setController(orderItemHolderController);
                     content.getChildren().add((Node)loader.load());

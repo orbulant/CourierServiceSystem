@@ -1,10 +1,9 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import org.aaaa.Address;
+import org.aaaa.Order;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,20 +21,19 @@ public class DeliveryItemHolderController implements Initializable {
     Button edit_view;
 
     private boolean isDashboard;
-    private List<String> data;
+    private Order order;
     private DeliveryFormController deliveryFormController;
 
-    public DeliveryItemHolderController(List<String> data, boolean isDashboard) {
-        this.data = data;
+    public DeliveryItemHolderController(Order order, boolean isDashboard) {
+        this.order = order;
         this.isDashboard = isDashboard;
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Address address = new Address(new String[]{data.get(10),data.get(11),data.get(12),data.get(13),data.get(14)});
-        order_name.setText(data.get(8));
-        order_contact.setText(data.get(9));
-        order_address.setText(address.toString());
+        order_name.setText(order.getAccount().getName());
+        order_contact.setText(order.getAccount().getContactNum());
+        order_address.setText(order.getAddress().toString());
 
         if (isDashboard) {
             this.edit_view.setVisible(false);
@@ -43,7 +41,7 @@ public class DeliveryItemHolderController implements Initializable {
             edit_view.setOnMouseClicked(e -> {
                 try{
                     // pass info to delivery form
-                    deliveryFormController.populateFields(data);
+                    deliveryFormController.populateFields(order);
                 } catch (Exception err) {
                     err.printStackTrace();
                 }

@@ -39,14 +39,12 @@ public class DeliveryCancellationItemHolderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(data);
         FileHandlerOrder fileHandlerOrder = new FileHandlerOrder(DatabasePath.Order.getName());
         List<String> orderTemp = fileHandlerOrder.getOrderByID(data.get(0));
         lbl_one.setText(String.join("/", orderTemp.get(0), orderTemp.get(1)));
 
         FileHandlerUser fileHandlerUser = new FileHandlerUser(DatabasePath.Staff.getName());
         Staff deliveryStaff = fileHandlerUser.getUserByAccountID(data.get(1));
-        System.out.println(deliveryStaff);
         lbl_two.setText(String.join("/", deliveryStaff.getAccountID(), deliveryStaff.getUsername()));
 
         lbl_three.setText(data.get(2));

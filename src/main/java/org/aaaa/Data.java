@@ -26,7 +26,7 @@ abstract public class Data implements DataInterface {
     public List<String> getCreatedInfo()  {
         ArrayList<String> result = new ArrayList<>();
 
-        result.add(this.createdBy);
+        result.add(this.createdBy == null ? "" : this.createdBy);
         result.add(this.createdOn == null ? "" : this.createdOn.toString());
 
         return result;
@@ -40,8 +40,8 @@ abstract public class Data implements DataInterface {
     public List<String> getChangedInfo()  {
         ArrayList<String> result = new ArrayList<>();
 
-        result.add(this.changedBy);
-        result.add(this.changedOn == null ? "" : this.createdOn.toString());
+        result.add(this.changedBy == null ? "" : this.changedBy);
+        result.add(this.changedOn == null ? "" : this.changedOn.toString());
         
         return result;
     }

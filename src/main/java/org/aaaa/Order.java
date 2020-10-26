@@ -1,11 +1,11 @@
 package org.aaaa;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.aaaa.Enums.DatabasePath;
-import org.aaaa.Enums.Status;
 import org.aaaa.Enums.Models.OrderModel;
 import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.FileHandlers.FileHandlerOrder;
@@ -36,7 +36,6 @@ public class Order extends Data {
     @Override
     public void create() {
         this.setCreatedInfo();
-        System.out.println(this.get());
         //create arraylist and write to file
         try{
             fileHandler.addContent(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.get());
@@ -47,7 +46,6 @@ public class Order extends Data {
 
     public void update() {
         this.setChangedInfo();
-        System.out.println(this.get());
         //update arraylist and replace in file
         try{
             fileHandler.update(fileHandler.getContent(DatabasePath.Order.getDataLength()), this.get());
@@ -63,10 +61,10 @@ public class Order extends Data {
         result.add(this.order_name);
         result.add(this.order_desc);
         result.add(this.order_date.toString());
-        result.add(this.deli_date.toString());
+        result.add(this.deli_date != null ? this.deli_date.toString() : "");
         result.add(Boolean.toString(is_fragile));
         result.add(this.assigned_to.getAccountID());
-        result.add(Status.Processing.getStatus());
+        result.add(this.status);
 
         result.add(this.person.getName());
         result.add(this.person.getContactNum());
@@ -82,7 +80,7 @@ public class Order extends Data {
         this.orderID    = data.get(OrderModel.OrderID.getIndex());
         this.order_name = data.get(OrderModel.OrderName.getIndex());
         this.order_desc = data.get(OrderModel.OrderDesc.getIndex());
-        this.status     = data.get(OrderModel.OrderID.getIndex());
+        this.status     = data.get(OrderModel.Status.getIndex());
         this.order_date = LocalDate.parse(data.get(OrderModel.OrderDate.getIndex()));
         this.is_fragile = Boolean.parseBoolean(data.get(OrderModel.IsFragile.getIndex()));
         
@@ -100,6 +98,17 @@ public class Order extends Data {
 
         this.person      = new Person(data.get(OrderModel.RecipientName.getIndex()), data.get(OrderModel.RecipientContact.getIndex()));
         this.assigned_to = new FileHandlerAccount(DatabasePath.Account.getName()).getAccountByID(data.get(OrderModel.AssignedTo.getIndex()));
+
+        this.createdBy = data.get(OrderModel.CreatedBy.getIndex());
+        this.changedBy = data.get(OrderModel.ChangedBy.getIndex());
+
+        if(!data.get(OrderModel.CreatedOn.getIndex()).isBlank()) {
+            this.createdOn = LocalDateTime.parse(data.get(OrderModel.CreatedOn.getIndex()));
+        }
+
+        if(!data.get(OrderModel.ChangedOn.getIndex()).isBlank()) {
+            this.changedOn = LocalDateTime.parse(data.get(OrderModel.ChangedOn.getIndex()));
+        }
     }
 
     public String getOrderName() {

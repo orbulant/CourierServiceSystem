@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.aaaa.CurrentUser;
+import org.aaaa.Order;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Status;
 
@@ -12,6 +13,10 @@ public class FileHandlerOrder extends FileHandler {
 
     public FileHandlerOrder(String pathname) {
         super(pathname);
+    }
+
+    public Order assignOrder(List<String> data) {
+        return new Order(data);
     }
 
     public String getLatestID() {

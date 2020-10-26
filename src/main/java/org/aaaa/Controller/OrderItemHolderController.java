@@ -1,9 +1,9 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
+import org.aaaa.Order;
 import org.aaaa.Enums.GUIPath;
 
 import javafx.fxml.FXML;
@@ -32,11 +32,11 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
     HBox long_content_container;
 
     private String type;
-    private List<String> data;
+    private Order order;
     private DashboardController dashboardController;
 
-    public OrderItemHolderController(List<String> data, String type) {
-        this.data = data;
+    public OrderItemHolderController(Order order, String type) {
+        this.order = order;
         this.type = type;
     }
 
@@ -46,14 +46,21 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
             case "short":
                 order_id_name.setText(this.getFormattedOrderIDName());
                 order_date.setText(this.getFormattedOrderDate());
-                delivery_date.setText(this.getFormattedDeliveryDate());
-                status.setText(data.get(6));
+                status.setText(order.getStatus());
+
+                if(order.getDeliDate() != null) {
+                    delivery_date.setText(this.getFormattedDeliveryDate());
+                }
+                
                 break;
             case "long":
                 order_id_name.setText(this.getFormattedOrderIDName());
-                order_date.setText(data.get(2));
-                delivery_date.setText(data.get(3));
-                status.setText(data.get(6));
+                order_date.setText(order.getOrderDate().toString());
+                status.setText(order.getStatus());
+
+                if(order.getDeliDate() != null) {
+                    delivery_date.setText(order.getDeliDate().toString());
+                }
 
                 edit_view.setVisible(true);
                 break;
@@ -63,7 +70,7 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
             try{
                 FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.OrderForm.getName()));
                 // set custom controller to order
-                OrderFormController orderFormController = new OrderFormController(data);
+                OrderFormController orderFormController = new OrderFormController(order);
                 orderFormController.setDashboardController(dashboardController);
                 orderList.setController(orderFormController);
                 this.dashboardController.overridePage((Node) orderList.load());
@@ -74,27 +81,29 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
     }
 
     public String getFormattedOrderIDName() {
-        return "#Order" + data.get(0) + "/" + data.get(1);
+        return "#Order" + order.getOrderID() + "/" + order.getOrderName();
+        // return "#Order" + data.get(0) + "/" + data.get(1);
     }
 
     public String getFormattedOrderDate() {
-        return "Ordered On: " + data.get(2);
+        return "Ordered On: " + order.getOrderDate().toString();
+        // return "Ordered On: " + data.get(2);
     }
 
     public String getFormattedDeliveryDate() {
-        if(data.get(3).isBlank()) {
+        if(order.getDeliDate() == null) {
             return "Deliver By: ASAP";
         } else {
-            return "Deliver By: " + data.get(3);
+            return "Deliver By: " + order.getDeliDate().toString();
         }
     }
 
-    public List<String> getData() {
-        return data;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setData(List<String> data) {
-        this.data = data;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override

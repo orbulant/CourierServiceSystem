@@ -3,12 +3,17 @@ package org.aaaa.FileHandlers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aaaa.DeliveryCancellation;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Status;
 
 public class FileHandlerDelivery extends FileHandler {
     public FileHandlerDelivery(String pathname) {
         super(pathname);
+    }
+
+    public DeliveryCancellation assignDeliveryCancellation(List<String> data) {
+        return new DeliveryCancellation(data);
     }
 
     public List<List<String>> getUnapprovedCancellations() {

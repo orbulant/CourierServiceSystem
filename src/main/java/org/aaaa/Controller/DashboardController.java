@@ -7,6 +7,8 @@ import org.aaaa.CurrentUser;
 import org.aaaa.Enums.GUIPath;
 
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,12 +43,15 @@ public class DashboardController implements Initializable {
     Button sidebarButtonFour;
     @FXML
     Button sidebarButtonFive;
+    @FXML
+    Button sidebarButtonSix;
 
     private String title;
     private Node reportMain;
     private Node previousPage;
     private FXMLLoader orderMain;
     private FXMLLoader deliveryMain;
+    private BooleanProperty logoutProperty = new SimpleBooleanProperty();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -60,6 +65,11 @@ public class DashboardController implements Initializable {
             eButton.printStackTrace();
         }
 
+
+        this.pageLoader();      
+    }
+
+    private void pageLoader() {
         // load content
         this.loadDashboardContent();
 
@@ -69,7 +79,7 @@ public class DashboardController implements Initializable {
         } else if (CurrentUser.getStaff().getRole().equals("delivery")) {
             // load delivery
             this.loadDeliveryContent();
-        }        
+        } 
     }
 
     // load common content
@@ -91,6 +101,11 @@ public class DashboardController implements Initializable {
             sidebarButtonOne.setOnMouseClicked(e -> {
                 this.setTitle(GUIPath.Dashboard.toString());
                 this.overridePage(dashboardPane);
+            });
+
+            sidebarButtonSix.setOnMouseClicked(e -> {
+                // logout
+                this.logoutProperty.set(true);
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,7 +205,7 @@ public class DashboardController implements Initializable {
                 }
             });
             
-            this.sidebarButtonFive.setVisible(false);
+            this.sidebarButtonFive.setVisible(false);;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -199,7 +214,7 @@ public class DashboardController implements Initializable {
     public void overridePage(Node value) {
         if(!contentPane.getChildren().contains(value)) {
             this.previousPage = contentPane.getChildren().get(0);
-            this.loadDashboardContent();
+            this.pageLoader();
             
             contentPane.getChildren().remove(0);
             contentPane.getChildren().add(value);
@@ -217,5 +232,13 @@ public class DashboardController implements Initializable {
     public void setTitle(String title) {
         this.title = title;
         mainTitle.setText(this.title);
+    }
+
+    public BooleanProperty getLogoutProperty() {
+        return logoutProperty;
+    }
+
+    public void setLogoutProperty(BooleanProperty logoutProperty) {
+        this.logoutProperty = logoutProperty;
     }
 }

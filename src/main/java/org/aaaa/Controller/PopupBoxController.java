@@ -34,11 +34,21 @@ public class PopupBoxController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.lbl_message.setText(this.message);
+
+        this.txt_area.textProperty().addListener((v, oldValue, newValue) -> {
+            if (newValue.length() > 0) {
+                this.btn_two.setDisable(false);
+            } else {
+                this.btn_two.setDisable(true);
+            }
+        });
+
         this.btn_one.setText("Cancel");
         this.btn_one.setOnAction(e -> {
             this.cancelProperty.set(true);
         });
 
+        this.btn_two.setDisable(true);
         this.btn_two.setText("Confirm");
         this.btn_two.setOnAction(e -> {
             this.confirmProperty.set(true);

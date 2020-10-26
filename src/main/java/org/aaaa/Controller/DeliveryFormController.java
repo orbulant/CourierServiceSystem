@@ -1,11 +1,10 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import org.aaaa.Address;
 import org.aaaa.DeliveryCancellation;
+import org.aaaa.Order;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Status;
 import org.aaaa.FileHandlers.FileHandlerDelivery;
@@ -41,12 +40,11 @@ public class DeliveryFormController implements Initializable {
 
     }
 
-    public void populateFields(List<String> data) {
-        Address address = new Address(new String[]{data.get(10),data.get(11),data.get(12),data.get(13),data.get(14)});
-        ui_label_one.setText(data.get(8));
-        ui_label_two.setText(data.get(9));
-        ui_label_three.setText(address.toString());
-        ui_label_four.setText(data.get(7));
+    public void populateFields(Order order) {
+        ui_label_one.setText(order.getAccount().getName());
+        ui_label_two.setText(order.getAccount().getContactNum());
+        ui_label_three.setText(order.getAddress().toString());
+        ui_label_four.setText(order.getStatus());
 
         ui_button_clear.setOnAction(e -> {
             ui_label_one.setText("-");
@@ -65,9 +63,8 @@ public class DeliveryFormController implements Initializable {
             // prompt cancellation box
             popupBox = new PopupBox(ui_button_cancel.getText(), "Please Provide Cancellation Reason");
             popupBox.getTextAreaProperty().addListener((v, oldValue, newValue) -> {
-                System.out.println(newValue);
                 // put into delivery
-                DeliveryCancellation deliveryCancellation = new DeliveryCancellation(data.get(0), newValue, Status.Processing.getStatus());
+                DeliveryCancellation deliveryCancellation = new DeliveryCancellation(order.getOrderID(), newValue, Status.Processing.getStatus());
                 try{
                     FileHandlerDelivery fileHandlerDelivery = new FileHandlerDelivery(DatabasePath.DeliveryCancellation.getName());
                     fileHandlerDelivery.addContent(fileHandlerDelivery.getContent(DatabasePath.DeliveryCancellation.getDataLength()), deliveryCancellation.get());
@@ -85,21 +82,21 @@ public class DeliveryFormController implements Initializable {
             popupBox = new PopupBox(ui_button_delivered.getText(), "Please Provide Customer Feedback");
             popupBox.getTextAreaProperty().addListener((v, oldValue, newValue) -> {
                 System.out.println(newValue);
-                data.set(7, Status.Delivered.getStatus());
                 // change order status to delivered
                 try{
+                    order.setStatus(Status.Delivered.getStatus());
                     FileHandlerOrder fileHandlerOrder = new FileHandlerOrder(DatabasePath.Order.getName());
-                    fileHandlerOrder.update(fileHandlerOrder.getContent(DatabasePath.Order.getDataLength()), data);
-                    this.getDeliveryListViewerController().populateDeliveries("", null);
+                    fileHandlerOrder.update(fileHandlerOrder.getContent(DatabasePath.Order.getDataLength()), order.get());
+
+                    // add feedback listener
+                    this.deliveryListViewerController.populateDeliveries("", null);
                     this.ui_button_clear.fire();
                 } catch (Exception err) {
                     err.printStackTrace();
                 }
             });
             popupBox.showStage();
-        });
-
-        
+        }); 
     }
 
     public DeliveryListViewerController getDeliveryListViewerController() {

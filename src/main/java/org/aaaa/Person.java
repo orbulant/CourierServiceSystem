@@ -71,11 +71,18 @@ public class Person extends Data {
 
     @Override
     public void set(List<String> data) {
-        this.accountID  = data.get(AccountModel.AccountID.getIndex());
-        this.name       = data.get(AccountModel.Name.getIndex());
-        this.contactnum = data.get(AccountModel.Contact.getIndex());
-        this.nric       = data.get(AccountModel.NRIC.getIndex());
-        this.dob        = LocalDate.parse(data.get(AccountModel.DOB.getIndex()));
+        this.accountID   = data.get(AccountModel.AccountID.getIndex());
+        this.name        = data.get(AccountModel.Name.getIndex());
+        this.contactnum  = data.get(AccountModel.Contact.getIndex());
+        this.nric        = data.get(AccountModel.NRIC.getIndex());
+        this.dob         = LocalDate.parse(data.get(AccountModel.DOB.getIndex()));
+        this.fulladdress = new Address(new String[]{
+            data.get(AccountModel.Address.getIndex()),
+            data.get(AccountModel.City.getIndex()),
+            data.get(AccountModel.Postcode.getIndex()),
+            data.get(AccountModel.State.getIndex()),
+            data.get(AccountModel.Country.getIndex()),
+        });
     }
 
     public String getAccountID() {

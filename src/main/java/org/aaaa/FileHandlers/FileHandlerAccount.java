@@ -1,13 +1,11 @@
 package org.aaaa.FileHandlers;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.aaaa.Address;
 import org.aaaa.Person;
 import org.aaaa.Enums.DatabasePath;
+import org.aaaa.Enums.Models.AccountModel;
 
 
 public class FileHandlerAccount extends FileHandler {
@@ -20,38 +18,15 @@ public class FileHandlerAccount extends FileHandler {
         Person person = new Person();
         List<List<String>> tempList = this.getContent(DatabasePath.Account.getDataLength());
         for(List<String> temp: tempList) {
-            if(temp.get(0) == accountID) {
-                this.assignAccount(temp);
+            if(temp.get(AccountModel.AccountID.getIndex()).equals(accountID)) {
+                return this.assignAccount(temp);
             }
         }
         return person;
     }
 
-    public Person assignAccount(List<String> account) {
-        Person person = new Person();
-        person.setAccountID(account.get(0));
-        person.setNric(account.get(1));
-        person.setName(account.get(2));
-        person.setContactNum(account.get(3));
-        person.setDob(LocalDate.parse(account.get(4)));
-        person.setHousenum(account.get(5));
-        person.setCreatedBy(account.get(11));
-        person.setChangedBy(account.get(13));
-        if(account.get(12) != "") {
-            person.setCreatedOn(LocalDateTime.parse(account.get(12)));
-        }
-        if(account.get(14) != "") {
-            person.setChangedOn(LocalDateTime.parse(account.get(14)));
-        }
-
-        Address address = new Address();
-        address.setAddress(account.get(6));
-        address.setCity(account.get(7));
-        address.setPostcode(account.get(8));
-        address.setState(account.get(9));
-        address.setCountry(account.get(10));
-        person.setFulladdress(address);
-        return person;
+    public Person assignAccount(List<String> data) {
+        return new Person(data);
     }
 
     ////////////////////////////////OVERRIDES SEARCH

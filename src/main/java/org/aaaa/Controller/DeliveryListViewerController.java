@@ -45,7 +45,7 @@ public class DeliveryListViewerController extends ListViewerController implement
 
                 if(temp.get(i).toString().contains(filter)) {
                     // add item controller here
-                    DeliveryItemHolderController deliveryItemHolderController = new DeliveryItemHolderController(temp.get(i), isDashboard);
+                    DeliveryItemHolderController deliveryItemHolderController = new DeliveryItemHolderController(fileHandler.assignOrder(temp.get(i)), isDashboard);
                     deliveryItemHolderController.setDeliveryFormController(deliveryFormController);
                     loader.setController(deliveryItemHolderController);
                     content.getChildren().add((Node)loader.load());
