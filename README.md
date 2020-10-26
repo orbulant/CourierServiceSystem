@@ -12,26 +12,12 @@
 
 ### Functional Requirements
 
-~~#### Customers ~~
-
-
-~~Account~~
-~~- []	Create account~~
-~~- []	View account ~~
-~~- []	Deactivate *optional* ~~
-~~- []	Edit account ~~
-
-
-~~Orders ~~
-~~- []	Give feedback 
-
-
 #### Managing Staff
 
 
 Login/Logout
 - [x]	Login
-- [ ]	Logout
+- [x]	Logout
 
 
 User account management
@@ -70,7 +56,7 @@ Report
 
 Login/Logout
 - [x]	Login
-- [ ]	Logout
+- [x]	Logout
 
 
 User account management (Individual profile management)
