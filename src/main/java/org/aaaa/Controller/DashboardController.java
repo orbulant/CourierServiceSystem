@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-public class DashboardController implements Initializable {
+public class  DashboardController implements Initializable {
     @FXML
     AnchorPane mainPane;
     @FXML
@@ -51,7 +51,9 @@ public class DashboardController implements Initializable {
     private Node previousPage;
     private FXMLLoader orderMain;
     private FXMLLoader deliveryMain;
+    private FXMLLoader AUG;
     private BooleanProperty logoutProperty = new SimpleBooleanProperty();
+
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -142,6 +144,19 @@ public class DashboardController implements Initializable {
                 orderListController.populateOrders("");
                 deliveryCancellationListController.populateCancellations();
             });
+
+            this.sidebarButtonTwo.setText("Accounts");
+            sidebarButtonTwo.setOnMouseClicked( e -> {
+                this.setTitle(this.sidebarButtonTwo.getText());
+                try {
+                    AUG = new FXMLLoader(getClass().getResource(GUIPath.AccountUserGateway.getName()));
+                    this.overridePage(AUG.load());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+
 
             this.sidebarButtonThree.setText("Order");
             sidebarButtonThree.setOnMouseClicked(e -> {

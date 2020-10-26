@@ -31,7 +31,7 @@ public class FileHandlerUser extends FileHandler{
     }
 
     //BODY
-    ////////////////////////////////OVERRIDES SEARCH
+    ////////////////////////////////SEARCH
     @Override
     public List<String> search(String searchable){
         int L = 8;
@@ -49,7 +49,7 @@ public class FileHandlerUser extends FileHandler{
         }
         return result;
     }
-    ////////////////////////////////OVERLOADS UPDATE
+    ////////////////////////////////UPDATE
     public void update(Staff staff)  throws IOException{
         List<List<String>> userfile = getContent(8);
         //Create a file object
