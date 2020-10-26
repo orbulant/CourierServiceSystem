@@ -11,8 +11,8 @@ import java.util.List;
 
 public class FileHandlerUser extends FileHandler{
     //CONSTRUCTOR
-    public FileHandlerUser(String pathname) { 
-        super(pathname); 
+    public FileHandlerUser(String pathname) {
+        super(pathname);
     }
 
     public Staff getUserByAccountID(String accountID) {
@@ -28,10 +28,10 @@ public class FileHandlerUser extends FileHandler{
 
     public Staff assignUser(List<String> user) {
         return new Staff(user);
-    }   
+    }
 
     //BODY
-    ////////////////////////////////SEARCH
+    ////////////////////////////////OVERRIDES SEARCH
     @Override
     public List<String> search(String searchable){
         int L = 8;
@@ -49,7 +49,7 @@ public class FileHandlerUser extends FileHandler{
         }
         return result;
     }
-    ////////////////////////////////UPDATE
+    ////////////////////////////////OVERLOADS UPDATE
     public void update(Staff staff)  throws IOException{
         List<List<String>> userfile = getContent(8);
         //Create a file object
