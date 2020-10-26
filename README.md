@@ -42,6 +42,10 @@ Order Management
 - [ ]	Cancel order assignment
 
 
+Feedback Management
+- [ ]	View Feedback
+
+
 Delivery cancelation
 - [ ]	Approve delivery cancelation
 - [ ]	Reject delivery cancelation
