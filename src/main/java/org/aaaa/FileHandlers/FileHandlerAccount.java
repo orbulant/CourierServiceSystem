@@ -1,6 +1,9 @@
 package org.aaaa.FileHandlers;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.aaaa.Person;
@@ -9,43 +12,64 @@ import org.aaaa.Enums.Models.AccountModel;
 
 
 public class FileHandlerAccount extends FileHandler {
-//CONSTRUCTOR
-    public FileHandlerAccount(String pathname) {
-        super(pathname);
-    }
-
-    public Person getAccountByID(String accountID) {
-        Person person = new Person();
-        List<List<String>> tempList = this.getContent(DatabasePath.Account.getDataLength());
-        for(List<String> temp: tempList) {
-            if(temp.get(AccountModel.AccountID.getIndex()).equals(accountID)) {
-                return this.assignAccount(temp);
-            }
+    /*
+    Constructor
+     */
+        public FileHandlerAccount(String pathname) {
+            super(pathname);
         }
-        return person;
-    }
 
-    public Person assignAccount(List<String> data) {
-        return new Person(data);
-    }
-
-    ////////////////////////////////OVERRIDES SEARCH
-    @Override
-    public ArrayList<String> search(String searchable){
-        int L = 14;
-        ArrayList<String> result = new ArrayList<>();
-        try{
-            for (int i = 0; i < getContent(L).size(); i++) {
-                if (getContent(L).get(i).get(0).equals(searchable)) {
-                    for(int x = 0; x < 8; x++) {
-                        result.add(getContent(L).get(i).get(x));
-                    }
+    /*
+    Get Account By ID
+     */
+        public Person getAccountByID(String accountID) {
+            Person person = new Person();
+            List<List<String>> tempList = this.getContent(DatabasePath.Account.getDataLength());
+            for(List<String> temp: tempList) {
+                if(temp.get(AccountModel.AccountID.getIndex()).equals(accountID)) {
+                    return this.assignAccount(temp);
                 }
             }
-        } catch (Exception e){
-            e.printStackTrace();
+            return person;
         }
-        return result;
-    }
+
+    /*
+    Assign Account
+     */
+        public Person assignAccount(List<String> data) {
+            return new Person(data);
+        }
+
+
+    /*
+    Delete Account
+     */
+        public void deleteAccount(List<Person> buffer) throws IOException {
+            //Create a file object
+            File file = new File(pathname);
+            //Creates a fileWriter object
+            FileWriter writer = new FileWriter(file);
+            //Write content to file
+            //Writing array of objects separated by comma
+            for(Person innerstuff : buffer){
+                writer.write(innerstuff.getAccountID() + "\n");
+                writer.write(innerstuff.getNric()+ "\n");
+                writer.write(innerstuff.getName() + "\n");
+                writer.write(innerstuff.getContactNum()+ "\n");
+                writer.write(innerstuff.getDob().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "\n");
+                writer.write(innerstuff.getHousenum()+ "\n");
+                writer.write(innerstuff.getFulladdress().getAddress() + "\n");
+                writer.write(innerstuff.getFulladdress().getCity()+ "\n");
+                writer.write(innerstuff.getFulladdress().getPostcode() + "\n");
+                writer.write(innerstuff.getFulladdress().getState() + "\n");
+                writer.write(innerstuff.getFulladdress().getCountry()+ "\n");
+                writer.write(innerstuff.getCreatedBy() + "\n");
+                writer.write(innerstuff.getCreatedOn()+ "\n");
+                writer.write(innerstuff.getChangedBy() + "\n");
+                writer.write(innerstuff.getChangedOn()+ "\n");
+            }
+            writer.flush();
+            writer.close();
+        }
 
 }

@@ -50,7 +50,6 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="Account ID :" />
@@ -63,35 +62,33 @@
                               <Label fx:id="lbl_ContactNum" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Label text="House Number :" GridPane.rowIndex="5" />
                               <Label fx:id="lbl_HouseNum" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Label text="Role :" GridPane.rowIndex="6" />
-                              <Label fx:id="lbl_Role" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                              <Label text="Full Address :" GridPane.rowIndex="7" />
-                              <Label fx:id="lbl_FullAddress" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <Label text="City :" GridPane.rowIndex="8" />
-                              <Label fx:id="lbl_City" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <Label text="State :" GridPane.rowIndex="10" />
-                              <Label fx:id="lbl_State" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                              <Label text="Created By :" GridPane.rowIndex="12" />
-                              <Label fx:id="lbl_CreatedBy" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                              <Label text="Created On :" GridPane.rowIndex="13" />
-                              <Label fx:id="lbl_CreatedOn" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                              <Label text="Changed By :" GridPane.rowIndex="14" />
-                              <Label fx:id="lbl_ChangedBy" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                              <Label text="Changed On:" GridPane.rowIndex="15" />
-                              <Label fx:id="lbl_ChangedOn" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                              <Label text="Full Address :" GridPane.rowIndex="6" />
+                              <Label fx:id="lbl_FullAddress" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="City :" GridPane.rowIndex="7" />
+                              <Label fx:id="lbl_City" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label text="State :" GridPane.rowIndex="9" />
+                              <Label fx:id="lbl_State" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Label text="Created By :" GridPane.rowIndex="11" />
+                              <Label fx:id="lbl_CreatedBy" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                              <Label text="Created On :" GridPane.rowIndex="12" />
+                              <Label fx:id="lbl_CreatedOn" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                              <Label text="Changed By :" GridPane.rowIndex="13" />
+                              <Label fx:id="lbl_ChangedBy" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                              <Label text="Changed On:" GridPane.rowIndex="14" />
+                              <Label fx:id="lbl_ChangedOn" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                               <Label text="Date of Birth :" GridPane.rowIndex="2" />
                               <Label fx:id="lbl_DOB" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="Country :" GridPane.rowIndex="11" />
-                              <Label fx:id="lbl_Country" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                              <Label text="Postcode :" GridPane.rowIndex="9" />
-                              <Label fx:id="lbl_Postcode" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Label text="Country :" GridPane.rowIndex="10" />
+                              <Label fx:id="lbl_Country" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <Label text="Postcode :" GridPane.rowIndex="8" />
+                              <Label fx:id="lbl_Postcode" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                            </children>
                         </GridPane>
                         <ButtonBar layoutX="208.0" layoutY="591.0" prefHeight="40.0" prefWidth="200.0">
                           <buttons>
-                            <Button mnemonicParsing="false" text="Add.." />
-                              <Button mnemonicParsing="false" text="Edit.." />
-                              <Button mnemonicParsing="false" text="Delete" />
+                            <Button fx:id="btn_Add" mnemonicParsing="false" text="Add.." />
+                              <Button fx:id="btn_Edit" mnemonicParsing="false" text="Edit.." />
+                              <Button fx:id="btn_Delete" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
                           </buttons>
                         </ButtonBar>
                      </children>
