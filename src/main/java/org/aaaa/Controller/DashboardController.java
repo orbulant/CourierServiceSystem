@@ -50,6 +50,7 @@ public class DashboardController implements Initializable {
     private Node previousPage;
     private FXMLLoader orderMain;
     private FXMLLoader reportMain;
+    private FXMLLoader feedbackMain;
     private FXMLLoader deliveryMain;
     private BooleanProperty logoutProperty = new SimpleBooleanProperty();
 
@@ -143,6 +144,21 @@ public class DashboardController implements Initializable {
                     orderMainController.setDashboardController(this);
                     orderMain.setController(orderMainController);
                     this.overridePage((Node) orderMain.load());
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
+            });
+
+            this.sidebarButtonFour.setText("Feedback");
+            sidebarButtonFour.setOnMouseClicked(e -> {
+                this.setTitle(this.sidebarButtonFour.getText());
+                try{
+                    feedbackMain = new FXMLLoader(getClass().getResource(GUIPath.FeedbackMain.getName()));
+                    // set custom controller to order
+                    FeedbackMainController feedbackMainController = new FeedbackMainController();
+                    feedbackMainController.setDashboardController(this);
+                    feedbackMain.setController(feedbackMainController);
+                    this.overridePage((Node) feedbackMain.load());
                 } catch (Exception err) {
                     err.printStackTrace();
                 }

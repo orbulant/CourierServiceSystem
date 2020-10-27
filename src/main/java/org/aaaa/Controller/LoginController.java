@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import org.aaaa.CurrentUser;
+import org.aaaa.RecentLogin;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.FileHandlers.FileHandlerUser;
 
@@ -42,6 +43,10 @@ public class LoginController implements Initializable {
             while (i < fh.getContent(DatabasePath.Staff.getDataLength()).size()) {
                 if (loginfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(0)) && passwordfield.equals(fh.getContent(DatabasePath.Staff.getDataLength()).get(i).get(1))) {
                     CurrentUser.setStaff(fh.assignUser(fh.getContent(DatabasePath.Staff.getDataLength()).get(i)));
+
+                    RecentLogin recentLogin = new RecentLogin();
+                    // create a recent login record
+                    recentLogin.create();
 
                     // run this if authentication success
                     this.authenticated.setValue(true);

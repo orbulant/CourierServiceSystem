@@ -18,6 +18,7 @@
 Login/Logout
 - [x]	Login
 - [x]	Logout
+- [x]   Recent Login
 
 
 User account management
@@ -37,13 +38,12 @@ Order Management
 - [x]	Edit order
 - [x]	View order
 - [x]	Assign order to delivery staff
-     ~~- Based on their geolocation area, then time.~~
 - [x]	Manually assign order
 - [ ]	Cancel order assignment
 
 
 Feedback Management
-- [ ]	View Feedback
+- [x]	View Feedback
 
 
 Delivery cancelation
@@ -78,3 +78,4 @@ Delivery management
 - [x]	Confirm order delivery
 - [x]	Cancel order delivery
     - Provide reasoning details
+- [ ]   Enter Feedback
