@@ -47,9 +47,10 @@ public class  DashboardController implements Initializable {
     Button sidebarButtonSix;
 
     private String title;
-    private Node reportMain;
     private Node previousPage;
     private FXMLLoader orderMain;
+    private FXMLLoader reportMain;
+    private FXMLLoader feedbackMain;
     private FXMLLoader deliveryMain;
     private FXMLLoader AUG;
     private BooleanProperty logoutProperty = new SimpleBooleanProperty();
@@ -58,16 +59,6 @@ public class  DashboardController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.setTitle(GUIPath.Dashboard.toString());
-
-        try{
-            if(reportMain == null) {
-                reportMain = (Node)FXMLLoader.load(getClass().getResource(GUIPath.ReportMain.getName()));
-            }
-        } catch (Exception eButton) {
-            eButton.printStackTrace();
-        }
-
-
         this.pageLoader();      
     }
 
@@ -172,11 +163,35 @@ public class  DashboardController implements Initializable {
                     err.printStackTrace();
                 }
             });
+
+            this.sidebarButtonFour.setText("Feedback");
+            sidebarButtonFour.setOnMouseClicked(e -> {
+                this.setTitle(this.sidebarButtonFour.getText());
+                try{
+                    feedbackMain = new FXMLLoader(getClass().getResource(GUIPath.FeedbackMain.getName()));
+                    // set custom controller to order
+                    FeedbackMainController feedbackMainController = new FeedbackMainController();
+                    feedbackMainController.setDashboardController(this);
+                    feedbackMain.setController(feedbackMainController);
+                    this.overridePage((Node) feedbackMain.load());
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
+            });
     
             this.sidebarButtonFive.setText("Report");
             sidebarButtonFive.setOnMouseClicked(e -> {
                 this.setTitle(this.sidebarButtonFive.getText());
-                this.overridePage(reportMain);
+                try{
+                    reportMain = new FXMLLoader(getClass().getResource(GUIPath.ReportMain.getName()));
+                    // set custom controller to order
+                    ReportMainController reportMainController = new ReportMainController();
+                    reportMainController.setDashboardController(this);
+                    reportMain.setController(reportMainController);
+                    this.overridePage((Node) reportMain.load());
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();

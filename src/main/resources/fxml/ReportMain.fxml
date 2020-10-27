@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
@@ -29,22 +28,22 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
+                        <AnchorPane fx:id="box_small_one" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
+                        <AnchorPane fx:id="box_small_two" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
+                        <AnchorPane fx:id="box_small_three" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
+                        <AnchorPane fx:id="box_small_four" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -66,8 +65,8 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowSpan="2" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowSpan="2" />
+                  <AnchorPane fx:id="box_large_one" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.rowSpan="2" />
+                  <AnchorPane fx:id="box_large_two" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowSpan="2" />
                </children>
             </GridPane>
          </children>

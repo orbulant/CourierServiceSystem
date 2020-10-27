@@ -17,15 +17,15 @@ import javafx.scene.layout.VBox;
 
 public class OrderItemHolderController implements Initializable, BaseControllerInterface {
     @FXML
-    Label status;
+    private Label status;
     @FXML
-    Label order_id_name;
+    private Label order_id_name;
     @FXML
-    Label order_date;
+    private Label order_date;
     @FXML
-    Label delivery_date;
+    private Label delivery_date;
     @FXML
-    Button edit_view;
+    private Button edit_view;
     @FXML
     VBox short_content_container;
     @FXML
@@ -42,42 +42,44 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        switch (type) {
-            case "short":
-                order_id_name.setText(this.getFormattedOrderIDName());
-                order_date.setText(this.getFormattedOrderDate());
-                status.setText(order.getStatus());
-
-                if(order.getDeliDate() != null) {
-                    delivery_date.setText(this.getFormattedDeliveryDate());
-                }
-                
-                break;
-            case "long":
-                order_id_name.setText(this.getFormattedOrderIDName());
-                order_date.setText(order.getOrderDate().toString());
-                status.setText(order.getStatus());
-
-                if(order.getDeliDate() != null) {
-                    delivery_date.setText(order.getDeliDate().toString());
-                }
-
-                edit_view.setVisible(true);
-                break;
-        }
-
-        edit_view.setOnMouseClicked(e -> {
-            try{
-                FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.OrderForm.getName()));
-                // set custom controller to order
-                OrderFormController orderFormController = new OrderFormController(order);
-                orderFormController.setDashboardController(dashboardController);
-                orderList.setController(orderFormController);
-                this.dashboardController.overridePage((Node) orderList.load());
-            } catch (Exception err) {
-                err.printStackTrace();
+        if(order != null) {
+            switch (type) {
+                case "short":
+                    order_id_name.setText(this.getFormattedOrderIDName());
+                    order_date.setText(this.getFormattedOrderDate());
+                    status.setText(order.getStatus());
+    
+                    if(order.getDeliDate() != null) {
+                        delivery_date.setText(this.getFormattedDeliveryDate());
+                    }
+                    
+                    break;
+                case "long":
+                    order_id_name.setText(this.getFormattedOrderIDName());
+                    order_date.setText(order.getOrderDate().toString());
+                    status.setText(order.getStatus());
+    
+                    if(order.getDeliDate() != null) {
+                        delivery_date.setText(order.getDeliDate().toString());
+                    }
+    
+                    edit_view.setVisible(true);
+                    break;
             }
-        });
+    
+            edit_view.setOnMouseClicked(e -> {
+                try{
+                    FXMLLoader orderList = new FXMLLoader(getClass().getResource(GUIPath.OrderForm.getName()));
+                    // set custom controller to order
+                    OrderFormController orderFormController = new OrderFormController(order);
+                    orderFormController.setDashboardController(dashboardController);
+                    orderList.setController(orderFormController);
+                    this.dashboardController.overridePage((Node) orderList.load());
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
+            });
+        }
     }
 
     public String getFormattedOrderIDName() {
@@ -106,6 +108,8 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
         this.order = order;
     }
 
+    
+
     @Override
     public DashboardController getDashboardController() {
         return this.dashboardController;
@@ -114,5 +118,45 @@ public class OrderItemHolderController implements Initializable, BaseControllerI
     @Override
     public void setDashboardController(DashboardController dashboardController) {
         this.dashboardController = dashboardController;
+    }
+
+    public Label getStatus() {
+        return status;
+    }
+
+    public void setStatus(Label status) {
+        this.status = status;
+    }
+
+    public Label getOrderIdName() {
+        return order_id_name;
+    }
+
+    public void setOrderIdName(Label order_id_name) {
+        this.order_id_name = order_id_name;
+    }
+
+    public Label getOrderDate() {
+        return order_date;
+    }
+
+    public void setOrderDate(Label order_date) {
+        this.order_date = order_date;
+    }
+
+    public Label getDeliveryDate() {
+        return delivery_date;
+    }
+
+    public void setDeliveryDate(Label delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public Button getEditView() {
+        return edit_view;
+    }
+
+    public void setEditView(Button edit_view) {
+        this.edit_view = edit_view;
     }
 }

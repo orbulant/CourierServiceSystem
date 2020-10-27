@@ -2,7 +2,7 @@ package org.aaaa.Enums;
 
 public enum Status {
     Processing("Processing"),
-    Canceled("Canceled"),
+    Cancelled("Cancelled"),
     Delivering("Delivering"),
     Delivered("Delivered"),
     Approved("Approved"),

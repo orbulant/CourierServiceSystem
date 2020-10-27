@@ -4,7 +4,8 @@ public enum DatabasePath {
     Order("src/main/resources/database/order.txt", 19),
     Staff("src/main/resources/database/user.txt", 4),
     Account("src/main/resources/database/account.txt", 15),
-    User("src/main/resources/database/user.txt",4),
+    Feedback("src/main/resources/database/feedback.txt", 8),
+    RecentLogin("src/main/resources/database/recentLogin.txt", 2),
     DeliveryCancellation("src/main/resources/database/deliveryCancellation.txt", 6);
 
     private String name;
