@@ -12,10 +12,26 @@
 
 ### Functional Requirements
 
+#### Customers
+
+
+Account
+-	Create account
+-	View account
+-	Deactivate *optional*
+-	Edit account
+
+
+Orders
+-	Give feedback
+
+
 #### Managing Staff
 
 
 Login/Logout
+- [x]	Login
+- [x]	Logout
 - [x]	Login
 - [x]	Logout
 - [x]   Recent Login
@@ -38,12 +54,9 @@ Order Management
 - [x]	Edit order
 - [x]	View order
 - [x]	Assign order to delivery staff
+     ~~- Based on their geolocation area, then time.~~
 - [x]	Manually assign order
 - [ ]	Cancel order assignment
-
-
-Feedback Management
-- [x]	View Feedback
 
 
 Delivery cancelation
@@ -52,30 +65,29 @@ Delivery cancelation
 
 
 Report
-- [ ]	Generate report (User report, Sales report, Inventory report)
+-	Generate report (User report, Sales report, Inventory report)
 
 
 #### Delivery Staff
 
 
 Login/Logout
-- [x]	Login
-- [x]	Logout
+-	Login
+-	Logout
 
 
 User account management (Individual profile management)
-- [ ]	Edit own account
-- [ ]	View own account
+-	Edit own account
+-	View own account
 
 
 Availability
-- [ ]	Set availability status
+-	Set availability status
     - Check-in/Check-out
     
     
 Delivery management
-- [x]	View assigned orders
-- [x]	Confirm order delivery
-- [x]	Cancel order delivery
+-	View assigned orders
+-	Confirm order delivery
+-	Cancel order delivery
     - Provide reasoning details
-- [ ]   Enter Feedback
