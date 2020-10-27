@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="425.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aaaa.Controller.AccountEditDialogController">
+<AnchorPane prefHeight="465.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aaaa.Controller.AccountEditDialogController">
    <children>
-      <AnchorPane layoutX="5.0" layoutY="9.0" prefHeight="490.0" prefWidth="855.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="5.0" layoutY="9.0" prefHeight="465.0" prefWidth="855.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutX="21.0" layoutY="21.0" prefHeight="332.0" prefWidth="352.0">
                <children>
@@ -14,37 +14,36 @@
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="txt_field_AccountID" prefHeight="25.0" prefWidth="219.0" />
+                  <TextField fx:id="txt_AccountID" prefHeight="25.0" prefWidth="219.0" />
                   <Label fx:id="lbl_Name" text="Name :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_field_Name" prefHeight="26.0" prefWidth="328.0">
+                  <TextField fx:id="txt_Name" prefHeight="26.0" prefWidth="328.0">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></TextField>
+                  <Label text="Date of Birth :">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="txt_DOB" />
                   <Label text="NRIC :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField prefHeight="25.0" prefWidth="219.0" />
+                  <TextField fx:id="txt_Nric" prefHeight="25.0" prefWidth="219.0" />
                   <Label prefHeight="35.0" prefWidth="123.0" text="Contact Number :" wrapText="true">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField prefHeight="25.0" prefWidth="219.0" />
+                  <TextField fx:id="txt_ContactNum" prefHeight="25.0" prefWidth="219.0" />
                   <Label prefHeight="35.0" prefWidth="120.0" text="House Number :" wrapText="true">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField prefWidth="282.0" />
-                  <Label fx:id="lbl_Role" text="Role:">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="14.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="choiceBox_role" prefWidth="150.0" />
+                  <TextField fx:id="txt_HouseNum" prefWidth="282.0" />
                </children>
             </VBox>
             <VBox layoutX="461.0" layoutY="21.0" prefHeight="332.0" prefWidth="334.0">
@@ -53,58 +52,64 @@
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField prefHeight="111.0" prefWidth="314.0" />
+                  <TextField fx:id="txt_FullAddress" prefHeight="111.0" prefWidth="314.0" />
                   <Label text="City :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField />
+                  <TextField fx:id="txt_City" />
                   <Label text="State :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField />
+                  <TextField fx:id="txt_State" />
                   <Label text="Postcode :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField />
+                  <TextField fx:id="txt_Postcode" />
                   <Label text="Country :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField prefWidth="314.0" />
+                  <TextField fx:id="txt_Country" prefWidth="314.0" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" layoutX="16.0" layoutY="376.0" prefHeight="35.0" prefWidth="822.0" spacing="32.0" AnchorPane.bottomAnchor="14.0">
+            <HBox alignment="CENTER" layoutX="16.0" layoutY="376.0" prefHeight="35.0" prefWidth="819.0" spacing="32.0" AnchorPane.bottomAnchor="14.0">
                <children>
-                  <Label text="Created By:">
+                  <Label prefHeight="32.0" prefWidth="38.0" text="Created By:" wrapText="true">
                      <font>
-                        <Font name="Segoe UI Semibold Italic" size="12.0" />
+                        <Font name="Segoe UI Semibold Italic" size="10.0" />
                      </font>
                   </Label>
-                  <Label text="XXX" />
-                  <Label text="Created On:">
+                  <Label fx:id="lbl_CreatedBy" prefHeight="17.0" prefWidth="99.0" text="XXX" />
+                  <Label prefHeight="32.0" prefWidth="37.0" text="Created On:" wrapText="true">
                      <font>
-                        <Font name="Segoe UI Semibold Italic" size="12.0" />
+                        <Font name="Segoe UI Semibold Italic" size="10.0" />
                      </font>
                   </Label>
-                  <Label text="XXX" />
-                  <Label text="Changed By:">
+                  <Label fx:id="lbl_CreatedOn" prefHeight="17.0" prefWidth="96.0" text="XXX" />
+                  <Label prefHeight="35.0" prefWidth="41.0" text="Changed By:" wrapText="true">
                      <font>
-                        <Font name="Segoe UI Semibold Italic" size="12.0" />
+                        <Font name="Segoe UI Semibold Italic" size="10.0" />
                      </font>
                   </Label>
-                  <Label text="XXX" />
-                  <Label text="Changed On:">
+                  <Label fx:id="lbl_ChangedBy" prefHeight="17.0" prefWidth="92.0" text="XXX" />
+                  <Label prefHeight="33.0" prefWidth="43.0" text="Changed On:" wrapText="true">
                      <font>
-                        <Font name="Segoe UI Semibold Italic" size="12.0" />
+                        <Font name="Segoe UI Semibold Italic" size="10.0" />
                      </font>
                   </Label>
-                  <Label text="XXX" />
+                  <Label fx:id="lbl_ChangedOn" prefHeight="17.0" prefWidth="87.0" text="XXX" />
                </children>
             </HBox>
             <Separator layoutX="421.0" layoutY="35.0" orientation="VERTICAL" prefHeight="324.0" prefWidth="14.0" />
+            <ButtonBar layoutX="614.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button fx:id="btn_Save" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                  <Button fx:id="btn_Cancel" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+              </buttons>
+            </ButtonBar>
          </children>
       </AnchorPane>
    </children>

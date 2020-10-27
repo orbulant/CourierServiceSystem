@@ -4,11 +4,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Window;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.aaaa.Enums.DatabasePath;
-import org.aaaa.FileHandlers.FileHandler;
+import org.aaaa.Enums.GUIPath;
 import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.Person;
 
@@ -16,7 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class AccountOverviewController implements Initializable {
 
@@ -64,9 +67,45 @@ public class AccountOverviewController implements Initializable {
     Button btn_Delete;
 
     //Observable List
-    private final ObservableList<Person> masterData = FXCollections.observableArrayList();
+    private ObservableList<Person> masterData = FXCollections.observableArrayList();
+
+    /**
+     * Returns the data as an observable list of Persons.
+     * @return the masterData
+     */
+    public ObservableList<Person> getMasterData() {
+        return masterData;
+    }
 
     public AccountOverviewController(){
+        setMasterData();
+    }
+
+    /**
+     * Initialize the tableview columns, binding data to the tableview and creating a select listener.
+     * @param url default
+     * @param resourceBundle default
+     */
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+            // Initialize the person table with the two columns
+            AccountIDColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountID()));
+            NameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+            //Set items of the accountTable (TableView) with masterData, in this case all the accounts from accounts.txt
+            accountTable.setItems(masterData);
+            //Clear person details
+            showPersonDetails(null);
+            //Listener for selection changes which then shows the person details when changed.
+            accountTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
+    }
+
+    /**STRONG
+     * Sets the the tableview (masterData) from the database
+     *
+     *
+     */
+    public void setMasterData(){
+        masterData.clear();
         FileHandlerAccount fhAccount = new FileHandlerAccount(DatabasePath.Account.getName());
         List<List<String>> temp = fhAccount.getContent(DatabasePath.Account.getDataLength());
         for(List<String> eachAccount : temp ){
@@ -79,18 +118,18 @@ public class AccountOverviewController implements Initializable {
             masterData.add(tempPerson);
         }
     }
-
-    @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-            // Initialize the person table with the two columns
-            AccountIDColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAccountID()));
-            NameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
-            //Set items of the accountTable (TableView) with masterData, in this case all the accounts from accounts.txt
-            accountTable.setItems(masterData);
-            //Clear person details
-            showPersonDetails(null);
-            //Listener for selection changes which then shows the person details when changed.
-            accountTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
+    /**STRONG
+     * Updates the account file
+     *
+     *
+     */
+    private void PersonUpdateFile(){
+        FileHandlerAccount fhAccount = new FileHandlerAccount(DatabasePath.Account.getName());
+        try {
+            fhAccount.writeAccountFile(accountTable.getItems());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showPersonDetails(Person person){
@@ -133,6 +172,9 @@ public class AccountOverviewController implements Initializable {
 
     }
 
+    /**
+     * Handles deleting persons from the table overview
+     */
     @FXML
     private void handleDeletePerson(){
         int selectedIndex = accountTable.getSelectionModel().getSelectedIndex();
@@ -146,15 +188,114 @@ public class AccountOverviewController implements Initializable {
             alert.setContentText("Please select a person in the table!");
             alert.showAndWait();
         }
-        DeletePersonUpdateFile();
+        PersonUpdateFile();
     }
 
-    private void DeletePersonUpdateFile(){
-        FileHandlerAccount fhAccount = new FileHandlerAccount(DatabasePath.Account.getName());
+
+    /**
+     * Opens the edit dialog for the specified person. If user clicks on Save, changes are saved into the provided person object and true is returned
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked on "Save", false otherwise.
+     */
+    public boolean showAccountEditDialog(Person person) {
         try {
-            fhAccount.deleteAccount(accountTable.getItems());
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(GUIPath.AccountEditDialog.getName()));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Person");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            AccountEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setPerson(person);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+
+            return controller.isSaveClicked();
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
+
+    public boolean showAccountAddDialog(Person person) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(GUIPath.AccountAddDialog.getName()));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Add Person");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            AccountAddDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.addPerson(person);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isAddClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Called when the user clicks the add button. Opens a dialog to add
+     * details for a new person.
+     */
+    @FXML
+    private void handleAddPerson() {
+        Person tempPerson = new Person();
+        boolean saveClicked = this.showAccountAddDialog(tempPerson);
+        if (saveClicked) {
+            this.getMasterData().add(tempPerson);
+            PersonUpdateFile();
+        }
+    }
+
+    /**
+     * Called when the user clicks the edit button. Opens a dialog to edit
+     * details for the selected person.
+     */
+    @FXML
+    private void handleEditPerson() {
+        Person selectedPerson = accountTable.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+            boolean saveClicked = this.showAccountEditDialog(selectedPerson);
+            if (saveClicked) {
+                showPersonDetails(selectedPerson);
+                PersonUpdateFile();
+                setMasterData();
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+    }
+
+
 }

@@ -44,7 +44,7 @@ public class FileHandlerAccount extends FileHandler {
     /*
     Delete Account
      */
-        public void deleteAccount(List<Person> buffer) throws IOException {
+        public void writeAccountFile(List<Person> buffer) throws IOException {
             //Create a file object
             File file = new File(pathname);
             //Creates a fileWriter object
@@ -71,5 +71,34 @@ public class FileHandlerAccount extends FileHandler {
             writer.flush();
             writer.close();
         }
+    /*
+    Update Account
+     */
+    public void update(Person person) throws IOException{
+        //Create a file object
+        File file = new File(pathname);
+        //Creates a fileWriter object
+        FileWriter writer = new FileWriter(file);
+        //Creates a multi-dimensional list named buffer.
+        List<List<String>> buffer = getContent(DatabasePath.Account.getDataLength());
+
+        for (List<String> item : buffer) {
+            if (person.getAccountID().equals(item.get(0))){
+                item.set(0, person.getAccountID());
+                item.set(1, person.getName());
+            }
+        }
+
+        for(List<String> innerstuff : buffer){
+            for(String s : innerstuff){
+                writer.write(s + "\n");
+            }
+        }
+        //Writing array of objects separated by comma and new line
+        writer.flush();
+        writer.close();
+    }
+
+
 
 }

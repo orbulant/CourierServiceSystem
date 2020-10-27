@@ -2,7 +2,8 @@ package org.aaaa.Enums;
 
 public enum GUIPath {
     AccountUserGateway("/fxml/AccountUserGateway.fxml"),
-    AccountUserRootLayout("/fxml/AccountRootLayout.fxml"),
+    AccountEditDialog("/fxml/AccountEditDialog.fxml"),
+    AccountAddDialog("/fxml/AccountAddDialog.fxml"),
     AccountOverview("/fxml/AccountOverview.fxml"),
     UserOverview("/fxml/"),
     Login("/fxml/Login.fxml"),
