@@ -18,7 +18,10 @@ public class Feedback extends Data {
     // private FileHandlerFeedback fileHandlerFeedback;
 
     public Feedback() {
-        this.feedbackID   = "";
+        List<List<String>> temp = fileHandler.getContent(DatabasePath.Feedback.getDataLength());
+
+       // assign latest id
+        this.feedbackID   = Integer.toString(Integer.parseInt(temp.get(temp.size() - 1).get(FeedbackModel.FeedbackID.getIndex())) + 1);
         this.feedback     = "";
         this.order        = new Order();
         this.feedbackDate = LocalDate.now();

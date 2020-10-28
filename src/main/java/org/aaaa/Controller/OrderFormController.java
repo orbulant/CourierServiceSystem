@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import org.aaaa.Person;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Roles;
+import org.aaaa.Enums.Status;
 import org.aaaa.Enums.Models.AccountModel;
 import org.aaaa.Enums.Models.UserModel;
 import org.aaaa.FileHandlers.FileHandlerAccount;
@@ -70,6 +71,8 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
     Button btn_submit;
     @FXML
     Button btn_back;
+    @FXML
+    Button btn_cancel;
 
     private String title;
     private Order order;
@@ -109,6 +112,32 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
         }
 
         this.toggleAutoAssign();
+
+        // disable all if status is delivered or cancelled
+        if (order != null) {
+            if (order.getStatus().equals(Status.Delivered.getStatus()) || 
+                order.getStatus().equals(Status.Cancelling.getStatus()) ||
+                order.getStatus().equals(Status.Cancelled.getStatus())) {
+                this.txt_order_name.setDisable(true);
+                this.txt_order_desc.setDisable(true);
+                this.dp_order_date.setDisable(true);
+                this.dp_deli_date.setDisable(true);
+                this.cb_is_fragile.setDisable(true);
+                this.txt_name.setDisable(true);
+                this.txt_contact.setDisable(true);
+                this.txt_address.setDisable(true);
+                this.txt_city.setDisable(true);
+                this.txt_postcode.setDisable(true);
+                this.txt_state.setDisable(true);
+                this.txt_country.setDisable(true);
+                this.txt_assign_to.setDisable(true);
+                this.cb_auto_assign.setDisable(true);
+                this.btn_submit.setDisable(true);
+            } else {
+                this.btn_cancel.setText("Cancel");
+                this.btn_cancel.setVisible(true);
+            }
+        }
         
         // set visual representation of data in combo box
         this.txt_assign_to.setConverter(new StringConverter<Person>() {
@@ -133,6 +162,12 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
         });
 
         btn_back.setOnMouseClicked(e -> {
+            dashboardController.loadPreviousPage();
+        });
+
+        btn_cancel.setOnMouseClicked(e -> {
+            order.setStatus(Status.Cancelled.getStatus());
+            order.update();
             dashboardController.loadPreviousPage();
         });
     }

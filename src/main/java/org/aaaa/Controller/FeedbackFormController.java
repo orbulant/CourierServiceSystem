@@ -60,6 +60,6 @@ public class FeedbackFormController implements Initializable {
 
     private String getFormattedDeliveryInfo() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return String.join(" ON ", this.feedback.getOrder().getAssignTo().getName(), this.feedback.getOrder().getChangedOn().format(formatter));
+        return String.join(" ON ", this.feedback.getOrder().getAssignTo().getName(), this.feedback.getOrder().getCreatedOn().format(formatter));
     }
 }

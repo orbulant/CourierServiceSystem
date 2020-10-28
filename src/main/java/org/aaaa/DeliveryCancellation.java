@@ -4,11 +4,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Models.DeliveryCancellationModel;
+import org.aaaa.FileHandlers.FileHandlerOrder;
+import org.aaaa.FileHandlers.FileHandlerUser;
 
 public class DeliveryCancellation implements DataInterface {
     private String orderID;
     private String accountID;
+    private Order order;
+    private Staff staff;
     private String reason;
     private String status;
     private LocalDateTime requestDate;
@@ -28,16 +33,7 @@ public class DeliveryCancellation implements DataInterface {
     }
 
     public DeliveryCancellation(List<String> data) {
-        this.orderID = data.get(0);
-        this.accountID = data.get(1);
-        this.reason = data.get(2);
-        this.status = data.get(3);
-        if(!data.get(4).isBlank()) {
-            this.requestDate = LocalDateTime.parse(data.get(4));
-        }
-        if(!data.get(5).isBlank()) {
-            this.approvalDate = LocalDateTime.parse(data.get(5));
-        }
+        this.set(data);
     }
 
     @Override
@@ -66,6 +62,11 @@ public class DeliveryCancellation implements DataInterface {
 
     @Override
     public void set(List<String> data) {
+        FileHandlerUser fileHandlerUser = new FileHandlerUser(DatabasePath.Staff.getName());
+        this.staff = fileHandlerUser.getUserByAccountID(data.get(DeliveryCancellationModel.AccountID.getIndex()));
+        FileHandlerOrder fileHandlerOrder = new FileHandlerOrder(DatabasePath.Order.getName());
+        this.order = fileHandlerOrder.assignOrder(fileHandlerOrder.getOrderByID(data.get(DeliveryCancellationModel.OrderID.getIndex())));
+
         this.orderID      = data.get(DeliveryCancellationModel.OrderID.getIndex());
         this.accountID    = data.get(DeliveryCancellationModel.AccountID.getIndex());
         this.reason       = data.get(DeliveryCancellationModel.Reason.getIndex());
@@ -123,5 +124,21 @@ public class DeliveryCancellation implements DataInterface {
 
     public void setApprovalDate(LocalDateTime approvalDate) {
         this.approvalDate = approvalDate;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 }

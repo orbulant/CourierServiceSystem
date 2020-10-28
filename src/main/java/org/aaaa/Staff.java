@@ -31,7 +31,7 @@ public class Staff implements DataInterface {
         result.add(this.role);
         result.add(this.person.getAccountID());
 
-        return result;
+        return result;        
     }
 
     public void set(List<String> data) {
@@ -69,9 +69,11 @@ public class Staff implements DataInterface {
         return this.person.getAccountID();
     }
 
-    public void setAccountID(String accountID) {
-        this.person.setAccountID(accountID);
+    public Person getPerson() {
+        return person;
     }
 
-    public Person getPerson() {return this.person;}
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

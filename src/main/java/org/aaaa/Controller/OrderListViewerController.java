@@ -75,7 +75,7 @@ public class OrderListViewerController extends ListViewerController implements I
                         content.getChildren().add((Node)loader.load());
     
                         // set list view header
-                        orderItemHolderController.getOrderIdName().setText("OrderID/OrderName");
+                        orderItemHolderController.getOrderIdName().setText("Order ID/Name");
                         orderItemHolderController.getOrderDate().setText("Order Date");
                         orderItemHolderController.getDeliveryDate().setText("Delivery Date");
                         orderItemHolderController.getStatus().setText("Status");
@@ -83,7 +83,7 @@ public class OrderListViewerController extends ListViewerController implements I
 
                     }
                 } else {
-                    if(temp.get(i).toString().contains(filter)) {
+                    if(temp.get(i).toString().toLowerCase().contains(filter.toLowerCase())) {
                         OrderItemHolderController orderItemHolderController = new OrderItemHolderController(fileHandler.assignOrder(temp.get(i)), type);
                         orderItemHolderController.setDashboardController(this.dashboardController);
                         loader.setController(orderItemHolderController);

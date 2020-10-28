@@ -40,10 +40,11 @@ public class DeliveryListViewerController extends ListViewerController implement
             content.getChildren().clear();
             List<List<String>> temp = fileHandler.getDelivererContent(DatabasePath.Order.getDataLength(), date);
             FXMLLoader loader = new FXMLLoader();
+
             for (int i = 0; i < temp.size(); i++) {
                 loader = new FXMLLoader(getClass().getResource(GUIPath.DeliveryItemHolder.getName()));
 
-                if(temp.get(i).toString().contains(filter)) {
+                if(temp.get(i).toString().toLowerCase().contains(filter.toLowerCase())) {
                     // add item controller here
                     DeliveryItemHolderController deliveryItemHolderController = new DeliveryItemHolderController(fileHandler.assignOrder(temp.get(i)), isDashboard);
                     deliveryItemHolderController.setDeliveryFormController(deliveryFormController);
