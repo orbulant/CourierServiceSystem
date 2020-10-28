@@ -42,7 +42,7 @@ public class FileHandlerAccount extends FileHandler {
 
 
     /*
-    Delete Account
+    Write account.txt
      */
         public void writeAccountFile(List<Person> buffer) throws IOException {
             //Create a file object

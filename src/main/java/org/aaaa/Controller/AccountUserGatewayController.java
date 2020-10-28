@@ -43,6 +43,19 @@ public class AccountUserGatewayController implements Initializable, BaseControll
                 }
             });
 
+        btn_view_Users.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(GUIPath.UserOverview.getName()));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setTitle("Viewing Users");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException exh) {
+                Logger logger = Logger.getLogger(getClass().getName());
+                logger.log(Level.SEVERE, "Failed to create new Window.", exh);
+            }
+        });
     }
 
     @Override

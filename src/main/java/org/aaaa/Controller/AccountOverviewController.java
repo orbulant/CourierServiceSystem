@@ -220,7 +220,6 @@ public class AccountOverviewController implements Initializable {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
-
             return controller.isSaveClicked();
         } catch (IOException e) {
             e.printStackTrace();

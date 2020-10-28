@@ -1,5 +1,6 @@
 package org.aaaa.FileHandlers;
 
+import org.aaaa.Person;
 import org.aaaa.Staff;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Models.UserModel;
@@ -7,6 +8,7 @@ import org.aaaa.Enums.Models.UserModel;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,24 +56,44 @@ public class FileHandlerUser extends FileHandler{
         }
         return result;
     }
-    ////////////////////////////////UPDATE
-    public void update(Staff staff)  throws IOException{
-        List<List<String>> userfile = getContent(8);
+    /*
+     Write user.txt with new stuff
+      */
+    public void writeStaffFile(List<Staff> buffer) throws IOException {
         //Create a file object
         File file = new File(pathname);
         //Creates a fileWriter object
         FileWriter writer = new FileWriter(file);
+        //Write content to file
+        //Writing array of objects separated by comma
+        for(Staff innerstuff : buffer){
+            writer.write(innerstuff.getAccountID() + "\n");
+            writer.write(innerstuff.getUsername() + "\n");
+            writer.write(innerstuff.getPassword() + "\n");
+            writer.write(innerstuff.getRole() + "\n");
+        }
+        writer.flush();
+        writer.close();
+    }
+    /*
+   Update Staff
+    */
+    public void update(Staff staff) throws IOException{
+        //Create a file object
+        File file = new File(pathname);
+        //Creates a fileWriter object
+        FileWriter writer = new FileWriter(file);
+        //Creates a multi-dimensional list named buffer.
+        List<List<String>> buffer = getContent(DatabasePath.Staff.getDataLength());
 
-        for (List<String> user : userfile) {
-            if (user.get(0).equals(staff.getAccountID())) {
-                user.set(0, staff.getAccountID());
-                user.set(1, staff.getUsername());
-                user.set(2, staff.getPassword());
-                user.set(3, staff.getRole());
+        for (List<String> item : buffer) {
+            if (staff.getAccountID().equals(item.get(0))){
+                item.set(0, staff.getAccountID());
+                item.set(1, staff.getUsername());
             }
         }
 
-        for(List<String> innerstuff : userfile){
+        for(List<String> innerstuff : buffer){
             for(String s : innerstuff){
                 writer.write(s + "\n");
             }
