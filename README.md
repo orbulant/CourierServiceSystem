@@ -39,7 +39,7 @@ Order Management
 - [x]	View order
 - [x]	Assign order to delivery staff
 - [x]	Manually assign order
-- [ ]	Cancel order assignment
+- [x]	Cancel order assignment
 
 
 Feedback Management
@@ -47,8 +47,8 @@ Feedback Management
 
 
 Delivery cancelation
-- [ ]	Approve delivery cancelation
-- [ ]	Reject delivery cancelation
+- [x]	Approve delivery cancelation
+- [x]	Reject delivery cancelation
 
 
 Report
@@ -78,4 +78,4 @@ Delivery management
 - [x]	Confirm order delivery
 - [x]	Cancel order delivery
     - Provide reasoning details
-- [ ]   Enter Feedback
+- [x]   Enter Feedback

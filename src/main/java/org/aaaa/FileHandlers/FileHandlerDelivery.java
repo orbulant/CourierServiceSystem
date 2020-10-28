@@ -21,7 +21,7 @@ public class FileHandlerDelivery extends FileHandler {
         List<List<String>> filteredList = new ArrayList<>();
 
         for(List<String> temp : originalList) {
-            if(temp.get(3).equals(Status.Processing.getStatus())) {
+            if(temp.get(3).equals(Status.Cancelling.getStatus())) {
                 filteredList.add(temp);
             }
         }

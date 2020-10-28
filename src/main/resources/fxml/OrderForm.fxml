@@ -330,7 +330,7 @@
                               <Insets right="15.0" />
                            </VBox.margin>
                            <children>
-                              <Button fx:id="btn_submit1" mnemonicParsing="false" prefHeight="78.0" prefWidth="231.0" text="Delete" visible="false">
+                              <Button fx:id="btn_cancel" mnemonicParsing="false" prefHeight="78.0" prefWidth="231.0" text="Delete" visible="false">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>

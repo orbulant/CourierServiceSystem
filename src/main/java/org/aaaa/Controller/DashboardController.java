@@ -116,6 +116,7 @@ public class DashboardController implements Initializable {
             FXMLLoader deliveryRequestList = new FXMLLoader(getClass().getResource(GUIPath.ListViewer.getName()));
             // set custom controller to order
             DeliveryCancellationListViewerController deliveryCancellationListController = new DeliveryCancellationListViewerController();
+            deliveryCancellationListController.setDashboardController(this);
             deliveryRequestList.setController(deliveryCancellationListController);
 
             // add to dashboard pane
@@ -220,7 +221,8 @@ public class DashboardController implements Initializable {
                 }
             });
             
-            this.sidebarButtonFive.setVisible(false);;
+            this.sidebarButtonFour.setVisible(false);
+            this.sidebarButtonFive.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

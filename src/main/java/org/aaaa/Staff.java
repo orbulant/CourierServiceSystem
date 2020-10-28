@@ -68,4 +68,12 @@ public class Staff implements DataInterface {
     public String getAccountID() {
         return this.person.getAccountID();
     }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

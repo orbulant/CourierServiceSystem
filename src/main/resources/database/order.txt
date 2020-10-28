@@ -4,7 +4,7 @@ cxvzxcvxzvcxcz
 2020-07-01
 2020-07-01
 false
-2
+3
 Delivered
 Wong
 012-34567890
@@ -16,7 +16,7 @@ Fake country
 admin
 2020-10-18T17:30:31.624175
 admin
-2020-10-26T15:31:05.206258300
+2020-10-28T14:40:52.312743900
 2
 Gift from Tan
 
@@ -24,7 +24,7 @@ Gift from Tan
 2020-07-01
 false
 2
-Processing
+Cancelled
 Wong
 012-34567890
 123 Fake street
@@ -34,16 +34,16 @@ Fake state
 Fake country
 admin
 2020-10-13T19:31:15.653844700
-
-
+admin
+2020-10-28T16:37:00.465567900
 3
 Gift from Tan
 
 2020-07-01
 2020-07-01
 false
-3
-Processing
+2
+Cancelled
 Wong
 012-34567890
 123 Fake street
@@ -53,16 +53,16 @@ Fake state
 Fake country
 admin
 2020-10-13T19:31:15.653844700
-
-
+admin
+2020-10-28T16:37:46.091872500
 4
 Gift from Tan
 
 2020-07-01
 2020-07-01
 false
-3
-Processing
+2
+Delivered
 Wong
 012-34567890
 123 Fake street
@@ -80,8 +80,8 @@ fdsafasdf
 2020-10-04
 2020-10-04
 true
-3
-Processing
+2
+Cancelled
 dasd
 asdasd
 adasdas
@@ -91,8 +91,8 @@ dasda
 dasd
 admin
 2020-10-18T16:54:17.500620500
-
-
+admin
+2020-10-28T16:45:57.493807500
 6
 New Test Order
 Something Something
@@ -111,4 +111,4 @@ Somecountry
 admin
 2020-10-26T14:27:04.314543600
 admin
-2020-10-26T17:12:44.225684900
+2020-10-28T16:44:53.819062

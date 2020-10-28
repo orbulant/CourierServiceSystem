@@ -1,9 +1,11 @@
 package org.aaaa.Controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import org.aaaa.DeliveryCancellation;
+import org.aaaa.Feedback;
 import org.aaaa.Order;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Status;
@@ -64,10 +66,16 @@ public class DeliveryFormController implements Initializable {
             popupBox = new PopupBox(ui_button_cancel.getText(), "Please Provide Cancellation Reason");
             popupBox.getTextAreaProperty().addListener((v, oldValue, newValue) -> {
                 // put into delivery
-                DeliveryCancellation deliveryCancellation = new DeliveryCancellation(order.getOrderID(), newValue, Status.Processing.getStatus());
+                DeliveryCancellation deliveryCancellation = new DeliveryCancellation(order.getOrderID(), newValue, Status.Cancelling.getStatus());
                 try{
+                    // add delivery cancellation record
                     FileHandlerDelivery fileHandlerDelivery = new FileHandlerDelivery(DatabasePath.DeliveryCancellation.getName());
                     fileHandlerDelivery.addContent(fileHandlerDelivery.getContent(DatabasePath.DeliveryCancellation.getDataLength()), deliveryCancellation.get());
+                    // change order status
+                    FileHandlerOrder fileHandlerOrder = new FileHandlerOrder(DatabasePath.Order.getName());
+                    order.setStatus(Status.Cancelling.getStatus());
+                    fileHandlerOrder.update(fileHandlerOrder.getContent(DatabasePath.Order.getDataLength()), order.get());
+
                     this.getDeliveryListViewerController().populateDeliveries("", null);
                     this.ui_button_clear.fire();
                 } catch (Exception err) {
@@ -81,12 +89,17 @@ public class DeliveryFormController implements Initializable {
             // prompt feedback box
             popupBox = new PopupBox(ui_button_delivered.getText(), "Please Provide Customer Feedback");
             popupBox.getTextAreaProperty().addListener((v, oldValue, newValue) -> {
-                System.out.println(newValue);
                 // change order status to delivered
                 try{
                     order.setStatus(Status.Delivered.getStatus());
                     FileHandlerOrder fileHandlerOrder = new FileHandlerOrder(DatabasePath.Order.getName());
                     fileHandlerOrder.update(fileHandlerOrder.getContent(DatabasePath.Order.getDataLength()), order.get());
+
+                    Feedback feedback = new Feedback();
+                    feedback.setFeedback(newValue);
+                    feedback.setOrder(order);
+                    feedback.setFeedbackDate(LocalDate.now());
+                    feedback.create();
 
                     // add feedback listener
                     this.deliveryListViewerController.populateDeliveries("", null);

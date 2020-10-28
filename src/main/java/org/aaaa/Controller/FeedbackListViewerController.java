@@ -38,12 +38,21 @@ public class FeedbackListViewerController extends ListViewerController implement
             for (int i = 0; i < temp.size(); i++) {
                 loader = new FXMLLoader(getClass().getResource(GUIPath.FeedbackItemHolder.getName()));
 
-                if(temp.get(i).toString().contains(filter)) {
-                    // add item controller here
+                // if(temp.get(i).toString().contains(filter)) {
+                if(filter.isBlank()) {
                     FeedbackItemHolderController feedbackItemHolderController = new FeedbackItemHolderController(new Feedback(temp.get(i)));
                     feedbackItemHolderController.setFeedbackFormController(feedbackFormController);
                     loader.setController(feedbackItemHolderController);
                     content.getChildren().add((Node)loader.load());
+                } else {
+                    if (new Feedback(temp.get(i)).get().toString().toLowerCase().contains(filter.toLowerCase()) || 
+                        new Feedback(temp.get(i)).getOrder().get().toString().toLowerCase().contains(filter.toLowerCase())) {
+                        // add item controller here
+                        FeedbackItemHolderController feedbackItemHolderController = new FeedbackItemHolderController(new Feedback(temp.get(i)));
+                        feedbackItemHolderController.setFeedbackFormController(feedbackFormController);
+                        loader.setController(feedbackItemHolderController);
+                        content.getChildren().add((Node)loader.load());
+                    }
                 }
             }
         } catch (Exception e) {
