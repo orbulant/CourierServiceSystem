@@ -51,7 +51,7 @@ public class  DashboardController implements Initializable {
     @FXML
     Button sidebarButtonSix;
     @FXML
-    Button btn_Profile;
+    Button btn_view_Profile;
 
     private String title;
     private Node previousPage;
@@ -109,17 +109,12 @@ public class  DashboardController implements Initializable {
             });
 
             //Top Profile button
-            btn_Profile.setOnMouseClicked(e -> {
+            btn_view_Profile.setOnMouseClicked(e -> {
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(GUIPath.Profile.getName()));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setTitle("Your Profile");
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException exh) {
-                    Logger logger = Logger.getLogger(getClass().getName());
-                    logger.log(Level.SEVERE, "Failed to create new Window.", exh);
+                    AUG = new FXMLLoader(getClass().getResource(GUIPath.Profile.getName()));
+                    this.overridePage(AUG.load());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             });
         } catch (Exception e) {

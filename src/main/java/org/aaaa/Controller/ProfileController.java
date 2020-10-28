@@ -54,6 +54,8 @@ public class ProfileController implements Initializable {
             //Fill labels on the right hand side with information from the person object.
             lbl_AccountID.setText(CurrentUser.getStaff().getAccountID());
             lbl_Name.setText(CurrentUser.getStaff().getPerson().getName());
+            lbl_Username.setText(CurrentUser.getStaff().getUsername());
+            lbl_Password.setText(CurrentUser.getStaff().getPassword());
             lbl_DOB.setText(String.valueOf(CurrentUser.getStaff().getPerson().getDob()));
             lbl_NRIC.setText(CurrentUser.getStaff().getPerson().getNric());
             lbl_ContactNum.setText(CurrentUser.getStaff().getPerson().getContactNum());
@@ -68,7 +70,6 @@ public class ProfileController implements Initializable {
             lbl_ChangedBy.setText(CurrentUser.getStaff().getPerson().getChangedBy());
             lbl_ChangedOn.setText(String.valueOf(CurrentUser.getStaff().getPerson().getChangedOn()));
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
