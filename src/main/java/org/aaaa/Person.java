@@ -62,6 +62,7 @@ public class Person extends Data {
         result.add(this.accountID);
         result.add(this.name);
         result.add(this.contactnum);
+        result.add(this.housenum);
         result.add(this.nric);
         result.add(this.dob.toString());
         result.addAll(this.fulladdress.get());
@@ -74,6 +75,7 @@ public class Person extends Data {
         this.accountID   = data.get(AccountModel.AccountID.getIndex());
         this.name        = data.get(AccountModel.Name.getIndex());
         this.contactnum  = data.get(AccountModel.Contact.getIndex());
+        this.housenum    = data.get(AccountModel.HomeContact.getIndex());
         this.nric        = data.get(AccountModel.NRIC.getIndex());
         this.dob         = LocalDate.parse(data.get(AccountModel.DOB.getIndex()));
         this.fulladdress = new Address(new String[]{
