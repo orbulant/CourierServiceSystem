@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="285.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aaaa.Controller.UserEditDialogController">
+    <VBox layoutX="21.0" layoutY="14.0" prefHeight="228.0" prefWidth="390.0" AnchorPane.bottomAnchor="43.0"
+          AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0">
+        <Label prefHeight="27.0" prefWidth="116.0" text="Account ID :">
+            <font>
+                <Font name="Segoe UI Semibold" size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txt_AccountID" disable="true" prefHeight="25.0" prefWidth="284.0"/>
+        <Label text="Username :">
+            <font>
+                <Font name="Segoe UI Semibold" size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txt_Username" prefHeight="26.0" prefWidth="328.0">
+            <font>
+                <Font name="Segoe UI Semibold" size="14.0"/>
+            </font>
+        </TextField>
+        <Label text="Password :">
+            <font>
+                <Font name="Segoe UI Semibold" size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txt_Password"/>
+        <Label text="Role :">
+            <font>
+                <Font name="Segoe UI Semibold" size="14.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="choiceBox_Role" prefHeight="25.0" prefWidth="174.0"/>
+    </VBox>
+    <ButtonBar layoutX="230.0" layoutY="240.0" prefHeight="40.0" prefWidth="125.0">
+        <buttons>
+            <Button fx:id="btn_Save" mnemonicParsing="false" onAction="#handleSave" text="Save"/>
+            <Button fx:id="btn_Cancel" mnemonicParsing="false" onAction="#handleCancel" text="Cancel"/>
+        </buttons>
+    </ButtonBar>
+</AnchorPane>
