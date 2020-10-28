@@ -48,7 +48,7 @@ someNRIC
 someName
 0165559999
 1990-09-29
-0165558888
+null
 someAddress
 someCity
 somePostcode
@@ -63,7 +63,7 @@ someNRIC2
 someName2
 01655599992
 1990-09-29
-01655588882
+null
 someAddress2
 someCity2
 somePostcode2

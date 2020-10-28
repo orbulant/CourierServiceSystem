@@ -1,8 +1,13 @@
 package org.aaaa.Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.aaaa.CurrentUser;
 import org.aaaa.Enums.GUIPath;
 
@@ -45,6 +50,8 @@ public class  DashboardController implements Initializable {
     Button sidebarButtonFive;
     @FXML
     Button sidebarButtonSix;
+    @FXML
+    Button btn_Profile;
 
     private String title;
     private Node previousPage;
@@ -99,6 +106,21 @@ public class  DashboardController implements Initializable {
             sidebarButtonSix.setOnMouseClicked(e -> {
                 // logout
                 this.logoutProperty.set(true);
+            });
+
+            //Top Profile button
+            btn_Profile.setOnMouseClicked(e -> {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(GUIPath.Profile.getName()));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setTitle("Your Profile");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException exh) {
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    logger.log(Level.SEVERE, "Failed to create new Window.", exh);
+                }
             });
         } catch (Exception e) {
             e.printStackTrace();

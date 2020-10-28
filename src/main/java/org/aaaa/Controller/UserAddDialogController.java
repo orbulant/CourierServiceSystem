@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import org.aaaa.Person;
 import org.aaaa.Staff;
 
 import java.net.URL;
@@ -75,7 +76,9 @@ public class UserAddDialogController implements Initializable {
     @FXML
     private void handleAdd(){
         if(isInputValid()){
-            staff.setAccountID(txt_AccountID.getText());
+            Person newPerson = new Person();
+            newPerson.setAccountID(txt_AccountID.getText());
+            staff.setPerson(newPerson);
             staff.setUsername(txt_Username.getText());
             staff.setPassword(txt_Password.getText());
             staff.setRole(choiceBox_Role.getValue());

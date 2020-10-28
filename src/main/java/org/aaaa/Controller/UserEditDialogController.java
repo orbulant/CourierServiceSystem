@@ -77,7 +77,6 @@ public class UserEditDialogController implements Initializable {
     @FXML
     private void handleSave(){
         if(isInputValid()){
-            staff.setAccountID(txt_AccountID.getText());
             staff.setUsername(txt_Username.getText());
             staff.setPassword(txt_Password.getText());
             staff.setRole(choiceBox_Role.getValue());

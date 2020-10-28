@@ -67,10 +67,10 @@ public class FileHandlerUser extends FileHandler{
         //Write content to file
         //Writing array of objects separated by comma
         for(Staff innerstuff : buffer){
-            writer.write(innerstuff.getAccountID() + "\n");
             writer.write(innerstuff.getUsername() + "\n");
             writer.write(innerstuff.getPassword() + "\n");
             writer.write(innerstuff.getRole() + "\n");
+            writer.write(innerstuff.getPerson().getAccountID() + "\n");
         }
         writer.flush();
         writer.close();

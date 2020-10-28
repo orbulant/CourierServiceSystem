@@ -8,6 +8,7 @@ public enum GUIPath {
     UserEditDialog("/fxml/UserEditDialog.fxml"),
     UserAddDialog("/fxml/UserAddDialog.fxml"),
     UserOverview("/fxml/UserOverview.fxml"),
+    Profile("/fxml/Profile.fxml"),
     Login("/fxml/Login.fxml"),
     Dashboard("/fxml/Dashboard.fxml"),
     ListViewer("/fxml/ListViewer.fxml"),
