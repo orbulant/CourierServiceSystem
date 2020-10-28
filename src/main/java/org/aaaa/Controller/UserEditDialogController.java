@@ -40,6 +40,7 @@ public class UserEditDialogController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBox_Role.getItems().addAll("delivery", "managing");
     }
 
     /**
@@ -61,8 +62,7 @@ public class UserEditDialogController implements Initializable {
         txt_AccountID.setText(staff.getAccountID());
         txt_Username.setText(staff.getUsername());
         txt_Password.setText(staff.getPassword());
-        //CHOICE BOX TO BE IMPLEMENTED HERE!!
-
+        choiceBox_Role.setValue("delivery");
     }
 
     /**
@@ -80,8 +80,7 @@ public class UserEditDialogController implements Initializable {
             staff.setAccountID(txt_AccountID.getText());
             staff.setUsername(txt_Username.getText());
             staff.setPassword(txt_Password.getText());
-            //CHOICE BOX TO BE IMPLEMENTED
-
+            staff.setRole(choiceBox_Role.getValue());
 
             saveClicked = true;
             dialogStage.close();
