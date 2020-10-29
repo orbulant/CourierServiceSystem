@@ -22,11 +22,11 @@ Login/Logout
 
 
 User account management
-- [ ]	Create accounts (Managing/Delivery)
+- [x]	Create accounts (Managing/Delivery)
     - UNIQUE ID, Name, NRIC, Address, Phone Number, DOB, Location assigned, Role
-- [ ]	Deactivate account
-- [ ]	Edit accounts
-- [ ]	View account
+- [x]	Delete account
+- [x]	Edit accounts
+- [x]	View account
 
 
 Search account
@@ -64,8 +64,8 @@ Login/Logout
 
 
 User account management (Individual profile management)
-- [ ]	Edit own account
-- [ ]	View own account
+- <del>[ ]	Edit own account</del> Removed functionality;Reason: From a security standpoint, delivery staff changing their credentials means they can do some sketchy stuff.
+- [x]	View own account
 
 
 Availability
