@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import org.aaaa.CurrentUser;
-import org.aaaa.Person;
 
 import java.net.URL;
 import java.util.ResourceBundle;

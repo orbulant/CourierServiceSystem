@@ -1,13 +1,7 @@
 package org.aaaa.Controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import org.aaaa.CurrentUser;
 import org.aaaa.Enums.GUIPath;
 

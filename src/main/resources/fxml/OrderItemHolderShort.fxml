@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -61,10 +63,17 @@
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="edit_view" mnemonicParsing="false" text="Button">
+                  <Button fx:id="edit_view" mnemonicParsing="false">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/pencil.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </HBox>
          </children>

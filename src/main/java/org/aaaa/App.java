@@ -45,6 +45,7 @@ public class App extends Application {
 
             root = login.load();
             scene = new Scene(root);
+            scene.getStylesheets().add("/assets/stylesheet.css");
 
             this.stage.setMinWidth(900);
             this.stage.setMinHeight(600);
@@ -57,6 +58,8 @@ public class App extends Application {
                     try{
                         root = dashboard.load();
                         scene = new Scene(root);
+                        scene.getStylesheets().add("/assets/stylesheet.css");
+                        
                         this.stage.setScene(scene);
                         this.stage.setTitle("Courier Service System");
                         this.stage.setMinWidth(1366);

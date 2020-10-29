@@ -1,6 +1,5 @@
 package org.aaaa.FileHandlers;
 
-import org.aaaa.Person;
 import org.aaaa.Staff;
 import org.aaaa.Enums.DatabasePath;
 import org.aaaa.Enums.Models.UserModel;
@@ -8,7 +7,6 @@ import org.aaaa.Enums.Models.UserModel;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
