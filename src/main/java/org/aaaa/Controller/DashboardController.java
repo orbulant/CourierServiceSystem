@@ -31,6 +31,8 @@ public class  DashboardController implements Initializable {
     @FXML
     AnchorPane ui_pane_large_tall;
     @FXML
+    AnchorPane ui_pane_small_one;
+    @FXML
     AnchorPane ui_pane_small_two;
     @FXML
     AnchorPane ui_pane_large_thick;
@@ -96,7 +98,7 @@ public class  DashboardController implements Initializable {
 
             recentLoginController.setTitle("Recent Login(s)");
             recentLoginController.setTitleButtonVisibility(false);
-            
+
             // Sidebar Buttons
             sidebarButtonOne.setOnMouseClicked(e -> {
                 this.setTitle(GUIPath.Dashboard.toString());
@@ -147,6 +149,14 @@ public class  DashboardController implements Initializable {
             ui_pane_large_thick.getChildren().add((Node) deliveryRequestList.load());
             deliveryCancellationListController.setTitle("Pending Delivery Cancellations");
             deliveryCancellationListController.setTitleButtonVisibility(false);
+
+            // add report pane
+            // report display
+            FXMLLoader dashReport = new FXMLLoader(getClass().getResource(GUIPath.ReportItemHolder.getName()));
+            ReportItemHolderController RIHC = new ReportItemHolderController("delivered");
+            dashReport.setController(RIHC);
+            ui_pane_small_one.getChildren().clear();
+            ui_pane_small_one.getChildren().add((Node) dashReport.load());
 
             // set delay to loadables using scroll pane to avoid error
             Platform.runLater(() -> {
@@ -235,6 +245,14 @@ public class  DashboardController implements Initializable {
             Platform.runLater(() -> {
                 deliveryListController.populateDeliveries("", null);
             });
+
+            // add report pane
+            // report display
+            FXMLLoader dashReport = new FXMLLoader(getClass().getResource(GUIPath.ReportItemHolder.getName()));
+            ReportItemHolderController RIHC = new ReportItemHolderController("deliverymen");
+            dashReport.setController(RIHC);
+            ui_pane_small_one.getChildren().clear();
+            ui_pane_small_one.getChildren().add((Node) dashReport.load());
 
             this.sidebarButtonTwo.setText("Account");
             sidebarButtonTwo.setOnMouseClicked( e -> {

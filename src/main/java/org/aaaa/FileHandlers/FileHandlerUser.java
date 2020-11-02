@@ -1,5 +1,6 @@
 package org.aaaa.FileHandlers;
 
+import org.aaaa.Enums.Roles;
 import org.aaaa.Person;
 import org.aaaa.Staff;
 import org.aaaa.Enums.DatabasePath;
@@ -101,5 +102,16 @@ public class FileHandlerUser extends FileHandler{
         //Writing array of objects separated by comma and new line
         writer.flush();
         writer.close();
+    }
+
+    public int getTotalDeliveryman(){
+        int counter = 0;
+        for(List<String> temp: this.getContent(DatabasePath.Staff.getDataLength())) {
+            if(temp.get(UserModel.Role.getIndex()).equals(Roles.DeliveryStaff.getRole())) {
+                counter ++;
+            }
+        }
+
+        return counter;
     }
 }
