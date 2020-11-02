@@ -72,8 +72,8 @@ public class FileHandlerReport extends FileHandler {
         PdfContentByte canvas = writer.getDirectContent();
         canvas.saveState();
         canvas.setLineWidth((float) 10 / 10);
-        canvas.moveTo(40, 806 - (5 * 10));
-        canvas.lineTo(555, 806 - (5 * 10));
+        canvas.moveTo(40, 773);
+        canvas.lineTo(555, 773);
         canvas.stroke();
         document.add(headertable);
         canvas.restoreState();
