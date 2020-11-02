@@ -3,6 +3,8 @@ package org.aaaa.Controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,6 +44,8 @@ public class UserOverviewController implements Initializable {
     Button btn_Edit;
     @FXML
     Button btn_Delete;
+    @FXML
+    TextField txt_Filter;
 
     //Observable List
     private ObservableList<Staff> masterUserData = FXCollections.observableArrayList();
@@ -74,6 +78,37 @@ public class UserOverviewController implements Initializable {
         showStaffDetails(null);
         //Listener for selection changes which then shows the person details when changed.
         userTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showStaffDetails(newValue));
+
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Staff> filteredData = new FilteredList<>(masterUserData, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        txt_Filter.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(staff -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (staff.getAccountID().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches accountID name.
+                } else if (staff.getUsername().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches username.
+                }
+                return false; // Does not match.
+            });
+        });
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<Staff> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(userTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        userTable.setItems(sortedData);
     }
 
     /**STRONG

@@ -9,11 +9,14 @@ import javafx.stage.Stage;
 import org.aaaa.Address;
 import org.aaaa.CurrentUser;
 
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.Person;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AccountAddDialogController implements Initializable {
@@ -83,8 +86,12 @@ public class AccountAddDialogController implements Initializable {
      * @param person to be edited in the dialog stage
      */
     public void addPerson(Person person){
+        FileHandlerAccount fhAcc = new FileHandlerAccount(DatabasePath.Account.getName());
+        List<List<String>> buffer = fhAcc.getContent(DatabasePath.Account.getDataLength());
+        List<String> strings = buffer.get(buffer.size() - 1);
+        String latestaccountID = strings.get(0);
         this.person = person;
-        txt_AccountID.setText("");
+        txt_AccountID.setText(latestaccountID);
         txt_Name.setText("");
         txt_DOB.setText("");
         txt_Nric.setText("");

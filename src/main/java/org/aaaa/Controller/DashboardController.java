@@ -165,8 +165,6 @@ public class  DashboardController implements Initializable {
                 }
             });
 
-
-
             this.sidebarButtonThree.setText("Order");
             sidebarButtonThree.setOnMouseClicked(e -> {
                 this.setTitle(this.sidebarButtonThree.getText());
@@ -236,6 +234,17 @@ public class  DashboardController implements Initializable {
             // set delay to loadables using scroll pane to avoid error
             Platform.runLater(() -> {
                 deliveryListController.populateDeliveries("", null);
+            });
+
+            this.sidebarButtonTwo.setText("Account");
+            sidebarButtonTwo.setOnMouseClicked( e -> {
+                this.setTitle(this.sidebarButtonTwo.getText());
+                try {
+                    AUG = new FXMLLoader(getClass().getResource(GUIPath.Profile.getName()));
+                    this.overridePage(AUG.load());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             });
 
             this.sidebarButtonThree.setText("Delivery");
