@@ -55,8 +55,6 @@ public class ReportMainController implements Initializable, BaseControllerInterf
 
             //Large Box button views
             FXMLLoader largeItemHolderOne = new FXMLLoader(getClass().getResource(GUIPath.ReportLargeItemHolderButtonBar.getName()));
-            ReportLargeItemHolderButtonBarController RLIHBBC = new ReportLargeItemHolderButtonBarController();
-
             this.box_large_one.getChildren().add(largeItemHolderOne.load());
 
         } catch (Exception e) {
