@@ -54,8 +54,6 @@ public class FileHandler {
             //Returns a List<List<String>> type of chopped array (arrList), chopped 5 times before returning]
             return chopped(arrList, chopLength);
         }
-
-
     /*
     Search
      */
