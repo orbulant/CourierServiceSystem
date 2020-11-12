@@ -30,7 +30,7 @@ User account management
 
 
 Search account
-- [ ]	Search account
+- [x]	Search account
 
 
 Order Management
@@ -52,7 +52,7 @@ Delivery cancelation
 
 
 Report
-- [ ]	Generate report (User report, Sales report, Inventory report)
+- [x]	Generate report (User report, Sales report, Inventory report)
 
 
 #### Delivery Staff
