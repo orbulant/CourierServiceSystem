@@ -14,7 +14,7 @@
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="txt_AccountID" prefHeight="25.0" prefWidth="219.0" />
+                  <TextField fx:id="txt_AccountID" disable="true" prefHeight="25.0" prefWidth="219.0" />
                   <Label fx:id="lbl_Name" text="Name :">
                      <font>
                         <Font name="Segoe UI Semibold" size="14.0" />

@@ -7,10 +7,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import org.aaaa.Enums.DatabasePath;
+import org.aaaa.FileHandlers.FileHandlerUser;
 import org.aaaa.Person;
 import org.aaaa.Staff;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserAddDialogController implements Initializable {
@@ -58,8 +61,12 @@ public class UserAddDialogController implements Initializable {
      * @param staff to be added in the dialog stage
      */
     public void addStaff(Staff staff){
+        FileHandlerUser fhUs = new FileHandlerUser(DatabasePath.Staff.getName());
+        List<List<String>> buffer = fhUs.getContent(DatabasePath.Staff.getDataLength());
+        List<String> strings = buffer.get(buffer.size() - 1);
+        String latestuserID = strings.get(strings.size() - 1);
         this.staff = staff;
-        txt_AccountID.setText("");
+        txt_AccountID.setText(latestuserID);
         txt_Username.setText("");
         txt_Password.setText("");
         choiceBox_Role.setValue("delivery");

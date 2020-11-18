@@ -96,7 +96,7 @@ public class DeliveryFormController implements Initializable {
                     fileHandlerOrder.update(fileHandlerOrder.getContent(DatabasePath.Order.getDataLength()), order.get());
 
                     Feedback feedback = new Feedback();
-                    feedback.setFeedback(newValue);
+                    feedback.setFeedback(newValue.replace("\n", " ").replace("\r", " "));
                     feedback.setOrder(order);
                     feedback.setFeedbackDate(LocalDate.now());
                     feedback.create();
