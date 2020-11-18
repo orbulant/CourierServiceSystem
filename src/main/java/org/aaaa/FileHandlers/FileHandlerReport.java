@@ -5,7 +5,6 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import javafx.scene.control.Cell;
 import org.aaaa.Enums.DatabasePath;
 
 import java.io.FileOutputStream;

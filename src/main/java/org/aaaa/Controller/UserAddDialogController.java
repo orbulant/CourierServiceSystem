@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import org.aaaa.Enums.DatabasePath;
-import org.aaaa.FileHandlers.FileHandlerAccount;
 import org.aaaa.FileHandlers.FileHandlerUser;
 import org.aaaa.Person;
 import org.aaaa.Staff;

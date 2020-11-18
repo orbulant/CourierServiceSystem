@@ -178,6 +178,10 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
             // unprompt error message
             lbl_err_msg.setVisible(false);
             // add to database
+            if(order == null) {
+                this.order = new Order();
+            }
+            
             Person person = new Person(txt_name.getText(), txt_contact.getText());
             Address address = new Address(new String[]{txt_address.getText(), txt_city.getText(), txt_postcode.getText(), txt_state.getText(), txt_country.getText()});
             order.setOrderName(txt_order_name.getText());
@@ -186,6 +190,7 @@ public class OrderFormController implements Initializable, BaseControllerInterfa
             order.setDeliDate(dp_deli_date.getValue() == null ? dp_order_date.getValue() : dp_deli_date.getValue());
             order.setIsFragile(cb_is_fragile.isSelected());
             order.setAutoAssign(cb_auto_assign.isSelected());
+            order.setStatus(Status.Processing.getStatus());
             order.setAccount(person);
             order.setAddress(address);
 
