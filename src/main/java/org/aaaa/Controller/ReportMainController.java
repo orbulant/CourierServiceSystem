@@ -53,6 +53,10 @@ public class ReportMainController implements Initializable, BaseControllerInterf
             smallItemHolderCancelled.setController(cancelledReportItemHolderController);
             this.box_small_four.getChildren().add(smallItemHolderCancelled.load());
 
+            //Large Box button views
+            FXMLLoader largeItemHolderOne = new FXMLLoader(getClass().getResource(GUIPath.ReportLargeItemHolderButtonBar.getName()));
+            this.box_large_one.getChildren().add(largeItemHolderOne.load());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

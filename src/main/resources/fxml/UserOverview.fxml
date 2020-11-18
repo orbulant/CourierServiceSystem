@@ -24,7 +24,7 @@
                         <Pane prefHeight="54.0" prefWidth="487.0">
                             <children>
                                 <Label layoutX="14.0" layoutY="19.0" text="Search:" />
-                                <TextField layoutX="60.0" layoutY="15.0" prefHeight="25.0" prefWidth="376.0" promptText="Enter Account ID......" />
+                                <TextField fx:id="txt_Filter" layoutX="60.0" layoutY="15.0" prefHeight="25.0" prefWidth="376.0" promptText="Enter Account ID or Name....." />
                             </children></Pane>
                         <Pane layoutY="54.0" prefHeight="326.0" prefWidth="487.0" AnchorPane.bottomAnchor="318.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
                             <children>

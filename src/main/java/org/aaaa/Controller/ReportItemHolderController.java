@@ -42,6 +42,9 @@ public class ReportItemHolderController implements Initializable {
             case "cancelled":
                 this.txt_total.setText(Integer.toString(fileHandlerOrder.getTotalCancelled()));
                 break;
+            case "deliverymen":
+                this.txt_total.setText(Integer.toString(fileHandlerUser.getTotalDeliveryman()));
+                break;
         }
     }
 

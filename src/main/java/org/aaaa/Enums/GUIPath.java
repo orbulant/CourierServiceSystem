@@ -20,6 +20,7 @@ public enum GUIPath {
     RecentLoginItemHolder("/fxml/RecentLoginItemHolder.fxml"),
     ReportMain("/fxml/ReportMain.fxml"),
     ReportItemHolder("/fxml/ReportItemHolder.fxml"),
+    ReportLargeItemHolderButtonBar("/fxml/ReportLargeItemHolderButtonBar.fxml"),
     FeedbackMain("/fxml/FeedbackMain.fxml"),
     FeedbackForm("/fxml/FeedbackForm.fxml"),
     FeedbackItemHolder("/fxml/FeedbackItemHolder.fxml"),
