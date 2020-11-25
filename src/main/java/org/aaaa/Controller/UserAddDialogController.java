@@ -65,12 +65,13 @@ public class UserAddDialogController implements Initializable {
         List<List<String>> buffer = fhUs.getContent(DatabasePath.Staff.getDataLength());
         List<String> strings = buffer.get(buffer.size() - 1);
         String latestuserID = strings.get(strings.size() - 1);
+        int i = Integer.parseInt(latestuserID);
+        int toadd = i + 1;
         this.staff = staff;
-        txt_AccountID.setText(latestuserID);
+        txt_AccountID.setText(String.valueOf(toadd));
         txt_Username.setText("");
         txt_Password.setText("");
         choiceBox_Role.setValue("delivery");
-
     }
 
     /**
