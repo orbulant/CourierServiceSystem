@@ -90,8 +90,10 @@ public class AccountAddDialogController implements Initializable {
         List<List<String>> buffer = fhAcc.getContent(DatabasePath.Account.getDataLength());
         List<String> strings = buffer.get(buffer.size() - 1);
         String latestaccountID = strings.get(0);
+        int i = Integer.parseInt(latestaccountID);
+        int toadd = i + 1;
         this.person = person;
-        txt_AccountID.setText(latestaccountID);
+        txt_AccountID.setText(String.valueOf(toadd));
         txt_Name.setText("");
         txt_DOB.setText("");
         txt_Nric.setText("");

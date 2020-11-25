@@ -72,7 +72,8 @@ public class AccountOverviewController implements Initializable {
 
     //Observable List
     private ObservableList<Person> masterData = FXCollections.observableArrayList();
-
+    //Sorted List
+    SortedList<Person> sortedData;
     /**
      * Returns the data as an observable list of Persons.
      * @return the masterData
@@ -125,7 +126,7 @@ public class AccountOverviewController implements Initializable {
                 });
             });
             // 3. Wrap the FilteredList in a SortedList.
-            SortedList<Person> sortedData = new SortedList<>(filteredData);
+            sortedData = new SortedList<>(filteredData);
 
             // 4. Bind the SortedList comparator to the TableView comparator.
             sortedData.comparatorProperty().bind(accountTable.comparatorProperty());
@@ -212,9 +213,13 @@ public class AccountOverviewController implements Initializable {
      */
     @FXML
     private void handleDeletePerson(){
-        int selectedIndex = accountTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            accountTable.getItems().remove(selectedIndex);
+        // The index of the sorted and filtered list.
+        int visibleIndex = accountTable.getSelectionModel().getSelectedIndex();
+        // Source index of master data.
+        int sourceIndex = sortedData.getSourceIndexFor(masterData, visibleIndex);
+        // Remove.
+        if (sourceIndex >= 0) {
+            masterData.remove(sourceIndex);
         } else {
             //Nothing selected then...
             Alert alert = new Alert(Alert.AlertType.WARNING);

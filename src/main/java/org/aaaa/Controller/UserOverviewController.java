@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.collections.transformation.TransformationList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,8 @@ import org.aaaa.Staff;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,7 +52,8 @@ public class UserOverviewController implements Initializable {
 
     //Observable List
     private ObservableList<Staff> masterUserData = FXCollections.observableArrayList();
-
+    //Sorted List
+    SortedList<Staff> sortedData;
     /**
      * Returns the data as an observable list of Persons.
      * @return the masterUserData
@@ -102,7 +106,7 @@ public class UserOverviewController implements Initializable {
             });
         });
         // 3. Wrap the FilteredList in a SortedList.
-        SortedList<Staff> sortedData = new SortedList<>(filteredData);
+        sortedData = new SortedList<>(filteredData);
 
         // 4. Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(userTable.comparatorProperty());
@@ -162,9 +166,13 @@ public class UserOverviewController implements Initializable {
      */
     @FXML
     private void handleDeleteStaff(){
-        int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            userTable.getItems().remove(selectedIndex);
+        // The index of the sorted and filtered list.
+        int visibleIndex = userTable.getSelectionModel().getSelectedIndex();
+        // Source index of master data.
+        int sourceIndex = sortedData.getSourceIndexFor(masterUserData, visibleIndex);
+        // Remove.
+        if (sourceIndex >= 0) {
+            masterUserData.remove(sourceIndex);
         } else {
             //Nothing selected then...
             Alert alert = new Alert(Alert.AlertType.WARNING);
