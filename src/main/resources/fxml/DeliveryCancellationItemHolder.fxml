@@ -61,12 +61,12 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="btn_one" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button">
+            <Button fx:id="btn_one" mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: lime;" text="Yes">
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btn_two" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button" />
+            <Button fx:id="btn_two" mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: red;" text="No" />
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
