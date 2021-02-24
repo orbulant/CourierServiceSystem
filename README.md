@@ -69,7 +69,7 @@ User account management (Individual profile management)
 
 
 Availability
-- [ ]	Set availability status
+- [x]	Set availability status
     - Check-in/Check-out
     
     
