@@ -3,6 +3,7 @@
 
 *By Chen Wey Kiat And Tan Ka-Shing*
 
+![Home Page of Courier Service System](CourierServiceSystem/Home Page.png  "Home Page of System"
 
 ### Users
 -   Customers
