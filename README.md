@@ -3,7 +3,7 @@
 
 *By Chen Wey Kiat And Tan Ka-Shing*
 
-![Home Page of Courier Service System](CourierServiceSystem/Home Page.png  "Home Page of System"
+![Home Page of Courier Service System](https://github.com/orbulant/CourierServiceSystem/blob/57685fef698e81b8a189981edfeec6aacea354c5/Home%20Page.png)
 
 ### Users
 -   Customers
